@@ -7,7 +7,7 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --获得 %s 硬幅能开盾排散能力
 --进入过载状态后立即恢复，但护盾将下线 %s 秒，护盾下线时过载不会重置下线时间",星灵舰船的能源核心,,graphics/hullmods/xel_ProtossEnergyArray.png
 ,,,,,,,,,,,,,,,,,,,
-幅能充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,10,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
+矩阵充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,10,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
 
 
 --增加 %s 的幅能容量与排散，若舰船不存在护盾，则增加 %s 的幅能容量与排散

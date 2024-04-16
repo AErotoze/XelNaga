@@ -61,11 +61,13 @@ public class xel_CyberneticsCore extends xel_BaseHullmod {
     }
 
     public String getUnapplicableReason(ShipAPI ship) {
-        return getTooMuchHarmonyModReason();
+        if (!hasEnergyArrayMod(ship)) return getNoEnergyArrayReason();
+        else return hasTooMuchHarmonyMod(ship) ? getTooMuchHarmonyModReason() : super.getUnapplicableReason(ship);
     }
+
 
     @Override
     public boolean isApplicableToShip(ShipAPI ship) {
-        return hasTooMuchHarmonyMod(ship);
+        return hasEnergyArrayMod(ship) && !hasTooMuchHarmonyMod(ship);
     }
 }

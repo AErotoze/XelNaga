@@ -98,7 +98,7 @@ public class xel_BloodShard extends xel_BaseHullmod {
 
 	private final class damageToTargetModifer implements DamageDealtModifier, AdvanceableListener {
 		private final ShipAPI source;
-		private final IntervalUtil interva = new IntervalUtil(0.03f, 0.03f);
+		private final IntervalUtil interval = new IntervalUtil(0.03f, 0.03f);
 		private final CombatEngineAPI engine = Global.getCombatEngine();
 		private final String DAMAGE_MODIFIER_KEY = "xel_bs_damage_modifier_key";
 
@@ -122,18 +122,18 @@ public class xel_BloodShard extends xel_BaseHullmod {
 		public void advance(float amount) {
 			if (source.isAlive()) {
 				ShipAPI targetLocked = findTarget(engine, source, 2500f);
-				interva.advance(amount);
+				interval.advance(amount);
 
 				if (engine.getPlayerShip() == source) {
 					boolean hasTarget = targetLocked != null;
-					if (hasTarget && interva.intervalElapsed()) {
+					if (hasTarget && interval.intervalElapsed()) {
 						SpriteAPI sprite = targetLocked.getSpriteAPI();
 						float offsetX = sprite.getWidth() / 2f - sprite.getCenterX();
 						float offsetY = sprite.getHeight() / 2f - sprite.getCenterY();
 						float trueOffsetX = (float) FastTrig.cos(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetX - (float) FastTrig.sin(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetY;
 						float trueOffsetY = (float) FastTrig.sin(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetX + (float) FastTrig.cos(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetY;
 						float size = Math.max(sprite.getWidth(), sprite.getHeight());
-						size = Math.min(200f, size);
+						size = Math.min(300f, size * 1.2f);
 						MagicRender.battlespace(
 								Global.getSettings().getSprite("fx", "xel_blood_shard_lock"),
 								new Vector2f(targetLocked.getLocation().getX() + trueOffsetX, targetLocked.getLocation().getY() + trueOffsetY),
@@ -142,9 +142,9 @@ public class xel_BloodShard extends xel_BaseHullmod {
 								new Vector2f(0f, 0f),
 								-90f,
 								0f,
-								new Color(255, 255, 255, 153),
+								new Color(255, 255, 255, 200),
 								true,
-								0f, 0f, 0f, 0f, 0f, 0f, 0.031f, 0f,
+								0f, 0f, 0f, 0f, 0f, 0.03f, 0f, 0.03f,
 								CombatEngineLayers.ABOVE_SHIPS_LAYER
 						);
 					}
@@ -152,7 +152,7 @@ public class xel_BloodShard extends xel_BaseHullmod {
 							"graphics/icons/hullsys/entropy_amplifier.png",
 							i18n_hullmod.get("xel_ps_name"),
 							hasTarget ? i18n_hullmod.get("xel_ps_target_locked") : i18n_hullmod.get("xel_ps_target_out"),
-							false);
+							!hasTarget);
 				}
 			}
 		}
