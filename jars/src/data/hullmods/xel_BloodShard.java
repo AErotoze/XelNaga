@@ -36,6 +36,8 @@ public class xel_BloodShard extends xel_BaseHullmod {
     private static final float SUPPLY_MULT = 2f;
     private static final float PEAK_DECEASE = 25f;
 
+    private boolean done = false;
+
     static {
         visionMap.put(ShipAPI.HullSize.FRIGATE, 800f);
         visionMap.put(ShipAPI.HullSize.DESTROYER, 1200f);
@@ -69,6 +71,8 @@ public class xel_BloodShard extends xel_BaseHullmod {
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
         ship.addListener(new damageToTargetModifer(ship));
         removeBlockedMod(ship);
+
+
     }
 
     @Override
@@ -94,10 +98,9 @@ public class xel_BloodShard extends xel_BaseHullmod {
 
     private final class damageToTargetModifer implements DamageDealtModifier, AdvanceableListener {
         private final ShipAPI source;
-        private final IntervalUtil interva = new IntervalUtil(0.1f, 0.1f);
+        private final IntervalUtil interva = new IntervalUtil(0.03f, 0.03f);
         private final CombatEngineAPI engine = Global.getCombatEngine();
         private final String DAMAGE_MODIFIER_KEY = "xel_bs_damage_modifier_key";
-        private final String ANGLE_LEVEL_KEY = "xel_bs_angle_level_key";
 
         public damageToTargetModifer(ShipAPI ship) {
             this.source = ship;
@@ -106,7 +109,7 @@ public class xel_BloodShard extends xel_BaseHullmod {
         @Override
         public String modifyDamageDealt(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
             if (target instanceof ShipAPI) {
-                ShipAPI targetLocked = findTarget(engine, source, 4000f);
+                ShipAPI targetLocked = findTarget(engine, source, 2500f);
                 if (targetLocked != null && target == targetLocked) {
                     damage.getModifier().modifyMult(DAMAGE_MODIFIER_KEY, 1f + 0.01f * DAMAGE_BONUS);
                     return DAMAGE_MODIFIER_KEY;
@@ -117,43 +120,33 @@ public class xel_BloodShard extends xel_BaseHullmod {
 
         @Override
         public void advance(float amount) {
-            if (source.isAlive()) {
-                ShipAPI targetLocked = findTarget(engine, source, 4000f);
-                Float angleLevel = (Float) source.getCustomData().get(ANGLE_LEVEL_KEY);
-                if (angleLevel == null) {
-                    angleLevel = 0f;
-                }
-                angleLevel += 90f * amount;
-                source.setCustomData(ANGLE_LEVEL_KEY, angleLevel);
-
-//                if (angleLevel >= 360f) angleLevel = 0f;
+            if (source.isAlive() && engine.getPlayerShip() == source) {
+                ShipAPI targetLocked = findTarget(engine, source, 2500f);
                 interva.advance(amount);
 
-                if (targetLocked != null) {
+                if (targetLocked != null && interva.intervalElapsed()) {
                     SpriteAPI sprite = targetLocked.getSpriteAPI();
                     float offsetX = sprite.getWidth() / 2f - sprite.getCenterX();
                     float offsetY = sprite.getHeight() / 2f - sprite.getCenterY();
                     float trueOffsetX = (float) FastTrig.cos(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetX - (float) FastTrig.sin(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetY;
                     float trueOffsetY = (float) FastTrig.sin(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetX + (float) FastTrig.cos(Math.toRadians(targetLocked.getFacing() - 90f)) * offsetY;
                     float size = Math.max(sprite.getWidth(), sprite.getHeight());
-                    size = Math.max(200f, size);
+                    size = Math.min(200f, size);
                     MagicRender.battlespace(
                             Global.getSettings().getSprite("fx", "xel_blood_shard_lock"),
                             new Vector2f(targetLocked.getLocation().getX() + trueOffsetX, targetLocked.getLocation().getY() + trueOffsetY),
                             new Vector2f(0f, 0f),
                             new Vector2f(size, size),
                             new Vector2f(0f, 0f),
-                            angleLevel,
+                            -90f,
                             0f,
-                            new Color(255, 255, 255, 128),
+                            new Color(255, 255, 255, 153),
                             true,
-                            0f, 0f, 0f, 0f, 0f, 0f, amount, 0f,
+                            0f, 0f, 0f, 0f, 0f, 0f, 0.033f, 0f,
                             CombatEngineLayers.ABOVE_SHIPS_LAYER
                     );
-                }
-
-                if (engine.getPlayerShip() == source) {
                     engine.maintainStatusForPlayerShip("xel_bs_key1", null, "血水晶共鸣", "是否锁定目标", false);
+
                 }
             }
         }

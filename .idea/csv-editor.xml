@@ -17,6 +17,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\data\hulls\wing_data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\missions\mission_list.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\data\shipsystems\ship_systems.csv">
           <value>
             <Attribute>
@@ -32,6 +46,13 @@
           </value>
         </entry>
         <entry key="\data\strings\descriptions_alex.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\data\weapons\weapon_data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
