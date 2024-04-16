@@ -1,0 +1,8 @@
+name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,c/s,c/f,f/s,f/f,crew/s,crew/f,hints,tags,rarity,breakProb,minPieces,maxPieces,travel drive,number
+#战机,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+拦截机,xel_Interceptor,,达拉姆,,,280,40,300,,100,0,,255,500,450,130,260,30,FRONT,,360,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,205.001
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+狂热者,xel_Zealot,星灵护卫舰,达拉姆,xel_Feedback,10,1500,450,5000,5000,350,40,,150,180,150,90,270,200,FRONT,,360,0,1,,,5,10,20,20,1,20,11,36000,10,20,180,0.25,10,10,,,,,,,,,,0.5,2,2,,200.001
+警戒者,xel_Sentinel,星灵驱逐航母,达拉姆,xel_UnityField,15,4000,450,3200,3200,275,75,2,70,60,50,25,25,450,FRONT,,360,0,1,,,60,100,50,50,2,25,9,72000,8,15,360,0.25,14,14,,,,,,,"CARRIER, COMBAT",,,0.5,2,3,,201.001
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

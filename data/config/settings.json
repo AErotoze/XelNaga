@@ -1,0 +1,30 @@
+{
+  "designTypeColors": {
+    "星灵科技": [
+      28,
+      167,
+      234,
+      255
+    ],
+    "星灵科技-协调": [
+      235,
+      225,
+      41,
+      255
+    ],
+    "星灵科技-响应": [
+      0,
+      167,
+      98,
+      255
+    ]
+  },
+  "graphics": {
+    "hullsys": {
+      "xel_UnityField_active": "graphics/icons/hullsys/xel_DefensiveMatrix.png"
+    },
+    "fx": {
+      "xel_blood_shard_lock": "graphics/fx/xel_bs_target_lock.png"
+    }
+  }
+}

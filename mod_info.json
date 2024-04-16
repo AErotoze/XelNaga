@@ -1,0 +1,12 @@
+{
+  "id": "XelNaga",
+  "name": "萨尔纳伽",
+  "version": "1.0Beta",
+  "author": "AErotoze",
+  "description": "萨尔纳伽，为寻找纯粹的形体和纯粹的精华而来",
+  "gameVersion": "0.96a-RC10",
+  "jars": [
+    "jars/XelNaga.jar"
+  ],
+  "modPlugin": "data.scripts.xel_ModPlugin"
+}

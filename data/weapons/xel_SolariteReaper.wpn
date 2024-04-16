@@ -1,0 +1,37 @@
+{
+  "id": "xel_SolariteReaper",
+  "specClass": "beam",
+
+  "beamEffect":"data.scripts.weapons.xel_SolariteReaperBeamEffect",
+
+  "type": "ENERGY",
+  "size": "LARGE",
+  "collisionClass": "RAY",
+  "collisionClassByFighter": "RAY_FIGHTER",
+  "turretSprite": "graphics/weapons/xel_SolariteReaper_turret.png",
+	"turretGlowSprite":"",
+	"hardpointSprite":"",
+  "hardpointGlowSprite": "graphics/weapons/xel_SolariteReaper_glow.png",
+
+  "glowColor": [50,220,220,255],
+  "turretOffsets": [31,-3.5,31,3.5],
+  "turretAngleOffsets": [0,0],
+  "hardpointOffsets": [15,3.5,15,-3.5],
+  "hardpointAngleOffsets": [0,0],
+  "barrelMode": "LINKED",
+
+  "fringeColor": [60,225,225,255],
+  "coreColor": [255,255,255,255],
+  "width": 25,
+  "textureType": ROUGH,
+  "textureScrollSpeed": 64,
+  "pixelsPerTexel": 5,
+  "pierceSet": [
+    PROJECTILE_FF,
+    PROJECTILE_NO_FF,
+    PROJECTILE_FIGHTER,
+    MISSILE_FF,
+    MISSILE_NO_FF
+  ],
+  "fireSoundTwo": "phase_beam_loop"
+}

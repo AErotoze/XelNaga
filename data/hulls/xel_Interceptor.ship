@@ -1,0 +1,58 @@
+{
+  "hullName": "xel_interceptor",
+  "hullId": "xel_Interceptor",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/xel_fighter/xel_Interceptor.png",
+  "style": "XelNaga",
+  "height": 26,
+  "width": 44,
+  "center": [22, 13],
+  "collisionRadius": 31,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 25,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray",
+    "no_weapon_flux"
+  ],
+  "builtInWeapons": {
+    "WS0001": "xel_InterceptorBeam"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [0, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-10, 10],
+      "length": 18,
+      "width": 6,
+      "angle": 180,
+      "contrailSize": 6,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-10, -10],
+      "length": 18,
+      "width": 6,
+      "angle": -180,
+      "contrailSize": 6,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    -8, -8.5,
+    9, -8.5,
+    9, 8.5,
+    -8, 8.5
+  ]
+}

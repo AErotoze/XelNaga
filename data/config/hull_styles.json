@@ -1,0 +1,173 @@
+{
+  "XelNaga_test": {
+    "hyperspaceJitterColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "baseCampaignExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "baseCombatExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "weaponDisabledExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "fighterRepairFlickerColor": [
+      60,
+      40,
+      100,
+      255
+    ],
+    "fighterChipIconColor": [
+      65,
+      35,
+      120,
+      255
+    ],
+    "shieldRingColor": [
+      55,
+      255,
+      255,
+      75
+    ],
+    "shieldInnerColor": [
+      55,
+      255,
+      255,
+      50
+    ],
+    "fluxVentCoreColor": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "fluxVentFringeColor": [
+      55,
+      155,
+      255,
+      155
+    ],
+    "engineLoopSet": "engine_loop",
+    "engineAccelerateSet": "engine_accelerate",
+    "empLoopSet": "emp_loop",
+    "fluxLoopSet": "flux_loop",
+    "ventFluxSet": "vent_flux",
+    "shieldBurnoutSet": "shield_burnout",
+    "shieldLowerSet": "shield_lower",
+    "shieldRaiseSet": "shield_raise",
+    "explosionShipSet": "explosion_ship",
+    "damageDecalSheet": "graphics/damage/damage_decal_sheet_base.png",
+    "damageDecalGlowSheet": "graphics/damage/damage_decal_sheet_glow.png",
+    "colorShiftCovers": true,
+    "coversColorShiftAmount": 1,
+    "coversMatchShipBrightness": true,
+    "slotCoverSmallTurret": "graphics/weapons/covers/cover_turret_midline_small.png",
+    "slotCoverSmallHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_small.png",
+    "slotCoverMediumTurret": "graphics/weapons/covers/cover_turret_midline_medium.png",
+    "slotCoverMediumHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_medium.png",
+    "slotCoverLargeTurret": "graphics/weapons/covers/cover_turret_midline_large.png",
+    "slotCoverLargeHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_large.png",
+    "dHullOverlayLight": "graphics/damage/dmod_overlay_midline_light.png",
+    "dHullOverlayMedium": "graphics/damage/dmod_overlay_midline_medium.png",
+    "dHullOverlayHeavy": "graphics/damage/dmod_overlay_midline_heavy.png"
+  },
+  "XelNaga": {
+    "hyperspaceJitterColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "baseCampaignExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "baseCombatExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "weaponDisabledExplosionColor": [
+      150,
+      150,
+      255,
+      255
+    ],
+    "fighterRepairFlickerColor": [
+      60,
+      40,
+      100,
+      255
+    ],
+    "fighterChipIconColor": [
+      65,
+      35,
+      120,
+      255
+    ],
+    "shieldRingColor": [
+      55,
+      255,
+      255,
+      75
+    ],
+    "shieldInnerColor": [
+      55,
+      255,
+      255,
+      50
+    ],
+    "fluxVentCoreColor": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "fluxVentFringeColor": [
+      55,
+      155,
+      255,
+      155
+    ],
+    "engineLoopSet": "engine_loop",
+    "engineAccelerateSet": "engine_accelerate",
+    "empLoopSet": "emp_loop",
+    "fluxLoopSet": "flux_loop",
+    "ventFluxSet": "vent_flux",
+    "shieldBurnoutSet": "shield_burnout",
+    "shieldLowerSet": "shield_lower",
+    "shieldRaiseSet": "shield_raise",
+    "explosionShipSet": "explosion_ship",
+    "damageDecalSheet": "graphics/damage/damage_decal_sheet_base.png",
+    "damageDecalGlowSheet": "graphics/damage/damage_decal_sheet_glow.png",
+    "colorShiftCovers": true,
+    "coversColorShiftAmount": 1,
+    "coversMatchShipBrightness": true,
+    "slotCoverSmallTurret": "graphics/weapons/covers/cover_turret_midline_small.png",
+    "slotCoverSmallHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_small.png",
+    "slotCoverMediumTurret": "graphics/weapons/covers/cover_turret_midline_medium.png",
+    "slotCoverMediumHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_medium.png",
+    "slotCoverLargeTurret": "graphics/weapons/covers/cover_turret_midline_large.png",
+    "slotCoverLargeHardpoint": "graphics/weapons/covers/cover_hardpoint_midline_large.png",
+    "dHullOverlayLight": "graphics/damage/dmod_overlay_midline_light.png",
+    "dHullOverlayMedium": "graphics/damage/dmod_overlay_midline_medium.png",
+    "dHullOverlayHeavy": "graphics/damage/dmod_overlay_midline_heavy.png"
+  }
+}
+  

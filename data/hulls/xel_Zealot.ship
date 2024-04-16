@@ -1,0 +1,96 @@
+{
+  "hullName": "xel_Zealot",
+  "hullId": "xel_Zealot",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/xel_Zealot.png",
+  "style": "XelNaga",
+  "height": 136,
+  "width": 90,
+  "center": [45, 68],
+  "collisionRadius": 98,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 84,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray"
+  ],
+  "builtInWeapons": {
+    "WS0003": "xel_SolariteReaper"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 210,
+      "angle": 90,
+      "locations": [-23, 23]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "BALLISTIC",
+      "mount": "TURRET",
+      "arc": 210,
+      "angle": -90,
+      "locations": [-23, -23]
+    },
+    {
+      "id": "WS0003",
+      "size": "LARGE",
+      "type": "BUILT_IN",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [44, -0]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [-18.5, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-65, 16],
+      "length": 70,
+      "width": 10,
+      "angle": -180,
+      "contrailSize": 10,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-65, -16],
+      "length": 70,
+      "width": 10,
+      "angle": 180,
+      "contrailSize": 10,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    13, -10,
+    47, -6,
+    67, -3,
+    48, -17,
+    21, -28,
+    -32, -43,
+    -66, -16,
+    -58, -0,
+    -66, 16,
+    -32, 43,
+    21, 28,
+    48, 17,
+    67, 3,
+    47, 6,
+    13, 10,
+    20, -0
+  ]
+}

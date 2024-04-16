@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/jars/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Graphics96" level="application" />
+    <orderEntry type="library" exported="" name="LazyLib96" level="application" />
+    <orderEntry type="library" exported="" name="MagicLib96" level="application" />
+    <orderEntry type="library" exported="" name="ss96" level="application" />
+    <orderEntry type="library" name="MagicLib-Kotlin" level="application" />
+    <orderEntry type="library" name="Graphics" level="application" />
+    <orderEntry type="library" name="ss096" level="application" />
+    <orderEntry type="library" name="LazyLib-Console" level="application" />
+  </component>
+</module>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="XelNaga">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jars/XelNaga.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="https://fractalsoftworks.com/starfarer.api/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

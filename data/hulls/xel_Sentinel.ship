@@ -1,0 +1,199 @@
+{
+  "hullName": "xel_Sentinel",
+  "hullId": "xel_Sentinel",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/xel_Sentinel.png",
+  "style": "XelNaga",
+  "height": 186,
+  "width": 174,
+  "center": [87, 93],
+  "collisionRadius": 128.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 116,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray"
+  ],
+  "builtInWeapons": {
+    "WS0005": "xel_Sentinel_Bridge"
+  },
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": 60,
+      "locations": [36, 29]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -60,
+      "locations": [36, -29]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": 120,
+      "locations": [11, 30]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 160,
+      "angle": -120,
+      "locations": [11, -30]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "DECORATIVE",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [43, -0]
+    },
+    {
+      "id": "LB 1",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -31, -0,
+        8.5, 13.5,
+        20.5, 13.5,
+        32.5, 13.5,
+        44.5, 13.5
+      ]
+    },
+    {
+      "id": "LB 2",
+      "size": "LARGE",
+      "type": "LAUNCH_BAY",
+      "mount": "HIDDEN",
+      "arc": 360,
+      "angle": 0,
+      "locations": [
+        -37, -0,
+        -40, 3,
+        -41, 1,
+        -41, -3,
+        -39, -6.5
+      ]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-68, 38.5],
+      "length": 3,
+      "width": 3,
+      "angle": 180,
+      "contrailSize": 60,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-68, -38.5],
+      "length": 3,
+      "width": 3,
+      "angle": -180,
+      "contrailSize": 60,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-40, 65.5],
+      "length": 3,
+      "width": 3,
+      "angle": 172,
+      "contrailSize": 60,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-40, -65.5],
+      "length": 3,
+      "width": 3,
+      "angle": -172,
+      "contrailSize": 60,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-36, -65],
+      "length": 16.23,
+      "width": 6.29,
+      "angle": -172.5,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-36, 65],
+      "length": 16.23,
+      "width": 6.29,
+      "angle": 172.5,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-63, 38.5],
+      "length": 12,
+      "width": 7,
+      "angle": 180,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-63, -38.5],
+      "length": 12,
+      "width": 7,
+      "angle": -180,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    0, -6,
+    90, -9,
+    91.5, -20,
+    75, -49,
+    11, -55,
+    -48.5, -86,
+    -58, -86,
+    -55.5, -68,
+    -91.5, -51.5,
+    -76, -34,
+    -30, -17,
+    -41, -12.5,
+    -48, -0,
+    -41, 12.5,
+    -30, 17,
+    -76, 34,
+    -91.5, 51.5,
+    -55.5, 68,
+    -58, 86,
+    -48.5, 86,
+    11, 55,
+    75, 49,
+    91.5, 20,
+    90, 9,
+    0, 6,
+    6, -0
+  ]
+}

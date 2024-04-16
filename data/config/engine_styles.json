@@ -1,0 +1,66 @@
+{
+  "XelNaga_test": {
+    "engineColor": [
+      90,
+      90,
+      200,
+      255
+    ],
+    "engineCampaignColer": [
+      125,
+      125,
+      255,
+      255
+    ],
+    "contrailParticleSizeMult": 4,
+    "contrailParticleDuration": 1,
+    "contrailParticleFinalSizeMult": 3,
+    "contrailMaxSpeedMult": 0.5,
+    "contrailAngularVelocityMult": 0,
+    "contrailColor": [
+      75,
+      75,
+      155,
+      25
+    ],
+    "contrailCampaignColor": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "type": "GLOW"
+  },
+  "XelNaga": {
+    "engineColor": [
+      45,
+      210,
+      215,
+      255
+    ],
+    "engineCampaignColer": [
+      45,
+      210,
+      215,
+      255
+    ],
+    "contrailParticleSizeMult": 4,
+    "contrailParticleDuration": 1,
+    "contrailParticleFinalSizeMult": 3,
+    "contrailMaxSpeedMult": 0.5,
+    "contrailAngularVelocityMult": 0,
+    "contrailColor": [
+      30,
+      195,
+      200,
+      25
+    ],
+    "contrailCampaignColor": [
+      255,
+      255,
+      255,
+      255
+    ],
+    "type": "GLOW"
+  }
+}
