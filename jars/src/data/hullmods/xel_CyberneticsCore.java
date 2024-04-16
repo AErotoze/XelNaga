@@ -1,11 +1,7 @@
 package data.hullmods;
 
-import com.fs.starfarer.api.combat.BaseHullMod;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import data.utils.xel.Constants;
-import data.utils.xel.HullModUtil;
-import data.utils.xel.xel_Misc;
 
 /**
  * 控制芯核
@@ -15,7 +11,7 @@ import data.utils.xel.xel_Misc;
  * 内置后 +5%武器伤害，武器开火辐能最大降低值额外+10%
  */
 
-public class xel_CyberneticsCore extends BaseHullMod {
+public class xel_CyberneticsCore extends xel_BaseHullmod {
     private static final float RECOIL_BONUS = 20f;
     private static final float AUTO_ACCURACY_BONUS = 100f;
     private static final float SMOD_DAMAGE_BONUS = 5f;
@@ -51,31 +47,25 @@ public class xel_CyberneticsCore extends BaseHullMod {
 
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        if (index == 0) return "" + (int) RECOIL_BONUS + "%";
-        else if (index == 1) return "" + (int) AUTO_ACCURACY_BONUS + "%";
-        else if (index == 2) return "" + (int) FIRE_FLUX_DECREASE + "%";
+        if (index == 0) return (int) RECOIL_BONUS + "%";
+        else if (index == 1) return (int) AUTO_ACCURACY_BONUS + "%";
+        else if (index == 2) return (int) FIRE_FLUX_DECREASE + "%";
         else
-            return index == 3 ? "" + (int) (FIRE_FLUX_DECREASE * 3f) + "%" : super.getDescriptionParam(index, hullSize);
+            return index == 3 ? (int) (FIRE_FLUX_DECREASE * 3f) + "%" : super.getDescriptionParam(index, hullSize);
     }
 
     @Override
     public String getSModDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        if (index == 0) return "" + (int) SMOD_FIRE_FLUX_DECREASE + "%";
-        else return index == 1 ? "" + (int) SMOD_DAMAGE_BONUS + "%" : super.getSModDescriptionParam(index, hullSize);
+        if (index == 0) return (int) SMOD_FIRE_FLUX_DECREASE + "%";
+        else return index == 1 ? (int) SMOD_DAMAGE_BONUS + "%" : super.getSModDescriptionParam(index, hullSize);
     }
 
     public String getUnapplicableReason(ShipAPI ship) {
-        if (ship.getVariant().hasHullMod(HullModUtil.XEL_SHIELD_BATTERY))
-            return Constants.i18n_hullmod.format("notCompatibleWith", xel_Misc.getHullmodName(HullModUtil.XEL_SHIELD_BATTERY));
-        if (ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANANCE_COIL))
-            return Constants.i18n_hullmod.format("notCompatibleWith", xel_Misc.getHullmodName(HullModUtil.XEL_RESONANANCE_COIL));
-        return Constants.i18n_hullmod.format("needSupportWith", xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY));
+        return getTooMuchHarmonyModReason();
     }
 
     @Override
     public boolean isApplicableToShip(ShipAPI ship) {
-        return !ship.getVariant().hasHullMod(HullModUtil.XEL_SHIELD_BATTERY)
-                && !ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANANCE_COIL)
-                && ship.getVariant().hasHullMod(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY);
+        return hasTooMuchHarmonyMod(ship);
     }
 }

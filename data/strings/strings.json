@@ -1,11 +1,15 @@
 {
   "xel_hullmod": {
+    "harmony_mod_tag": "矩阵协调模组",
+    "response_mod_tag": "矩阵响应模组",
     "notCompatibleWith": "不兼容于 %s 船体插件",
     "needSupportWith": "需要 %s 船体插件",
     "install": "已安装",
     "uninstall": "未安装",
     "noFighterBays": "舰船没有舰载机甲板",
-    "tooMuchResponseMod": "至多能安装 2种 星灵响应模组",
+    "tooMuchHarmonyMod": "只能安装 1种 星灵-协调模组",
+    "tooMuchResponseMod": "至多只能安装 2种 星灵-响应模组",
+
     "xel_pea_title": "矩阵升级路径",
     "xel_pea_upgrade1": "护盾受到的伤害降低 %s",
     "xel_pea_upgrade2": "护盾下线时间增加 %s",
@@ -15,6 +19,7 @@
     "xel_pea_upgrade6": "护盾被 EMP 电弧击穿的概率提高 %s",
     "xel_pea_shield_up": "能量矩阵运行正常",
     "xel_pea_shield_down": "能量矩阵重启中 [%s]",
+
     "xel_rc_title": "谐振护盾场性能",
     "xel_rc_damageSource": "伤害类型/来源",
     "xel_rc_damageFactor": "调整水平",
@@ -22,6 +27,7 @@
     "xel_rc_damageType_fighter": "战机",
     "xel_rc_flux_recovering": "幅能容量恢复中：[%s]",
     "xel_rc_flux_recovered": "辐能容量恢复完毕",
+
     "xel_pp_system": "系统",
     "xel_pp_title": "实验系统信息",
     "xel_pp_change": "[%s] 系统改造完成",
@@ -31,7 +37,13 @@
     "xel_pp_UF_change_name": "统合矩阵超载",
     "xel_pp_UF_change1": "根据所有甲板上战机的联队规模以及战机类型，为战场上存活的战机提供一次性镀层。相较于原来的版本，镀层值提高了 %s",
     "xel_pp_UF_change2": "暂时提高战机 %s 护盾抵抗，没有护盾的战机提高 %s 装甲抵抗和结构抵抗",
+
     "xel_pp_no_change": "该系统无可进行的实验性改造",
+
+    "xel_ps_name":"血水晶共鸣",
+    "xel_ps_target_locked": "已锁定目标",
+    "xel_ps_target_out": "侦测距离内无目标",
+
     "xel_test": "test"
   },
   "xel_shipSystem": {

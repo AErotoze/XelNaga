@@ -6,7 +6,6 @@ import com.fs.starfarer.api.combat.listeners.DamageTakenModifier;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
-import data.utils.xel.Constants;
 import data.utils.xel.HullModUtil;
 import data.utils.xel.xel_Misc;
 import org.lwjgl.util.vector.Vector2f;
@@ -38,7 +37,7 @@ import static data.utils.xel.Constants.i18n_hullmod;
  * 谐振减伤期望       90%     (1.33+0.9+0.77+0.4+1.1)/5 = 0.9
  * s-mod谐振减伤期望  80%     (1.2+0.8+0.65+0.3+1.05)/5 = 0.8
  */
-public class xel_ResonanceCoil extends BaseHullMod {
+public class xel_ResonanceCoil extends xel_BaseHullmod {
     private static final Map<ShipAPI.HullSize, Float> fluxCapMap = new HashMap<>();
     private static final Map<DamageType, Float> damageTakenMap = new HashMap<>();
     private static final Map<ShipAPI.HullSize, Float> sModfluxCapMap = new HashMap<>();
@@ -128,7 +127,7 @@ public class xel_ResonanceCoil extends BaseHullMod {
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         if (index == 0) return xel_Misc.getHullSizePercentString(fluxCapMap);
-        else return index == 1 ? "" + (int) RECOVER_TIME_PERCENT + "%" : super.getDescriptionParam(index, hullSize);
+        else return index == 1 ? (int) RECOVER_TIME_PERCENT + "%" : super.getDescriptionParam(index, hullSize);
     }
 
     @Override
@@ -157,11 +156,11 @@ public class xel_ResonanceCoil extends BaseHullMod {
                 i18n_hullmod.get("xel_rc_sMod_damageFactor"), tableWidth * 0.4f
         );
         tooltip.addRow(new Color(255, 211, 154), DamageType.KINETIC.getDisplayName(),
-                good, "" + damageTakenMap.get(DamageType.KINETIC).intValue() + "%",
-                good, "" + sModdamageTakenMap.get(DamageType.KINETIC).intValue() + "%");
+                good, damageTakenMap.get(DamageType.KINETIC).intValue() + "%",
+                good, sModdamageTakenMap.get(DamageType.KINETIC).intValue() + "%");
         tooltip.addRow(new Color(0, 187, 255), DamageType.ENERGY.getDisplayName(),
-                good, "" + damageTakenMap.get(DamageType.ENERGY).intValue() + "%",
-                good, "" + sModdamageTakenMap.get(DamageType.ENERGY).intValue() + "%");
+                good, damageTakenMap.get(DamageType.ENERGY).intValue() + "%",
+                good, sModdamageTakenMap.get(DamageType.ENERGY).intValue() + "%");
         tooltip.addRow(h, DamageType.HIGH_EXPLOSIVE.getDisplayName(),
                 bad, "+" + damageTakenMap.get(DamageType.HIGH_EXPLOSIVE).intValue() + "%",
                 bad, "+" + sModdamageTakenMap.get(DamageType.HIGH_EXPLOSIVE).intValue() + "%");
@@ -175,22 +174,14 @@ public class xel_ResonanceCoil extends BaseHullMod {
         tooltip.addTable("N/A", 0, pad);
     }
 
-    @Override
     public String getUnapplicableReason(ShipAPI ship) {
-        if (ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE))
-            return Constants.i18n_hullmod.format("notCompatibleWith", xel_Misc.getHullmodName(HullModUtil.XEL_CYBERNETICS_CORE));
-        if (ship.getVariant().hasHullMod(HullModUtil.XEL_SHIELD_BATTERY))
-            return Constants.i18n_hullmod.format("notCompatibleWith", xel_Misc.getHullmodName(HullModUtil.XEL_SHIELD_BATTERY));
-        return Constants.i18n_hullmod.format("needSupportWith", xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY));
+        return getTooMuchHarmonyModReason();
     }
 
     @Override
     public boolean isApplicableToShip(ShipAPI ship) {
-        return !ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE)
-                && !ship.getVariant().hasHullMod(HullModUtil.XEL_SHIELD_BATTERY)
-                && ship.getVariant().hasHullMod(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY);
+        return hasTooMuchHarmonyMod(ship);
     }
-
     private static class fighterDamageTakenModifer implements DamageTakenModifier {
         private static final String ID = "xel_RC_fighterDamageTaken";
         private static float damageTakenBonus;

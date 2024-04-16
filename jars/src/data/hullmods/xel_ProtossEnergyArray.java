@@ -102,7 +102,7 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
 
         boolean flag = hasShieldBattery(ship);
         tooltip.addSectionHeading(i18n_hullmod.get("xel_pea_title"), Alignment.TMID, pad * 2f);
-        TooltipMakerAPI myText = tooltip.beginImageWithText("graphics/hullmods/xel_ShieldBattery.png", 32f);
+        TooltipMakerAPI myText = tooltip.beginImageWithText("graphics/hullmods/xel_ArrayBattery.png", 32f);
         myText.addPara("%s [%s]", pad * 2f,
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
                 xel_Misc.getHullmodName(HullModUtil.XEL_SHIELD_BATTERY),

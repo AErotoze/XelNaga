@@ -65,13 +65,14 @@ public class xel_VoidArray extends xel_BaseHullmod {
                 && hasEnergyArrayMod(ship)
                 && !hasNotCompatibleMod(ship)
                 && !hasTooMuchResponseMod(ship)
-                && (ship.getMutableStats().getNumFighterBays().getModifiedValue() > 0f || ship.getMutableStats().getNumFighterBays().getBaseValue() > 0f);
+                && hasFighterBays(ship);
     }
 
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
         if (!hasEnergyArrayMod(ship)) return getNoEnergyArrayReason();
         else if (hasTooMuchResponseMod(ship)) return getTooMuchResponseModReason();
+        else if (!hasFighterBays(ship)) return getNoBaysReason();
         else return hasNotCompatibleMod(ship) ? getNotCompatibleReason() : super.getUnapplicableReason(ship);
     }
 

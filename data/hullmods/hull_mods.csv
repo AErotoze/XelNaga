@@ -7,11 +7,11 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --获得 %s 硬幅能开盾排散能力
 --进入过载状态后立即恢复，但护盾将下线 %s 秒，护盾下线时过载不会重置下线时间",星灵舰船的能源核心,,graphics/hullmods/xel_ProtossEnergyArray.png
 ,,,,,,,,,,,,,,,,,,,
-护盾充能器,xel_ShieldBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,10,15,25,data.hullmods.xel_ShieldBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
+幅能充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,10,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
 
 
---增加 %s 的幅能容量与排散
---提供 %s 的硬幅能开盾排散能力，硬幅能水平超过 %s 时下能力将减弱 %s",为星灵舰船提供更强大的续航能力,额外提供 %s 硬辐能开盾排散能力，并将硬辐能水平阈值提高至 %s,graphics/hullmods/xel_ShieldBattery.png
+--增加 %s 的幅能容量与排散，若舰船不存在护盾，则增加 %s 的幅能容量与排散
+--若舰船存在护盾，提供 %s 的硬幅能开盾排散能力，硬幅能水平超过 %s 时下能力将减弱 %s",为星灵舰船提供更强大的续航能力,额外提供 %s 硬辐能开盾排散能力，并将硬辐能水平阈值提高至 %s,graphics/hullmods/xel_ArrayBattery.png
 控制芯核,xel_CyberneticsCore,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,10,15,25,data.hullmods.xel_CyberneticsCore,"适配星灵能量矩阵的协调模组之一，着重强调火控能力
 
 
