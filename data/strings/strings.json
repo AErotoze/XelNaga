@@ -9,6 +9,8 @@
     "noFighterBays": "舰船没有舰载机甲板",
     "tooMuchHarmonyMod": "只能安装 1种 星灵-协调模组",
     "tooMuchResponseMod": "至多只能安装 2种 星灵-响应模组",
+    "phaseShip": "相位舰",
+    "noPhaseShip": "非相位舰",
 
     "xel_pea_title": "矩阵升级路径",
     "xel_pea_upgrade1": "护盾受到的伤害降低 %s",
@@ -43,6 +45,16 @@
     "xel_ps_name":"血水晶共鸣",
     "xel_ps_target_locked": "已锁定目标",
     "xel_ps_target_out": "侦测距离内无目标",
+
+    "xel_pr_name": "相位反应堆",
+    "xel_pr_show_health": "反应堆剩余额度 [%s]",
+    "xel_pr_restarting": "反应堆重启中 [%s]",
+    "xel_pr_effect_ready": "反应堆超限已就绪",
+    "xel_pr_effect_active": "反应堆超限中",
+    "xel_pr_effect_cooldown": "反应堆超限正在冷却 [%s]",
+    "xel_pr_effect_gs": "守护之壳",
+    "xel_pr_effect_sc": "天界太阳能",
+    "xel_pr_effect_ta": "圣堂表象",
 
     "xel_test": "test"
   },

@@ -50,7 +50,11 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 
 --提高舰船 %s 机动性
 --根据舰船级别，提高舰船 %s 最大航速",,,graphics/hullmods/xel_GraviticBoosters.png
-#相位反应堆,,,,星灵科技-响应,,矩阵响应模组,,,,,,,,,,,,,
+相位反应堆,xel_PhaseReactor,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PhaseReactor,"数千年来，星灵一直在研究时空的本质。通过灵能提炼工艺，星灵得以将各类信息存贮于高级晶格分子之中，也因此迈入了操控物质和能量的新时代。相位反应堆则基于此项技术诞生。
+
+
+--相位反应堆将在舰船周围扭曲空间，吸收射弹，以此防御来自敌人的攻击
+--相位反应堆运行正常时，受到攻击后将进入 [%s]",,,graphics/hullmods/xel_PhaseReactor.png
 ,,,,,,,,,,,,,,,,,,,
 #刚毅护盾,,,,,,,,,,,,,,,,,,,
 #复仇协议,,,,,,,,,,,,,,,,,,,

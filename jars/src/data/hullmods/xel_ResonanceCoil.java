@@ -117,7 +117,7 @@ public class xel_ResonanceCoil extends xel_BaseHullmod {
 			if (Global.getCombatEngine().getPlayerShip() == ship) {
 				Global.getCombatEngine().maintainStatusForPlayerShip(DATA_KEY,
 						"graphics/icons/hullsys/high_energy_focus.png",
-						xel_Misc.getHullmodName(HullModUtil.XEL_RESONANANCE_COIL),
+						xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL),
 						time > 0f ? i18n_hullmod.format("xel_rc_flux_recovering", time.intValue()) : i18n_hullmod.get("xel_rc_flux_recovered"),
 						time > 0f);
 			}

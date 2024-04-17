@@ -105,7 +105,7 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
         TooltipMakerAPI myText = tooltip.beginImageWithText("graphics/hullmods/xel_ArrayBattery.png", 32f);
         myText.addPara("%s [%s]", pad * 2f,
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
-                xel_Misc.getHullmodName(HullModUtil.XEL_SHIELD_BATTERY),
+                xel_Misc.getHullmodName(HullModUtil.XEL_ARRAY_BATTERY),
                 flag ? i18n_hullmod.get("install") : i18n_hullmod.get("uninstall"));
         myText.addPara(i18n_hullmod.get("xel_pea_upgrade1"), pad, flag ? good : g, "" + (int) SHIELD_BATTERY_GOOD_BONUS + "%");
         myText.addPara(i18n_hullmod.get("xel_pea_upgrade2"), pad, flag ? bad : g, "" + (int) SHIELD_BATTERY_BAD_BONUS + "%");
@@ -125,7 +125,7 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
         myText = tooltip.beginImageWithText("graphics/hullmods/xel_ResonanceCoil.png", 32f);
         myText.addPara("%s [%s]", pad * 2f,
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
-                xel_Misc.getHullmodName(HullModUtil.XEL_RESONANANCE_COIL),
+                xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL),
                 flag ? i18n_hullmod.get("install") : i18n_hullmod.get("uninstall"));
         myText.addPara(i18n_hullmod.get("xel_pea_upgrade5"), pad, flag ? good : g, "" + (int) RESONANCE_COIL_GOOD_BONUS + "%");
         myText.addPara(i18n_hullmod.get("xel_pea_upgrade6"), pad, flag ? bad : g, "" + (int) RESONANCE_COIL_BAD_BONUS + "%");
@@ -135,7 +135,7 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
 
 
     private boolean hasShieldBattery(ShipAPI ship) {
-        return ship.getVariant().hasHullMod(HullModUtil.XEL_SHIELD_BATTERY);
+        return ship.getVariant().hasHullMod(HullModUtil.XEL_ARRAY_BATTERY);
     }
 
     private boolean hasCyberneticsCore(ShipAPI ship) {
@@ -143,7 +143,7 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
     }
 
     private boolean hasResonananceCoil(ShipAPI ship) {
-        return ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANANCE_COIL);
+        return ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANCE_COIL);
     }
 
 
