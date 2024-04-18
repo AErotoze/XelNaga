@@ -40,9 +40,9 @@ public class xel_CyberneticsCore extends xel_BaseHullmod {
         float level = Math.min(ship.getHardFluxLevel() / 0.5f, 1f);
         float bonus = FIRE_FLUX_DECREASE + (level * 2f * FIRE_FLUX_DECREASE) + (sMod ? SMOD_FIRE_FLUX_DECREASE : 0f);
 
-        ship.getMutableStats().getBallisticWeaponFluxCostMod().modifyMult(id, 1f - bonus);
-        ship.getMutableStats().getEnergyWeaponFluxCostMod().modifyMult(id, 1f - bonus);
-        ship.getMutableStats().getMissileWeaponFluxCostMod().modifyMult(id, 1f - bonus);
+        ship.getMutableStats().getBallisticWeaponFluxCostMod().modifyMult(id, 1f - 0.01f * bonus);
+        ship.getMutableStats().getEnergyWeaponFluxCostMod().modifyMult(id, 1f - 0.01f * bonus);
+        ship.getMutableStats().getMissileWeaponFluxCostMod().modifyMult(id, 1f - 0.01f * bonus);
     }
 
     @Override

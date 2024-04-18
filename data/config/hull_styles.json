@@ -1,65 +1,15 @@
 {
   "XelNaga_test": {
-    "hyperspaceJitterColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "baseCampaignExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "baseCombatExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "weaponDisabledExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "fighterRepairFlickerColor": [
-      60,
-      40,
-      100,
-      255
-    ],
-    "fighterChipIconColor": [
-      65,
-      35,
-      120,
-      255
-    ],
-    "shieldRingColor": [
-      55,
-      255,
-      255,
-      75
-    ],
-    "shieldInnerColor": [
-      55,
-      255,
-      255,
-      50
-    ],
-    "fluxVentCoreColor": [
-      255,
-      255,
-      255,
-      255
-    ],
-    "fluxVentFringeColor": [
-      55,
-      155,
-      255,
-      155
-    ],
+    "hyperspaceJitterColor": [150,150,255,255],
+    "baseCampaignExplosionColor": [150,150,255,255],
+    "baseCombatExplosionColor": [150,150,255,255],
+    "weaponDisabledExplosionColor": [150,150,255,255],
+    "fighterRepairFlickerColor": [60,40,100,255],
+    "fighterChipIconColor": [65,35,120,255],
+    "shieldRingColor": [55,255,255,75],
+    "shieldInnerColor": [55,255,255,50],
+    "fluxVentCoreColor": [255,255,255,255],
+    "fluxVentFringeColor": [55,155,255,155],
     "engineLoopSet": "engine_loop",
     "engineAccelerateSet": "engine_accelerate",
     "empLoopSet": "emp_loop",
@@ -85,66 +35,16 @@
     "dHullOverlayHeavy": "graphics/damage/dmod_overlay_midline_heavy.png"
   },
   "XelNaga": {
-    "hyperspaceJitterColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "baseCampaignExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "baseCombatExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "weaponDisabledExplosionColor": [
-      150,
-      150,
-      255,
-      255
-    ],
-    "fighterRepairFlickerColor": [
-      60,
-      40,
-      100,
-      255
-    ],
-    "fighterChipIconColor": [
-      65,
-      35,
-      120,
-      255
-    ],
-    "shieldRingColor": [
-      55,
-      255,
-      255,
-      75
-    ],
-    "shieldInnerColor": [
-      55,
-      255,
-      255,
-      50
-    ],
-    "fluxVentCoreColor": [
-      255,
-      255,
-      255,
-      255
-    ],
-    "fluxVentFringeColor": [
-      55,
-      155,
-      255,
-      155
-    ],
+    "hyperspaceJitterColor": [150,150,255,255],
+    "baseCampaignExplosionColor": [150,150,255,255],
+    "baseCombatExplosionColor": [150,150,255,255],
+    "weaponDisabledExplosionColor": [150,150,255,255],
+    "fighterRepairFlickerColor": [60,40,100,255],
+    "fighterChipIconColor": [65,35,120,255],
+    "shieldRingColor": [55,255,255,75],
+    "shieldInnerColor": [55,255,255,50],
+    "fluxVentCoreColor": [255,255,255,255],
+    "fluxVentFringeColor": [55,155,255,155],
     "engineLoopSet": "engine_loop",
     "engineAccelerateSet": "engine_accelerate",
     "empLoopSet": "emp_loop",

@@ -1,20 +1,27 @@
 package data.hullmods;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.CombatEngineAPI;
-import com.fs.starfarer.api.combat.CombatEntityAPI;
-import com.fs.starfarer.api.combat.DamageAPI;
-import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.AdvanceableListener;
 import com.fs.starfarer.api.combat.listeners.DamageTakenModifier;
+import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.loading.HullModSpecAPI;
+import com.fs.starfarer.api.ui.Alignment;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
 import data.utils.xel.HullModUtil;
+import data.utils.xel.xel_Misc;
+import org.dark.shaders.distortion.DistortionShader;
+import org.dark.shaders.distortion.RippleDistortion;
+import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
+import org.magiclib.util.MagicRender;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -37,12 +44,12 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
     private static final float DAMAGE_THRESHOLD = 50f;
     private static final float RECOVER_PERCENT_PER_SEC = 100f / 15f;
     private static final float MAX_RESTART_TIME = 25f;
-    private static final float TIME_MULT = 4f;
+    private static final float TIME_MULT = 100f;
 
     private static final Map<ShipAPI.HullSize, Float> HEALTH_MAP = new HashMap<>();
     private static final Map<String, effectData> EFFECT_DATA = new HashMap<>();
 
-    {
+    static {
         HEALTH_MAP.put(ShipAPI.HullSize.FIGHTER, 0f);
         HEALTH_MAP.put(ShipAPI.HullSize.FRIGATE, 500f);
         HEALTH_MAP.put(ShipAPI.HullSize.DESTROYER, 600f);
@@ -50,13 +57,13 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
         HEALTH_MAP.put(ShipAPI.HullSize.CAPITAL_SHIP, 1000f);
 
         EFFECT_DATA.put(HullModUtil.XEL_RESONANCE_COIL, new effectData(2f, 5f, i18n_hullmod.get("xel_pr_effect_gs"), HullModUtil.XEL_RESONANCE_COIL));
-        EFFECT_DATA.put(HullModUtil.XEL_ARRAY_BATTERY, new effectData(2f, 8f, i18n_hullmod.get("xel_pr_effect_sc"), HullModUtil.XEL_ARRAY_BATTERY));
-        EFFECT_DATA.put(HullModUtil.XEL_CYBERNETICS_CORE, new effectData(2f, 12f, i18n_hullmod.get("xel_pr_effect_ta"), HullModUtil.XEL_CYBERNETICS_CORE));
+        EFFECT_DATA.put(HullModUtil.XEL_ARRAY_BATTERY, new effectData(1f, 8f, i18n_hullmod.get("xel_pr_effect_sc"), HullModUtil.XEL_ARRAY_BATTERY));
+        EFFECT_DATA.put(HullModUtil.XEL_CYBERNETICS_CORE, new effectData(5f, 12f, i18n_hullmod.get("xel_pr_effect_ta"), HullModUtil.XEL_CYBERNETICS_CORE));
     }
 
     @Override
     public void init(HullModSpecAPI spec) {
-        this.setNotCompatible(HullMods.HEAVYARMOR, HullMods.SAFETYOVERRIDES);
+        this.setNotCompatible(HullMods.SAFETYOVERRIDES);
         super.init(spec);
     }
 
@@ -70,14 +77,15 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
                 data = EFFECT_DATA.get(mod.getId());
             }
         }
-        if (data != null) {
-            ship.addListener(new PRmanager(ship, data.maxEffectTime, data.maxCooldown, data.effectName, data.hullmods));
-        }
+        ship.addListener(new PRmanager(ship, data));
     }
 
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
-        return null;
+        if (index == 0) return xel_Misc.getHullSizeFlatString(HEALTH_MAP);
+        else if(index == 1) return "50%";
+        else if (index == 2) return i18n_hullmod.get("xel_pr_title");
+        else return index == 3 ? "50" : null;
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
@@ -91,11 +99,63 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
         else return hasNotCompatibleMod(ship) ? getNotCompatibleReason() : super.getUnapplicableReason(ship);
     }
 
-    private class effectData {
-        private float maxEffectTime;
-        private float maxCooldown;
-        private String effectName;
-        private String hullmods;
+    @Override
+    public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+        float pad = 5f;
+        Color h = Misc.getHighlightColor();
+        Color g = Misc.getGrayColor();
+        Color bad = Misc.getNegativeHighlightColor();
+        Color good = Misc.getPositiveHighlightColor();
+
+        effectData data = null;
+        TooltipMakerAPI text = tooltip.beginImageWithText(Global.getSettings().getSpriteName("hullsys", "xel_PhaseReactor_active"), 64f);
+        tooltip.addSectionHeading(i18n_hullmod.get("xel_pr_title"), Alignment.TMID, pad * 2f);
+        if (ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE)) {
+            data = EFFECT_DATA.get(HullModUtil.XEL_CYBERNETICS_CORE);
+            text.addPara("[%s]", pad * 2f, h, i18n_hullmod.get("xel_pr_effect_ta"));
+            text.setBulletedListMode("--");
+            text.addPara(i18n_hullmod.get("xel_pr_effect_ta1"), pad, h, "5 Sec");
+            text.addPara(i18n_hullmod.get("xel_pr_cooldown"), pad, h, (int) data.maxCooldown + " Sec");
+            text.setBulletedListMode(null);
+            tooltip.addImageWithText(pad);
+        } else if (ship.getVariant().hasHullMod(HullModUtil.XEL_ARRAY_BATTERY)) {
+            data = EFFECT_DATA.get(HullModUtil.XEL_ARRAY_BATTERY);
+            text.addPara("[%s]", pad * 2f, h, i18n_hullmod.get("xel_pr_effect_sc"));
+            text.setBulletedListMode("--");
+            text.addPara(i18n_hullmod.get("xel_pr_effect_sc1"), pad, new Color[]{h, good, good}, "1 Sec", "12%", "6%");
+            text.addPara(i18n_hullmod.get("xel_pr_cooldown"), pad, h, (int) data.maxCooldown + " Sec");
+            text.setBulletedListMode(null);
+            tooltip.addImageWithText(pad);
+        } else if (ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANCE_COIL)) {
+            data = EFFECT_DATA.get(HullModUtil.XEL_RESONANCE_COIL);
+            text.addPara("[%s]", pad * 2f, h, i18n_hullmod.get("xel_pr_effect_gs"));
+            text.setBulletedListMode("--");
+            text.addPara(i18n_hullmod.get("xel_pr_effect_gs1"), pad, h, "2 Sec");
+            text.addPara(i18n_hullmod.get("xel_pr_cooldown"), pad, h, (int) data.maxCooldown + " Sec");
+            text.setBulletedListMode(null);
+            tooltip.addImageWithText(pad);
+        } else {
+            text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_CYBERNETICS_CORE).getSpriteName(), 32f);
+            text.addPara("%s", pad * 2f, new Color(155, 155, 255, 255), xel_Misc.getHullmodName(HullModUtil.XEL_CYBERNETICS_CORE));
+            text.addPara("%s--" + i18n_hullmod.get("xel_pr_effect_gs2"), pad, h, i18n_hullmod.get("xel_pr_effect_gs"));
+            tooltip.addImageWithText(pad);
+            text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_ARRAY_BATTERY).getSpriteName(), 32f);
+            text.addPara("%s", pad * 2f, new Color(155, 155, 255, 255), xel_Misc.getHullmodName(HullModUtil.XEL_ARRAY_BATTERY));
+            text.addPara("%s--" + i18n_hullmod.get("xel_pr_effect_sc2"), pad, h, i18n_hullmod.get("xel_pr_effect_sc"));
+            tooltip.addImageWithText(pad);
+            text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_RESONANCE_COIL).getSpriteName(), 32f);
+            text.addPara("%s", pad * 2f, new Color(155, 155, 255, 255), xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL));
+            text.addPara("%s--" + i18n_hullmod.get("xel_pr_effect_ta2"), pad, h, i18n_hullmod.get("xel_pr_effect_ta"));
+            tooltip.addImageWithText(pad);
+
+        }
+    }
+
+    private static class effectData {
+        private final float maxEffectTime;
+        private final float maxCooldown;
+        private final String effectName;
+        private final String hullmods;
 
         public effectData(float maxEffectTime, float maxCooldown, String effectName, String hullmods) {
             this.maxCooldown = maxCooldown;
@@ -105,30 +165,27 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
         }
     }
 
-    private class PRmanager implements DamageTakenModifier, AdvanceableListener {
+    private static class PRmanager implements DamageTakenModifier, AdvanceableListener {
         private final ShipAPI ship;
-        private final float MAX_EFFECT_TIME;
-        private final float MAX_EFFECT_COOLDOWN;
         private final float MAX_HEALTH;
-        private final String HULLMODS_KEY;
-        private final String EFFECT_NAME;
         private final String ID = "xel_PR_damage_taken_modifier";
         private float fluxDeceased = 0f;
         private float recoverTime = 0f;
         private float effectTime = 0f;
         private float effectCooldown = 0f;
         private float health;
-
+        private final effectData data;
+        private final DecimalFormat dc = new DecimalFormat("0.0");
+        private final IntervalUtil interval = new IntervalUtil(0.1f, 0.1f);
 
         // 计时皆用减法计算
-        public PRmanager(ShipAPI ship, float maxEffectTime, float maxEffectCooldown, String effectName, String hullmods) {
+        public PRmanager(ShipAPI ship, effectData data) {
+            if (data == null)
+                this.data = new effectData(0f, 0f, null, null);
+            else
+                this.data = data;
             this.ship = ship;
-            this.MAX_EFFECT_TIME = maxEffectTime;
-            this.MAX_EFFECT_COOLDOWN = maxEffectCooldown;
-            this.EFFECT_NAME = effectName;
-            this.HULLMODS_KEY = hullmods;
             this.MAX_HEALTH = HEALTH_MAP.get(ship.getHullSize());
-//            this.effectTime = MAX_EFFECT_TIME;
             this.health = this.MAX_HEALTH;
         }
 
@@ -136,26 +193,38 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
         public void advance(float amount) {
             if (ship.isAlive()) {
                 CombatEngineAPI engine = Global.getCombatEngine();
-
                 // 判断是正常运行还是正在重启
                 if (recoverTime <= 0f) {
                     // 判断额度是否有剩
                     if (health > 0f) {
                         // 有剩则回复
-                        health = Math.min(MAX_HEALTH, health + RECOVER_PERCENT_PER_SEC * amount);
+                        health = Math.min(MAX_HEALTH, health + MAX_HEALTH * RECOVER_PERCENT_PER_SEC * amount * 0.01f);
+                        float level = health / MAX_HEALTH * 0.7f;
+                        ship.setJitterShields(false);
+                        ship.setJitter(ship, new Color(0, 255, 166, 64), level, 3, 10f);
+                        ship.setJitterUnder(ship, new Color(0, 255, 166, 128), level, 5, 15f);
                         // 判断效果是否启动
                         // 启动后若额度满载则会提前结束效果
                         if (effectTime > 0f) {
                             // 判断需要执行的效果
-                            if (Objects.equals(HULLMODS_KEY, HullModUtil.XEL_ARRAY_BATTERY)) {
+                            if (Objects.equals(data.hullmods, HullModUtil.XEL_RESONANCE_COIL)) {
+                                // 守护之壳
+                                ship.setJitterShields(false);
+                                ship.setJitter(ship, new Color(161, 0, 255, 64), 0.5f, 3, 10f);
+                                ship.setJitterUnder(ship, new Color(163, 0, 255, 128), 0.5f, 5, 15f);
+
+                            }
+                            if (Objects.equals(data.hullmods, HullModUtil.XEL_ARRAY_BATTERY)) {
+                                interval.advance(amount);
                                 // 天界太阳能
                                 // 取开始运行时这一帧的幅能
-                                if (effectTime >= MAX_EFFECT_TIME - amount) {
+                                if (effectTime >= data.maxEffectTime - amount) {
                                     fluxDeceased = ship.getMaxFlux() * (ship.getHardFluxLevel() * 0.06f + (ship.getFluxLevel() - ship.getHardFluxLevel()) * 0.012f);
                                 }
                                 solariteCelestial(fluxDeceased, amount);
                             }
-                            if (Objects.equals(HULLMODS_KEY, HullModUtil.XEL_CYBERNETICS_CORE)) {
+                            if (Objects.equals(data.hullmods, HullModUtil.XEL_CYBERNETICS_CORE)) {
+                                interval.advance(amount / 3f);
                                 // 圣堂表象
                                 templarApparent(effectTime, amount);
                             }
@@ -170,6 +239,11 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
                         recoverTime = MAX_RESTART_TIME;
                         effectTime = 0f;
                         effectCooldown = 0f;
+                        //强制退出 圣堂表象
+                        if (Objects.equals(data.hullmods, HullModUtil.XEL_CYBERNETICS_CORE)) {
+                            ship.getMutableStats().getTimeMult().unmodify(ID);
+                            Global.getCombatEngine().getTimeMult().unmodify(ID);
+                        }
                     }
                 } else {
                     // 处于重启
@@ -181,67 +255,73 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
                     }
                 }
                 if (engine.getPlayerShip() == ship) {
-                    String data = health > 0f ? i18n_hullmod.format("xel_pr_show_health", (int) health) : i18n_hullmod.format("xel_pr_restarting", (int) recoverTime);
+                    String str = health > 0f ? i18n_hullmod.format("xel_pr_show_health", (int) health) : i18n_hullmod.format("xel_pr_restarting", dc.format(recoverTime));
                     engine.maintainStatusForPlayerShip(
                             "xel_pr_manager1",
                             Global.getSettings().getSpriteName("hullsys", "xel_PhaseReactor_active"),
                             i18n_hullmod.get("xel_pr_name"),
-                            data,
-                            health < 0f);
-                    data = effectCooldown > 0f ? i18n_hullmod.format("xel_pr_effect_cooldown", (int) effectCooldown) : i18n_hullmod.get("xel_pr_effect_ready");
-                    engine.maintainStatusForPlayerShip(
-                            "xel_pr_manager2",
-                            Global.getSettings().getSpriteName("hullsys", "xel_PhaseReactor_active"),
-                            effectTime > 0f ? i18n_hullmod.get(EFFECT_NAME) : i18n_hullmod.get("xel_pr_name"),
-                            effectTime > 0f ? i18n_hullmod.get("xel_pr_effect_active") : data,
-                            effectCooldown > 0f);
+                            str,
+                            health <= 0f);
+                    if (health > 0f && data.effectName != null) {
+                        str = effectCooldown > 0f ? i18n_hullmod.format("xel_pr_effect_cooldown", data.effectName, dc.format(effectCooldown)) : i18n_hullmod.format("xel_pr_effect_ready", data.effectName);
+                        engine.maintainStatusForPlayerShip(
+                                "xel_pr_manager2",
+                                Global.getSettings().getSpriteName("hullsys", "xel_PhaseReactor_active"),
+                                effectTime > 0f ? this.data.effectName : i18n_hullmod.get("xel_pr_name"),
+                                effectTime > 0f ? i18n_hullmod.format("xel_pr_effect_active", dc.format(effectTime)) : str,
+                                effectCooldown > 0f);
+                    }
                 }
             }
         }
 
         @Override
         public String modifyDamageTaken(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
-            if (!shieldHit) {
-                float damageNum = damage.getDamage();
-                ShipAPI source = null;
-                if (damage.getStats().getEntity() != null && damage.getStats().getEntity() instanceof ShipAPI) {
-                    source = (ShipAPI) damage.getStats().getEntity();
+            if (!shieldHit && health > 0f) {
+                float baseDamage = damage.getBaseDamage();
+                if (damage.isDps()) {
+                    baseDamage *= damage.getDpsDuration();
                 }
+                baseDamage *= damage.getType().getArmorMult();
+                baseDamage *= damage.getType().getHullMult();
+
+                CombatEntityAPI source = target;
+                if (damage.getStats() != null) {
+                    source = damage.getStats().getEntity();
+                    if (source == null) {
+                        source = target;
+                    }
+                }
+
+                baseDamage *= Math.min(baseDamage / (baseDamage + health), MAX_HEALTH / (MAX_HEALTH + health));
 
                 //若冷却完毕 若受到大于的50伤害 若效果未激活 重置效果时间和冷却时间
-                if (effectCooldown == 0f && damageNum > 50f && effectTime == 0f) {
-                    effectTime = MAX_EFFECT_TIME;
-                    effectCooldown = MAX_EFFECT_COOLDOWN;
-                }
-                // 若效果持续时间未结束 且 效果是 守护之壳
-                if (effectTime > 0f && Objects.equals(HULLMODS_KEY, HullModUtil.XEL_RESONANCE_COIL)) {
-                    // 运行守护之壳 在被击中的地方生成粒子特效
-                    Global.getCombatEngine().addNebulaSmoothParticle(
-                            point,
-                            MathUtils.getPointOnCircumference((Vector2f) null, MathUtils.getRandomNumberInRange(10f, 50f), MathUtils.getRandomNumberInRange(0f, 360f)),
-                            MathUtils.getRandomNumberInRange(10f, 40f),
-                            MathUtils.getRandomNumberInRange(1.5f, 3f),
-                            0.5f,
-                            0f,
-                            MathUtils.getRandomNumberInRange(0.1f, 1f),
-                            Misc.scaleAlpha(new Color(84, 0, 129, 255), MathUtils.getRandomNumberInRange(0.3f, 0.6f))
-                    );
-                    return guardianShell(damage, ID);
-                }
+                if (effectCooldown == 0f && baseDamage > DAMAGE_THRESHOLD && effectTime == 0f) {
+                    effectTime = data.maxEffectTime;
+                    effectCooldown = data.maxCooldown;
+                    //弹出信息
+                    Global.getCombatEngine().addFloatingText(ship.getLocation(), i18n_hullmod.format("xel_pr_effet_on", data.effectName), 25f, Misc.getHighlightColor(), ship, 1f, 0f);
 
+                }
                 ship.setJitterShields(false);
+                // 若效果持续时间未结束
+                if (effectTime > 0f) {
+                    //若效果是 守护之壳
+                    if (Objects.equals(data.hullmods, HullModUtil.XEL_RESONANCE_COIL)) {
+                        // 运行守护之壳
+                        return guardianShell(damage, point);
+                    }
+                }
                 // 额度是否大于等于吸收伤害
-                if (health >= damageNum) {
-                    health -= damageNum;
+                if (health >= baseDamage) {
+                    health -= baseDamage;
                     damage.getModifier().modifyMult(ID, 0f);
-                    ship.setJitter(ship, new Color(90, 167, 73, 128), 0.6f, 5, 10f, 30f);
-                    ship.setJitterUnder(ship, new Color(90, 167, 73, 191), 0.6f, 10, 10f);
-                    Global.getCombatEngine().addFloatingDamageText(point, damageNum, new Color(255, 255, 255), target, source);
+                    Global.getCombatEngine().addFloatingDamageText(point, baseDamage, new Color(255, 255, 255), target, source);
                 } else {
-                    float reduction = damageNum - health;
-                    damage.getModifier().modifyMult(ID, 1f - reduction / damageNum);
-                    ship.setJitter(ship, new Color(0, 255, 166, 128), 0.6f, 5, 10f, 30f);
-                    ship.setJitterUnder(ship, new Color(0, 255, 166, 191), 0.6f, 10, 10f);
+                    float reduction = baseDamage - health;
+                    health = 0f;
+                    damage.getModifier().modifyMult(ID, 1f - reduction / baseDamage);
+                    Global.getCombatEngine().addFloatingText(ship.getLocation(), i18n_hullmod.get("xel_pr_health_out"), 25f, Misc.getNegativeHighlightColor(), ship, 1f, 0f);
                 }
                 return ID;
             }
@@ -249,30 +329,86 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
         }
 
         // 守护之壳 0伤害
-        private String guardianShell(DamageAPI damage, String id) {
-            damage.getModifier().modifyMult(id, 0f);
-            ship.setJitter(ship, new Color(84, 0, 129, 128), 0.6f, 5, 10f, 30f);
-            ship.setJitterUnder(ship, new Color(84, 0, 129, 191), 0.6f, 10, 10f);
-            return id;
+        private String guardianShell(DamageAPI damage, Vector2f point) {
+            damage.getModifier().modifyMult(ID, 0f);
+            ship.setJitter(ship, new Color(164, 0, 255, 128), 0.6f, 5, 30f, 60f);
+            ship.setJitterUnder(ship, new Color(166, 0, 255, 191), 0.6f, 10, 45f);
+            Global.getCombatEngine().addNebulaSmokeParticle(
+                    point,
+                    MathUtils.getPointOnCircumference((Vector2f) null, MathUtils.getRandomNumberInRange(10f, 50f), MathUtils.getRandomNumberInRange(0f, 360f)),
+                    MathUtils.getRandomNumberInRange(10f, 40f),
+                    MathUtils.getRandomNumberInRange(1.5f, 3f),
+                    0.5f,
+                    0f,
+                    MathUtils.getRandomNumberInRange(0.1f, 1f),
+                    Misc.scaleAlpha(new Color(216, 139, 255, 204), MathUtils.getRandomNumberInRange(0.3f, 0.6f))
+            );
+            RippleDistortion ripple = new RippleDistortion(point, ship.getVelocity());
+            float factor = ship.getCollisionRadius() / 2f;
+            ripple.setSize(factor);
+            ripple.setIntensity(factor / 5f);
+            ripple.setFrameRate(180f);
+            ripple.fadeInSize(0.3f);
+            ripple.fadeOutIntensity(0.3f);
+            DistortionShader.addDistortion(ripple);
+
+            return "xel_PR_damage_taken_modifier";
         }
 
         // 天界太阳能 排幅
         private void solariteCelestial(float fluxDecreased, float amount) {
-            ship.getFluxTracker().decreaseFlux(fluxDecreased * amount / MAX_EFFECT_TIME);
+            ship.getFluxTracker().decreaseFlux(fluxDecreased * amount / data.maxEffectTime);
             ship.setJitterShields(false);
-            ship.setJitter(ship, new Color(254, 138, 14, 128), 0.6f, 5, 10f, 30f);
-            ship.setJitterUnder(ship, new Color(254, 138, 14, 191), 0.6f, 10, 10f);
+            ship.setJitter(ship, new Color(254, 138, 14, 128), 0.5f, 3, 10f);
+            ship.setJitterUnder(ship, new Color(254, 138, 14, 191), 0.5f, 5, 15f);
+            if (interval.intervalElapsed()) {
+                ship.addAfterimage(
+                        new Color(254, 138, 14, 204),
+                        0f,
+                        0f,
+                        -ship.getVelocity().getX(),
+                        -ship.getVelocity().getY(),
+                        0f,
+                        0.2f,
+                        0f,
+                        0.3f,
+                        false,
+                        false,
+                        false);
+            }
         }
 
         // 圣堂表象 时流
         private void templarApparent(float effectTime, float amount) {
-            float level = 1f - effectTime / MAX_EFFECT_TIME;
+            float level = Math.max(amount, 1f - effectTime / data.maxEffectTime);
+            float bonus = Math.max(1f, TIME_MULT * level);
             if (effectTime > amount + amount) {
-                ship.getMutableStats().getTimeMult().modifyMult(ID, TIME_MULT * level);
-                Global.getCombatEngine().getTimeMult().modifyMult(ID, 1f / TIME_MULT / effectTime);
+                ship.getMutableStats().getTimeMult().modifyMult(ID, bonus);
+                Global.getCombatEngine().getTimeMult().modifyMult(ID, 1f / bonus);
                 ship.setJitterShields(false);
-                ship.setJitter(ship, new Color(0, 178, 255, 128), 0.6f, 5, 10f, 30f);
-                ship.setJitterUnder(ship, new Color(0, 178, 255, 191), 0.6f, 10, 10f);
+                ship.setJitter(ship, new Color(0, 178, 255, 128), 0.5f, 3, 10f);
+                ship.setJitterUnder(ship, new Color(0, 178, 255, 191), 0.5f, 5, 15f);
+                if (interval.intervalElapsed()) {
+                    SpriteAPI sprite = ship.getSpriteAPI();
+                    float offsetX = sprite.getWidth() / 2f - sprite.getCenterX();
+                    float offsetY = sprite.getHeight() / 2f - sprite.getCenterY();
+
+                    float trueOffsetX = (float) FastTrig.cos(Math.toRadians(ship.getFacing() - 90f)) * offsetX - (float) FastTrig.sin(Math.toRadians(ship.getFacing() - 90f)) * offsetY;
+                    float trueOffsetY = (float) FastTrig.sin(Math.toRadians(ship.getFacing() - 90f)) * offsetX + (float) FastTrig.cos(Math.toRadians(ship.getFacing() - 90f)) * offsetY;
+                    MagicRender.battlespace(
+                            Global.getSettings().getSprite(ship.getHullSpec().getSpriteName()),
+                            new Vector2f(ship.getLocation().getX() + trueOffsetX, ship.getLocation().getY() + trueOffsetY),
+                            new Vector2f(0f, 0f),
+                            new Vector2f(sprite.getWidth(), sprite.getHeight()),
+                            new Vector2f(0f, 0f),
+                            ship.getFacing() - 90f,
+                            0f,
+                            new Color(0, 178, 255, 64),
+                            true,
+                            0f, 0f, 0f, 0f, 0f, 0.1f, 0.1f, 1f,
+                            CombatEngineLayers.BELOW_SHIPS_LAYER
+                    );
+                }
             } else {
                 ship.getMutableStats().getTimeMult().unmodify(ID);
                 Global.getCombatEngine().getTimeMult().unmodify(ID);

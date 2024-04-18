@@ -54,7 +54,9 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 
 
 --相位反应堆将在舰船周围扭曲空间，吸收射弹，以此防御来自敌人的攻击
---相位反应堆运行正常时，受到攻击后将进入 [%s]",,,graphics/hullmods/xel_PhaseReactor.png
+--根据舰船等级，相位反应堆的伤害吸收额度为 %s
+--相位反应堆有独特的空间操控技术，吸收伤害时可根据当前吸收额度无视一定伤害，当前吸收额度越高则效率越高，最高可无视 %s 伤害
+--若 %s 已安装，则在相位反应堆吸收伤害超过 %s 的攻击时激活",,,graphics/hullmods/xel_PhaseReactor.png
 ,,,,,,,,,,,,,,,,,,,
 #刚毅护盾,,,,,,,,,,,,,,,,,,,
 #复仇协议,,,,,,,,,,,,,,,,,,,
