@@ -103,11 +103,11 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
     public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
         float pad = 5f;
         Color h = Misc.getHighlightColor();
-        Color g = Misc.getGrayColor();
-        Color bad = Misc.getNegativeHighlightColor();
+//        Color g = Misc.getGrayColor();
+//        Color bad = Misc.getNegativeHighlightColor();
         Color good = Misc.getPositiveHighlightColor();
 
-        effectData data = null;
+        effectData data;
         TooltipMakerAPI text = tooltip.beginImageWithText(Global.getSettings().getSpriteName("hullsys", "xel_PhaseReactor_active"), 64f);
         tooltip.addSectionHeading(i18n_hullmod.get("xel_pr_title"), Alignment.TMID, pad * 2f);
         if (ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE)) {
@@ -335,7 +335,7 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
             ship.setJitterUnder(ship, new Color(166, 0, 255, 191), 0.6f, 10, 45f);
             Global.getCombatEngine().addNebulaSmokeParticle(
                     point,
-                    MathUtils.getPointOnCircumference((Vector2f) null, MathUtils.getRandomNumberInRange(10f, 50f), MathUtils.getRandomNumberInRange(0f, 360f)),
+                    MathUtils.getPointOnCircumference( null, MathUtils.getRandomNumberInRange(10f, 50f), MathUtils.getRandomNumberInRange(0f, 360f)),
                     MathUtils.getRandomNumberInRange(10f, 40f),
                     MathUtils.getRandomNumberInRange(1.5f, 3f),
                     0.5f,
