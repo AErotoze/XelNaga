@@ -1,0 +1,101 @@
+{
+  "hullName": "xel-_Templar",
+  "hullId": "xel_Templar",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/phase/xel_Templar.png",
+  "style": "XelNaga",
+  "height": 86,
+  "width": 110,
+  "center": [55, 43],
+  "collisionRadius": 82,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 67.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "phasefield"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 30,
+      "angle": 0,
+      "locations": [13.5, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [18, 28]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "HYBRID",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": -0,
+      "locations": [18, -28]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-27.5, -0],
+      "length": 55,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 55,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-19.5, 8],
+      "length": 12,
+      "width": 4,
+      "angle": 180,
+      "contrailSize": 12,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-19.5, -8],
+      "length": 12,
+      "width": 4,
+      "angle": -180,
+      "contrailSize": 12,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    24, -18,
+    14.5, -33,
+    -7.5, -49,
+    -26, -53.5,
+    -9, -41,
+    -3, -21,
+    -31.5, -35.5,
+    -36.5, -31.5,
+    -41.5, -10.5,
+    -30.5, -21.5,
+    -19.5, -9.5,
+    -27.5, -0,
+    -19.5, 9.5,
+    -30.5, 21.5,
+    -41.5, 10.5,
+    -36.5, 31.5,
+    -31.5, 35.5,
+    -3, 21,
+    -9, 41,
+    -26, 53.5,
+    -7.5, 49,
+    14.5, 33,
+    24, 18,
+    42, -0
+  ]
+}
