@@ -19,10 +19,9 @@ import static data.utils.xel.Constants.i18n_hullmod;
 
 /*
  * 谐振盘
+ * 星灵能量矩阵
  * 根据舰船等级降低25%/20%/15%/10%的辐能容量
  * s插后数据变为15%/10%/5%/5%
- *
- * 新机制：
  * 根据战斗时间恢复幅能容量，需要峰值时间的30%
  *
  * 舰船护盾受伤重新调整
@@ -36,6 +35,10 @@ import static data.utils.xel.Constants.i18n_hullmod;
  * 原版减伤期望       95%     (2+1+0.5+0.25+1)/5
  * 谐振减伤期望       90%     (1.33+0.9+0.77+0.4+1.1)/5 = 0.9
  * s-mod谐振减伤期望  80%     (1.2+0.8+0.65+0.3+1.05)/5 = 0.8
+ *
+ * 灵能水晶矩阵
+ * 幅能异构化，懂得都懂
+ * s-mod 异构阈值提高
  */
 public class xel_ResonanceCoil extends xel_BaseHullmod {
 	private static final Map<ShipAPI.HullSize, Float> fluxCapMap = new HashMap<>();

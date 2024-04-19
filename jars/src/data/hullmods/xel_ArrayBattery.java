@@ -6,12 +6,18 @@ import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 
 public class xel_ArrayBattery extends xel_BaseHullmod {
 	// 护盾充能器——护盾开启时增强辐能排散，增加护盾下线时间
-	/**
+	/*
 	 * 能量充能器
-	 * +10%辐散 10%辐容 +0.3硬辐能排散
-	 * 根据硬辐能水平降低开盾时硬辐能排散
-	 * <p>
-	 * 内置后开盾排散硬辐能能力上限 +0.15
+	 * +10%辐散 10%辐容 不存在护盾则 +15%幅散辐容
+	 *
+	 * 星灵能量矩阵
+	 * +0.3硬辐能排散 根据硬辐能水平能力减弱
+	 * 灵能水晶矩阵
+	 * 降低 15%相位维持 提高最低速度幅能阈值至75%(x1.5)
+	 *
+	 * s增益
+	 * 星灵能量矩阵——额外提高 15% 硬辐能开盾排散能力，能力降低阈值提高至 50%
+	 * 灵能水晶矩阵——额外降低 15% 相位维持，相位状态下的软幅能排散能力x1.5
 	 */
 
 	private static final float FLUX_BONUS = 10f;
@@ -23,7 +29,7 @@ public class xel_ArrayBattery extends xel_BaseHullmod {
 
 	@Override
 	public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-		float bonus = ship.getShield() == null ? FLUX_BONUS : NO_SHIELD_FLUX_BONUS;
+		float bonus = ship.getShield() == null ? NO_SHIELD_FLUX_BONUS : FLUX_BONUS;
 		MutableShipStatsAPI stats = ship.getMutableStats();
 		stats.getFluxCapacity().modifyMult(id, 1f + bonus * 0.01f);
 		stats.getFluxDissipation().modifyMult(id, 1f + bonus * 0.01f);

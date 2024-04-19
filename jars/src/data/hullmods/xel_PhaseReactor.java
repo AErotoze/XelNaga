@@ -83,9 +83,10 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
         if (index == 0) return xel_Misc.getHullSizeFlatString(HEALTH_MAP);
-        else if(index == 1) return "50%";
-        else if (index == 2) return i18n_hullmod.get("xel_pr_title");
-        else return index == 3 ? "50" : null;
+        else if(index == 1) return "6.67%";
+        else if(index == 2) return "50%";
+        else if (index == 3) return i18n_hullmod.get("xel_pr_title");
+        else return index == 4 ? "50" : null;
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
@@ -301,7 +302,14 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
                     effectCooldown = data.maxCooldown;
                     //弹出信息
                     Global.getCombatEngine().addFloatingText(ship.getLocation(), i18n_hullmod.format("xel_pr_effet_on", data.effectName), 25f, Misc.getHighlightColor(), ship, 1f, 0f);
-
+                    RippleDistortion ripple = new RippleDistortion(ship.getLocation(), ship.getVelocity());
+                    float factor = ship.getCollisionRadius() * 2f;
+                    ripple.setSize(factor);
+                    ripple.setIntensity(factor / 5f);
+                    ripple.setFrameRate(180f);
+                    ripple.fadeInSize(0.3f);
+                    ripple.fadeOutIntensity(0.3f);
+                    DistortionShader.addDistortion(ripple);
                 }
                 ship.setJitterShields(false);
                 // 若效果持续时间未结束
