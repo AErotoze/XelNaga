@@ -90,12 +90,12 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
     }
 
     public boolean isApplicableToShip(ShipAPI ship) {
-        return hasEnergyArrayMod(ship) && !hasNotCompatibleMod(ship) && !hasTooMuchResponseMod(ship);
+        return hasArrayMod(ship) && !hasNotCompatibleMod(ship) && !hasTooMuchResponseMod(ship);
     }
 
     @Override
     public String getUnapplicableReason(ShipAPI ship) {
-        if (!hasEnergyArrayMod(ship)) return getNoEnergyArrayReason();
+        if (!hasArrayMod(ship)) return getNoArrayReason();
         else if (hasTooMuchResponseMod(ship)) return getTooMuchResponseModReason();
         else return hasNotCompatibleMod(ship) ? getNotCompatibleReason() : super.getUnapplicableReason(ship);
     }

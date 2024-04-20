@@ -16,17 +16,18 @@
     "xel_pea_upgrade1": "护盾受到的伤害降低 %s",
     "xel_pea_upgrade2": "护盾下线时间增加 %s",
     "xel_pea_upgrade3": "增加能量和实弹武器 %s 基础射程",
-    "xel_pea_upgrade4": "#护盾被 EMP 电弧击穿的概率提高 %s",
+    "xel_pea_upgrade4": "护盾被 EMP 电弧击穿的概率提高 %s",
     "xel_pea_upgrade5": "护盾类型转化为全角护盾",
-    "xel_pea_upgrade6": "#降低 %s 护盾角度",
+    "xel_pea_upgrade6": "降低 %s 护盾角度",
     "xel_pea_shield_up": "能量矩阵运行正常",
     "xel_pea_shield_down": "能量矩阵重启中 [%s]",
 
-    "xel_rc_title": "谐振护盾场性能",
-    "xel_rc_damageSource": "伤害类型/来源",
+    "xel_rc_shield_title": "谐振场护盾调整",
+    "xel_rc_phase_title": "谐振场装甲调整",
+    "xel_rc_damageSource": "伤害类型",
     "xel_rc_damageFactor": "调整水平",
     "xel_rc_sMod_damageFactor": "S-mod调整水平",
-    "xel_rc_damageType_fighter": "战机",
+    "xel_rc_damageType_fighter": "战机", #
     "xel_rc_flux_recovering": "幅能容量恢复中：[%s]",
     "xel_rc_flux_recovered": "辐能容量恢复完毕",
 

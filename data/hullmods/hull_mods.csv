@@ -11,19 +11,17 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 矩阵充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,8,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
 
 
---增加 %s 的幅能容量与排散，若舰船不存在护盾，则增加 %s 的幅能容量与排散
---若舰船存在护盾，提供 %s 的硬幅能开盾排散能力，硬幅能水平超过 %s 时下能力将减弱 %s",为星灵舰船提供更强大的续航能力,额外提供 %s 硬辐能开盾排散能力，并将硬辐能水平阈值提高至 %s,graphics/hullmods/xel_ArrayBattery.png
+--增加 %s 幅能容量和幅能排散",为星灵舰船提供更强大的续航能力,额外增加 %s 幅能容量和幅能排散,graphics/hullmods/xel_ArrayBattery.png
 控制芯核,xel_CyberneticsCore,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,8,15,25,data.hullmods.xel_CyberneticsCore,"适配星灵能量矩阵的协调模组之一，着重强调火控能力
 
 
---降低 %s 武器后坐力
 --提高 %s 自动开火精度
 --降低 %s 武器所需的开火幅能，根据硬幅能水平至多降低 %s",为星灵舰船全面更新火控系统,额外降低 %s 武器开火幅能，并提高 %s 武器火力,graphics/hullmods/xel_CyberneticsCore.png
 谐振盘,xel_ResonanceCoil,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,8,15,25,data.hullmods.xel_ResonanceCoil,"适配星灵能量矩阵的协调模组之一，着重强调防御能力
 
 --根据舰船等级，降低舰船 %s 幅能容量
---在 %s 的峰值时间内，失去的幅能容量将缓慢恢复
---调整护盾的抵抗伤害性能",为星灵舰船重新构造防御结构,加强护盾抵抗力，并将舰船辐能容量降低值变更为 %s,graphics/hullmods/xel_ResonanceCoil.png
+--进入战斗后，在 %s 峰值时间内，缓慢恢复失去的幅能容量
+--调整舰船护盾/装甲防御性能",为星灵舰船重新构造防御结构,提高 %s 舰船结构抵抗，并改善谐振抵抗效果,graphics/hullmods/xel_ResonanceCoil.png
 ,,,,,,,,,,,,,,,,,,,
 萨尔纳伽虚空阵列,xel_VoidArray,,,星灵科技-响应,req_spaceport,"需要船坞,矩阵响应模组",,,,,5,8,15,25,data.hullmods.xel_VoidArray,"来自萨尔纳伽-古代星灵的遗产，以极其高效的方式构造上行数据链路，为战机、航母提供可靠的战斗支援。
 

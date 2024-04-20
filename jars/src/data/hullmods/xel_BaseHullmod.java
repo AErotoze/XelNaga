@@ -121,7 +121,7 @@ public class xel_BaseHullmod extends BaseHullMod {
      * @param ship 进行计算的舰船
      * @return 存在插件返回ture，反之返回false
      */
-    public boolean hasEnergyArrayMod(ShipAPI ship) {
+    public boolean hasArrayMod(ShipAPI ship) {
         return ship.getVariant().hasHullMod(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY)
                 || ship.getVariant().hasHullMod(HullModUtil.XEL_PSIONIC_CRYSTAL_ARRAY);
     }
@@ -130,7 +130,7 @@ public class xel_BaseHullmod extends BaseHullMod {
     /**
      * @return 返回 "需要 星灵能量矩阵 或 灵能水晶矩阵 船体插件"
      */
-    public String getNoEnergyArrayReason() {
+    public String getNoArrayReason() {
         return i18n_hullmod.format("needSupportWith",
                 xel_Misc.getOrJoined(
                         xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY),
