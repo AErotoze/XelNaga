@@ -75,7 +75,16 @@
     "xel_rush_idle": "未拦截目标",
     "xel_rush1": "机动爆发",
     "xel_rush2": "提高 %s 最高速度",
+
     "xel_UF_active": "已激活统合力场",
+
+    "xel_phase_time_flow": "时空提速",
+    "xel_phase_coil_stable": "时空稳定",
+    "xel_phase_stable_speed": "100% 最高航速",
+    "xel_phase_coil_stress": "时空波动",
+    "xel_phase_stress_speed": "%s 最高航速",
+
+
     "xel_test": "test"
   }
 }
