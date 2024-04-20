@@ -7,8 +7,11 @@ import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
+
+import static com.fs.starfarer.api.util.Misc.getJoined;
 
 public class xel_Misc {
     public static Vector2f V2ZERO = new Vector2f();
@@ -71,6 +74,14 @@ public class xel_Misc {
             }
         }
         return finalTarget;// 返回范围内距离鼠标最近的目标
+    }
+
+    public static String getOrJoined(List<String> strings) {
+        return getOrJoined(strings.toArray(new String[0]));
+    }
+
+    public static String getOrJoined(String... strings) {
+        return getJoined("or", strings);
     }
 
 }

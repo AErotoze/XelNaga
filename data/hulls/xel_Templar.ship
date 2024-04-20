@@ -12,7 +12,8 @@
   "shieldRadius": 67.5,
   "viewOffset": 0,
   "builtInMods": [
-    "phasefield"
+    "phasefield",
+    "xel_PsionicCrystalArray"
   ],
   "weaponSlots": [
     {

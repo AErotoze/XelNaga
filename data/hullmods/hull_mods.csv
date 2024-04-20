@@ -6,7 +6,7 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --降低 %s 护盾被 EMP 电弧击穿的概率
 --获得 %s 硬幅能开盾排散能力
 --进入过载状态后立即恢复，但护盾将下线 %s 秒，护盾下线时过载不会重置下线时间",星灵舰船的能源核心,,graphics/hullmods/xel_ProtossEnergyArray.png
-#灵能水晶矩阵,xel_PsionicCrystalArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_PsionicCrystalArray,,,,graphics/hullmods/xel_PsionicCrystalArray.png
+灵能水晶矩阵,xel_PsionicCrystalArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_PsionicCrystalArray,,,,graphics/hullmods/xel_PsionicCrystalArray.png
 ,,,,,,,,,,,,,,,,,,,
 矩阵充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,8,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
 

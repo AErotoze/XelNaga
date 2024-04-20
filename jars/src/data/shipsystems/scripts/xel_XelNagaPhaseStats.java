@@ -26,24 +26,6 @@ public class xel_XelNagaPhaseStats extends BaseShipSystemScript {
 
 	public static float MAX_TIME_MULT = 3f;
 
-//	/**
-//	 * Top speed multiplier when at 100% disruption.
-//	 */
-//	public static float DISRUPT_SPEED_MULT = 0.33f;
-//	/**
-//	 * Disruption clears up at this rate. Always clears up fully when cloak is turned off.
-//	 */
-//	public static float DISRUPT_DECAY_RATE = 0.25f;
-//	/**
-//	 * Seconds that need to elapse since a disruption increase before it starts to decay.
-//	 */
-//	public static float DISRUPT_DECAY_DELAY = 2f;
-//
-//	// Compared to ship's max flux to figure out how quickly things disrupt.
-//	public static float PROJECTILE_DAMAGE_MULT = 3f;
-//	public static float BEAM_DAMAGE_MULT = 0.1f;
-//	public static float MASS_DAMAGE_MULT = 1f;
-
 	public static boolean FLUX_LEVEL_AFFECTS_SPEED = true;
 	public static float MIN_SPEED_MULT = 0.33f;
 	public static float BASE_FLUX_LEVEL_FOR_MIN_SPEED = 0.5f;

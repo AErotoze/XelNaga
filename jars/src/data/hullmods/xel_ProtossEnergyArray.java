@@ -4,7 +4,7 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.ShipAPI.HullSize;
 import com.fs.starfarer.api.combat.listeners.AdvanceableListener;
-import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.combat.listeners.WeaponBaseRangeModifier;
 import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.Misc;
@@ -26,28 +26,16 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
      * 所有星灵舰船护盾[零维持]，护盾[永远开启]
      * 星灵等离子护盾有效抵御电弧，穿盾概率-50%
      *
-     * 灵能水晶矩阵
-     * 所有星灵相位舰的装甲计算值都有保底，预计30%
-     * 降低 %25 相位线圈冷却时间
-     *
-     *
-     * 升级分支联动[不兼容]：
+     * 升级分支联动[不兼容]：还是写进applybefore更好
      * 矩阵充能器
      * 星灵能量矩阵——护盾下线时长增加，降低20%护盾受伤
-     * 灵能水晶矩阵——额外降低25%相位线圈冷却时间，保底计算值降低至20%
+     * 灵能水晶矩阵——异构阈值提高，不再降低相位线圈的冷却时间
      * 控制芯核
-     * 星灵能量矩阵——增加全体武器50的基础射程，
+     * 星灵能量矩阵——增加全体武器50的基础射程，emp电弧穿盾概率+25%
      * 灵能水晶矩阵——降低受到的EMP伤害，增加战斗中武器和引擎的修复时间
      * 谐振盘
      * 星灵能量矩阵——提高100%护盾灵敏度，降低120度盾角
      * 灵能水晶矩阵——提高15%护甲，增加相位激活幅能
-     *
-     * 其他升级：
-     * $萨尔纳加虚空阵列——航母插，抑制战备下降，根据辐能点数提供相应的额外加成，完全防止舰载机成员丧生，但远离母舰后会有减益
-     * $净化者协议——解除所有安全协议限制，大幅增加作战能力（你以为是安超？其实是把系统换成更强力的版本）
-     * $血水晶共鸣——扩大战斗视野，提高武器射程，对目标有额外伤害
-     * $重力加速器——最高速度、机动性增强
-     * 相位反应堆——每8s（？）按照百分比排散辐能，排散持续时间2s [整个船插都待商榷]
      *
      * 特殊内置：
      * 刚毅护盾：护盾受到的伤害不超过最大辐容的0.5%
@@ -58,12 +46,12 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
     private static final float PIERCE_MULT = 50f;
     private static final float SHIELD_DOWN_TIME = 8f;
     private static final float HARDFLUX_VENT_BONUS = 30f;
-    private static final float SHIELD_BATTERY_GOOD_BONUS = 20f;
-    private static final float SHIELD_BATTERY_BAD_BONUS = 50f;
+    private static final float ARRAY_BATTERY_GOOD_BONUS = 20f;
+    private static final float ARRAY_BATTERY_BAD_BONUS = 50f;
     private static final float CYBERNETICS_CORE_GOOD_BONUS = 50f;
-    private static final float CYBERNETICS_CORE_BAD_BONUS = 33f;
-    private static final float RESONANCE_COIL_GOOD_BONUS = 15f;
-    private static final float RESONANCE_COIL_BAD_BONUS = 30f;
+    private static final float CYBERNETICS_CORE_BAD_BONUS = 25f;
+    private static final float RESONANCE_COIL_GOOD_BONUS = 0f;
+    private static final float RESONANCE_COIL_BAD_BONUS = 60f;
 
 
     private static final String DATA_KEY = "EP_Protoss_Energy_Array";
@@ -71,24 +59,22 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
 
     @Override
     public void applyEffectsBeforeShipCreation(HullSize hullSize, MutableShipStatsAPI stats, String id) {
+        // 无护盾维持，+30%硬幅能开盾排散能力
         stats.getShieldUpkeepMult().modifyMult(id, 0f);
         stats.getHardFluxDissipationFraction().modifyFlat(id, HARDFLUX_VENT_BONUS * 0.01f);
     }
 
     @Override
     public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-        ship.addListener(new noOverload(ship));
+        // 特殊护机制
+        ship.addListener(new psaManager(ship, CYBERNETICS_CORE_GOOD_BONUS));
         MutableShipStatsAPI stats = ship.getMutableStats();
-        float pierceBonus = PIERCE_MULT + (hasResonananceCoil(ship) ? RESONANCE_COIL_BAD_BONUS : 0f);
         if (hasShieldBattery(ship)) {
-            stats.getShieldDamageTakenMult().modifyMult(id, 1f - SHIELD_BATTERY_GOOD_BONUS * 0.01f);
+            stats.getShieldDamageTakenMult().modifyMult(id, 1f - ARRAY_BATTERY_GOOD_BONUS * 0.01f);
         }
-        if (hasCyberneticsCore(ship)) {
-            stats.getCombatEngineRepairTimeMult().modifyMult(id, 1f + CYBERNETICS_CORE_BAD_BONUS * 0.01f);
-            stats.getCombatWeaponRepairTimeMult().modifyMult(id, 1f + CYBERNETICS_CORE_BAD_BONUS * 0.01f);
-            stats.getEmpDamageTakenMult().modifyMult(id, 1f - CYBERNETICS_CORE_GOOD_BONUS * 0.01f);
+        if (ship.getShield() != null && hasResonanceCoil(ship)) {
+            ship.getShield().setType(ShieldAPI.ShieldType.OMNI);
         }
-        stats.getDynamic().getStat(Stats.SHIELD_PIERCED_MULT).modifyMult(id, pierceBonus * 0.01f);
     }
 
 
@@ -115,8 +101,8 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
                 xel_Misc.getHullmodName(HullModUtil.XEL_ARRAY_BATTERY),
                 flag ? i18n_hullmod.get("install") : i18n_hullmod.get("uninstall"));
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade1"), pad, flag ? good : g, "" + (int) SHIELD_BATTERY_GOOD_BONUS + "%");
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade2"), pad, flag ? bad : g, "" + (int) SHIELD_BATTERY_BAD_BONUS + "%");
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade1"), pad, flag ? good : g, (int) ARRAY_BATTERY_GOOD_BONUS + "%");
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade2"), pad, flag ? bad : g, (int) ARRAY_BATTERY_BAD_BONUS + "%");
         tooltip.addImageWithText(pad);
 
         flag = hasCyberneticsCore(ship);
@@ -125,18 +111,18 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
                 xel_Misc.getHullmodName(HullModUtil.XEL_CYBERNETICS_CORE),
                 flag ? i18n_hullmod.get("install") : i18n_hullmod.get("uninstall"));
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade3"), pad, flag ? good : g, "" + (int) CYBERNETICS_CORE_GOOD_BONUS + "%");
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade4"), pad, flag ? bad : g, "" + (int) CYBERNETICS_CORE_BAD_BONUS + "%");
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade3"), pad, flag ? good : g, "" + (int) CYBERNETICS_CORE_GOOD_BONUS);
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade4"), pad, flag ? bad : g, (int) CYBERNETICS_CORE_BAD_BONUS + "%");
         tooltip.addImageWithText(pad);
 
-        flag = hasResonananceCoil(ship);
+        flag = hasResonanceCoil(ship);
         myText = tooltip.beginImageWithText("graphics/hullmods/xel_ResonanceCoil.png", 32f);
         myText.addPara("%s [%s]", pad * 2f,
                 new Color[]{new Color(155, 155, 255, 255), flag ? h : g},
                 xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL),
                 flag ? i18n_hullmod.get("install") : i18n_hullmod.get("uninstall"));
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade5"), pad, flag ? good : g, "" + (int) RESONANCE_COIL_GOOD_BONUS + "%");
-        myText.addPara(i18n_hullmod.get("xel_pea_upgrade6"), pad, flag ? bad : g, "" + (int) RESONANCE_COIL_BAD_BONUS + "%");
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade5"), pad, flag ? good : g, (int) RESONANCE_COIL_GOOD_BONUS + "%");
+        myText.addPara(i18n_hullmod.get("xel_pea_upgrade6"), pad, flag ? bad : g, "" + (int) RESONANCE_COIL_BAD_BONUS);
         tooltip.addImageWithText(pad);
 
     }
@@ -150,47 +136,49 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
         return ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE);
     }
 
-    private boolean hasResonananceCoil(ShipAPI ship) {
+    private boolean hasResonanceCoil(ShipAPI ship) {
         return ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANCE_COIL);
     }
 
 
-    private class noOverload implements AdvanceableListener {
-        private final String NO_OVERLOAD_KEY = "no_overload";
-        private final ShipAPI ship;
+    private class psaManager implements AdvanceableListener, WeaponBaseRangeModifier {
+        private final Object STATUSKEY1 = new Object();
+        private final ShipAPI SHIP;
+        private final float RANGE;
         private float time = 0f;
 
-        public noOverload(ShipAPI ship) {
-            this.ship = ship;
+        public psaManager(ShipAPI SHIP, float range) {
+            this.SHIP = SHIP;
+            this.RANGE = range;
         }
 
         @Override
         public void advance(float amount) {
-            if (ship.isAlive() && ship.getShield() != null) {
+            if (SHIP.isAlive() && SHIP.getShield() != null) {
                 CombatEngineAPI engine = Global.getCombatEngine();
-                FluxTrackerAPI fluxTracker = ship.getFluxTracker();
+                FluxTrackerAPI fluxTracker = SHIP.getFluxTracker();
 
-                ship.blockCommandForOneFrame(ShipCommand.TOGGLE_SHIELD_OR_PHASE_CLOAK);
+                SHIP.blockCommandForOneFrame(ShipCommand.TOGGLE_SHIELD_OR_PHASE_CLOAK);
 //                ship.blockCommandForOneFrame(ShipCommand.VENT_FLUX);
 
                 if (fluxTracker.isOverloaded()) {
-                    ship.getShield().toggleOff();
+                    SHIP.getShield().toggleOff();
                     fluxTracker.stopOverload();
                     if (time <= 0f) {
-                        time = SHIELD_DOWN_TIME * (hasShieldBattery(ship) ? 1f + SHIELD_BATTERY_BAD_BONUS * 0.01f : 1f);
+                        time = SHIELD_DOWN_TIME * (hasShieldBattery(SHIP) ? 1f + ARRAY_BATTERY_BAD_BONUS * 0.01f : 1f);
                     }
                 }
 
                 if (time <= 0f) {
-                    if (ship.getShield().isOff()) {
-                        ship.getShield().toggleOn();
+                    if (SHIP.getShield().isOff()) {
+                        SHIP.getShield().toggleOn();
                     }
                 } else {
                     time -= amount;
                 }
 
-                if (engine.getPlayerShip() == ship) {
-                    engine.maintainStatusForPlayerShip(NO_OVERLOAD_KEY, "graphics/icons/hullsys/fortress_shield.png",
+                if (engine.getPlayerShip() == SHIP) {
+                    engine.maintainStatusForPlayerShip(STATUSKEY1, "graphics/icons/hullsys/fortress_shield.png",
                             xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY),
                             time > 0 ? i18n_hullmod.format("xel_pea_shield_down", dc.format(time)) : i18n_hullmod.get("xel_pea_shield_up"),
                             time > 0);
@@ -198,5 +186,24 @@ public class xel_ProtossEnergyArray extends BaseHullMod {
             }
         }
 
+        @Override
+        public float getWeaponBaseRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
+            return 0f;
+        }
+
+        @Override
+        public float getWeaponBaseRangeMultMod(ShipAPI ship, WeaponAPI weapon) {
+            return 1f;
+        }
+
+        @Override
+        public float getWeaponBaseRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
+            if (!hasCyberneticsCore(ship)) return 0f;
+            if (weapon.getSpec() == null) return 0f;
+            if (weapon.getSpec().getMountType() != WeaponAPI.WeaponType.BALLISTIC
+                    && weapon.getSpec().getMountType() != WeaponAPI.WeaponType.ENERGY)
+                return 0f;
+            return RANGE;
+        }
     }
 }

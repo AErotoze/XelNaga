@@ -37,8 +37,9 @@ import static data.utils.xel.Constants.i18n_hullmod;
  * s-mod谐振减伤期望  80%     (1.2+0.8+0.65+0.3+1.05)/5 = 0.8
  *
  * 灵能水晶矩阵
- * 幅能异构化，懂得都懂
- * s-mod 异构阈值提高
+ * 装甲承伤 -15%
+ * s-mod提高最低装甲计算值
+ *
  */
 public class xel_ResonanceCoil extends xel_BaseHullmod {
 	private static final Map<ShipAPI.HullSize, Float> fluxCapMap = new HashMap<>();
