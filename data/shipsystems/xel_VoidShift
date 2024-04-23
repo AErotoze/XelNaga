@@ -1,9 +1,9 @@
 {
-	"id":"xel_XelNagaPhase",
+	"id":"xel_VoidShift",
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
 
-	"statsScript":"data.shipsystems.scripts.xel_XelNagaPhaseStats",
+	"statsScript":"data.shipsystems.xel_VoidShift",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
@@ -34,6 +34,6 @@
 
 	"useSound":"system_phase_cloak_activate",
 	#"deactivateSound":"system_phase_cloak_deactivate",
-	"deactivateSound":"system_phase_cloak_deactivate",
-	"outOfUsesSound":"system_phase_cloak_collision",
+	#"deactivateSound":"system_phase_cloak_deactivate",
+	#"outOfUsesSound":"system_phase_cloak_collision",
 }
