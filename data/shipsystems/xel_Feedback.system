@@ -3,7 +3,7 @@
 	"type":"STAT_MOD",
 	"aiType":"ENTROPY_AMPLIFIER",
 
-	"statsScript":"data.shipsystems.scripts.xel_Feedback",
+	"statsScript":"data.scripts.shipsystems.xel_Feedback",
 
 	#"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true, # unapply() never gets called

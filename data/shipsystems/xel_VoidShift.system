@@ -3,7 +3,7 @@
 	"type":"PHASE_CLOAK",
 	"aiType":"PHASE_CLOAK",
 
-	"statsScript":"data.shipsystems.xel_VoidShift",
+	"statsScript":"data.scripts.shipsystems.xel_VoidShiftStats",
 	"runScriptWhilePaused":true, # only for the player's ship
 	"runScriptWhileIdle":true,  # this means unapply() never gets called
 	"blockActionsWhileChargingDown":false,
@@ -13,8 +13,8 @@
 	"phaseHighlight":"_glow1",
 	"phaseDiffuse":"_glow2",
 
-	"effectColor1":[0,167,98,200],
-	"effectColor2":[0,167,98,100],
+	"effectColor1":[0,167,98,255],
+	"effectColor2":[0,167,98,128],
 
 	"clampTurnRateAfter":true,
 	"clampMaxSpeedAfter":true,
