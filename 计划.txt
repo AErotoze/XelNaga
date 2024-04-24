@@ -64,6 +64,8 @@
 }
 
 {
-
+    "xel_pca_with_array_battery": "荣耀始于勇气",
+    "xel_pca_with_cybernetics_core": "恐惧屈于信仰",
+    "xel_pca_with_resonance_coil": "团结源于理想",
 
 }
