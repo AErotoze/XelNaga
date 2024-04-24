@@ -1,9 +1,18 @@
 package data.hullmods;
 
+import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
 import com.fs.starfarer.api.loading.HullModSpecAPI;
+import com.fs.starfarer.api.ui.Alignment;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.util.Misc;
 import data.utils.xel.HullModUtil;
+import data.utils.xel.xel_Misc;
+
+import java.awt.*;
+
+import static data.utils.xel.Constants.i18n_hullmod;
 
 public class xel_PsionicCrystalArray extends xel_BaseHullmod {
 
@@ -27,19 +36,10 @@ public class xel_PsionicCrystalArray extends xel_BaseHullmod {
 	//    谐振盘——退出相位1s内（实际上需要 +0.5s 以抵消chargeDown），装甲减伤效果
 
 	private static final float PHASE_DISSIPATION_MULT = 1.5f;
+
 	@Override
 	public void init(HullModSpecAPI spec) {
 		super.init(spec);
-	}
-
-	@Override
-	public boolean isApplicableToShip(ShipAPI ship) {
-		return super.isApplicableToShip(ship);
-	}
-
-	@Override
-	public String getUnapplicableReason(ShipAPI ship) {
-		return super.getUnapplicableReason(ship);
 	}
 
 	@Override
@@ -51,10 +51,10 @@ public class xel_PsionicCrystalArray extends xel_BaseHullmod {
 
 	@Override
 	public void advanceInCombat(ShipAPI ship, float amount) {
-		if (!ship.isAlive())return;
+		if (!ship.isAlive()) return;
 		String id = ship.getId();
 
-		if (ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE)){
+		if (ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE)) {
 			boolean phased = ship.isPhased();
 			if (ship.getPhaseCloak() != null && ship.getPhaseCloak().isChargedown()) {
 				phased = false;
@@ -81,4 +81,56 @@ public class xel_PsionicCrystalArray extends xel_BaseHullmod {
 			}
 		}
 	}
+
+	@Override
+	public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
+		if (index == 0) return "100";
+		else if (index == 1) return "10";
+		else if (index == 2) return (String.format("%.1f", 100f / 30f));
+		else return index == 3 ? "25" : null;
+	}
+
+	@Override
+	public void addPostDescriptionSection(TooltipMakerAPI tooltip, ShipAPI.HullSize hullSize, ShipAPI ship, float width, boolean isForModSpec) {
+		float pad = 5f;
+		Color h = Misc.getHighlightColor();
+		Color g = Misc.getGrayColor();
+		Color bad = Misc.getNegativeHighlightColor();
+		Color good = Misc.getPositiveHighlightColor();
+
+		boolean flag = ship.getVariant().hasHullMod(HullModUtil.XEL_CYBERNETICS_CORE);
+		tooltip.addSectionHeading(i18n_hullmod.get("xel_array_upgrade_title"), Alignment.TMID, pad * 2f);
+		TooltipMakerAPI text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_CYBERNETICS_CORE).getSpriteName(), 32f);
+		text.addPara("%s [%s]", pad * 2f,
+				new Color[]{new Color(155, 155, 255), flag ? h : g},
+				xel_Misc.getHullmodName(HullModUtil.XEL_CYBERNETICS_CORE),
+				i18n_hullmod.get(flag ? "install" : "uninstall"));
+		text.setBulletedListMode("--");
+		text.addPara(i18n_hullmod.get("xel_per_core_upgrade"), pad, new Color[]{flag ? good : g, flag ? bad : g}, "100su", "25%");
+		text.setBulletedListMode(null);
+		tooltip.addImageWithText(pad);
+		flag = ship.getVariant().hasHullMod(HullModUtil.XEL_ARRAY_BATTERY);
+		text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_ARRAY_BATTERY).getSpriteName(), 32f);
+		text.addPara("%s [%s]", pad * 2f,
+				new Color[]{new Color(155, 155, 255), flag ? h : g},
+				xel_Misc.getHullmodName(HullModUtil.XEL_ARRAY_BATTERY),
+				i18n_hullmod.get(flag ? "install" : "uninstall"));
+		text.setBulletedListMode("--");
+		text.addPara(i18n_hullmod.get("xel_per_battery_upgrade"), pad, flag ? good : g, "%");
+		text.setBulletedListMode(null);
+		tooltip.addImageWithText(pad);
+		flag = ship.getVariant().hasHullMod(HullModUtil.XEL_RESONANCE_COIL);
+		text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_RESONANCE_COIL).getSpriteName(), 32f);
+		text.addPara("%s [%s]", pad * 2f,
+				new Color[]{new Color(155, 155, 255), flag ? h : g},
+				xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL),
+				i18n_hullmod.get(flag ? "install" : "uninstall"));
+		text.setBulletedListMode("--");
+		text.addPara(i18n_hullmod.get("xel_per_coil_upgrade1"), pad, flag ? good : g, "sec");
+		text.addPara(i18n_hullmod.get("xel_per_coil_upgrade2"), pad, flag ? h : g, "su");
+		text.setBulletedListMode(null);
+		tooltip.addImageWithText(pad);
+
+	}
+
 }

@@ -1,5 +1,5 @@
 name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hiddenEverywhere,cost_frigate,cost_dest,cost_cruiser,cost_capital,script,desc,short,sModDesc,sprite
-星灵能量矩阵,xel_ProtossEnergyArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_ProtossEnergyArray,"为适应英仙座的宇宙环境，星灵们改装原本的灵能矩阵并用于舰船的能量来源。
+星灵能量矩阵,xel_ProtossEnergyArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_ProtossEnergyArray,"为适应英仙座的宇宙环境，星灵的相位技师们改装原本的灵能矩阵并用作舰船的能量来源。
 
 
 --舰船护盾无需幅能维持
@@ -10,9 +10,11 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 灵能水晶矩阵,xel_PsionicCrystalArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_PsionicCrystalArray,"英仙座的环境并不足以支持星灵的灵能矩阵大展拳脚。尽管代价高昂，但相位技师们的高超技巧依然能够让矩阵再次散发光辉。
 
 
---降低 %s 相位线圈的冷却时间
---
---相位舰船并非潜入 P 空间，而是 %s",,,graphics/hullmods/xel_PsionicCrystalArray.png
+--星灵相位舰船使用灵能能力进入虚空，而非使用相位线圈进入 P 空间
+--舰船船拥有 %s 能量值
+--进入虚空后每秒消耗 %s 能量值
+--退出虚空后每秒恢复 %s 能量值
+--能量值低于 %s 时无法进入虚空",神秘的灵能矩阵，至少星灵们会把这样的能量称为灵能,,graphics/hullmods/xel_PsionicCrystalArray.png
 ,,,,,,,,,,,,,,,,,,,
 矩阵充能器,xel_ArrayBattery,,,星灵科技-协调,req_spaceport,"需要船坞,矩阵协调模组",,,,,5,8,15,25,data.hullmods.xel_ArrayBattery,"适配星灵能量矩阵的协调模组之一，着重强调续航能力
 

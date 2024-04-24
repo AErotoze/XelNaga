@@ -71,7 +71,7 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
 
     @Override
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-        if (index == 0) return (int) SHIELD_CRASH_TIME + "Sec";
+        if (index == 0) return (int) SHIELD_CRASH_TIME + "sec";
         else if (index == 1) return (int) PIERCE_MULT + "%";
         else return index == 2 ? (int) FLUX_VENT_RATE + "%" : super.getDescriptionParam(index, hullSize);
     }
@@ -85,14 +85,14 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
         Color good = Misc.getPositiveHighlightColor();
 
         boolean flag = hasCore(ship);
-        tooltip.addSectionHeading(i18n_hullmod.get("xel_pea_title"), Alignment.TMID, pad * 2f);
+        tooltip.addSectionHeading(i18n_hullmod.get("xel_array_upgrade_title"), Alignment.TMID, pad * 2f);
         TooltipMakerAPI text = tooltip.beginImageWithText(Global.getSettings().getHullModSpec(HullModUtil.XEL_CYBERNETICS_CORE).getSpriteName(), 32f);
         text.addPara("%s [%s]", pad * 2f,
                 new Color[]{new Color(155, 155, 255), flag ? h : g},
                 xel_Misc.getHullmodName(HullModUtil.XEL_CYBERNETICS_CORE),
                 i18n_hullmod.get(flag ? "install" : "uninstall"));
         text.setBulletedListMode("--");
-        text.addPara(i18n_hullmod.get("xel_per_core_upgrade"), pad, new Color[]{flag ? good : g, flag ? bad : g}, "100su", "25%");
+        text.addPara(i18n_hullmod.get("xel_pea_core_upgrade"), pad, new Color[]{flag ? good : g, flag ? bad : g}, "100su", "25%");
         text.setBulletedListMode(null);
         tooltip.addImageWithText(pad);
         flag = hasBattery(ship);
@@ -102,7 +102,7 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
                 xel_Misc.getHullmodName(HullModUtil.XEL_ARRAY_BATTERY),
                 i18n_hullmod.get(flag ? "install" : "uninstall"));
         text.setBulletedListMode("--");
-        text.addPara(i18n_hullmod.get("xel_per_battery_upgrade"), pad, flag ? good : g, (int) FLUX_VENT_RATE_WITH_BATTERY + "%");
+        text.addPara(i18n_hullmod.get("xel_pea_battery_upgrade"), pad, flag ? good : g, (int) FLUX_VENT_RATE_WITH_BATTERY + "%");
         text.setBulletedListMode(null);
         tooltip.addImageWithText(pad);
         flag = hasCoil(ship);
@@ -112,8 +112,8 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
                 xel_Misc.getHullmodName(HullModUtil.XEL_RESONANCE_COIL),
                 i18n_hullmod.get(flag ? "install" : "uninstall"));
         text.setBulletedListMode("--");
-        text.addPara(i18n_hullmod.get("xel_per_coil_upgrade1"), pad, flag ? good : g, (int) TIME_REDUCED_WITH_COIL + "sec");
-        text.addPara(i18n_hullmod.get("xel_per_coil_upgrade2"), pad, flag ? h : g, (int) DAMAGE_RANGE_WITH_COIL + "su");
+        text.addPara(i18n_hullmod.get("xel_pea_coil_upgrade1"), pad, flag ? good : g, (int) TIME_REDUCED_WITH_COIL + "sec");
+        text.addPara(i18n_hullmod.get("xel_pea_coil_upgrade2"), pad, flag ? h : g, (int) DAMAGE_RANGE_WITH_COIL + "su");
         text.setBulletedListMode(null);
         tooltip.addImageWithText(pad);
 
@@ -203,19 +203,19 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
                     if (hasBattery(ship)) {
                         engine.maintainStatusForPlayerShip(STATUSKEY2, "graphics/icons/hullsys/fortress_shield.png",
                                 xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY),
-                                i18n_hullmod.get("xel_per_with_array_battery"),
+                                i18n_hullmod.get("xel_pea_with_array_battery"),
                                 false);
                     }
                     if (hasCore(ship)) {
                         engine.maintainStatusForPlayerShip(STATUSKEY3, "graphics/icons/hullsys/fortress_shield.png",
                                 xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY),
-                                i18n_hullmod.get("xel_per_with_cybernetics_core"),
+                                i18n_hullmod.get("xel_pea_with_cybernetics_core"),
                                 false);
                     }
                     if (hasCoil(ship)) {
                         engine.maintainStatusForPlayerShip(STATUSKEY4, "graphics/icons/hullsys/fortress_shield.png",
                                 xel_Misc.getHullmodName(HullModUtil.XEL_PROTOSS_ENERGY_ARRAY),
-                                i18n_hullmod.get(time > 0f ? "xel_per_with_resonance_coil_effect" : "xel_per_with_resonance_coil_ready"),
+                                i18n_hullmod.get(time > 0f ? "xel_pea_with_resonance_coil_effect" : "xel_pea_with_resonance_coil_ready"),
                                 false);
                     }
                 }

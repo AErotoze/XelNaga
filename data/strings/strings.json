@@ -11,18 +11,25 @@
     "tooMuchResponseMod": "至多只能安装 2种 星灵-响应模组",
     "phaseShip": "相位舰",
     "noPhaseShip": "非相位舰",
+    "xel_array_upgrade_title": "矩阵升级路径",
 
-    "xel_pea_title": "矩阵升级路径",
     "xel_pea_shield_up": "能量矩阵运行正常",
     "xel_pea_shield_down": "能量矩阵重启中 [%s]",
-    "xel_per_with_array_battery": "扩展矩阵充能链路",
-    "xel_per_with_cybernetics_core": "启用核心校准",
-    "xel_per_with_resonance_coil_ready": "谐振电离脉冲 就绪",
-    "xel_per_with_resonance_coil_effect": "谐振电离脉冲 爆发",
-    "xel_per_core_upgrade": "提高实弹武器和非光束能量武器 %s 射程，护盾下线时仅有 %s 效果",
-    "xel_per_battery_upgrade": "护盾开启时，舰船每秒额外排散的幅能提高至 %s 正常排散速率",
-    "xel_per_coil_upgrade1": "降低 %s 护盾下线时间",
-    "xel_per_coil_upgrade2": "护盾下线后对附近 %s 内的敌对战机造成伤害",
+    "xel_pea_with_array_battery": "扩展矩阵充能链路",
+    "xel_pea_with_cybernetics_core": "启用核心校准",
+    "xel_pea_with_resonance_coil_ready": "谐振电离脉冲 就绪",
+    "xel_pea_with_resonance_coil_effect": "谐振电离脉冲 爆发",
+    "xel_pea_core_upgrade": "提高实弹武器和非光束能量武器 %s 射程，护盾下线时仅有 %s 效果",
+    "xel_pea_battery_upgrade": "护盾开启时，舰船每秒额外排散的幅能提高至 %s 正常排散速率",
+    "xel_pea_coil_upgrade1": "降低 %s 护盾下线时间",
+    "xel_pea_coil_upgrade2": "护盾下线后对附近 %s 内的敌对战机造成伤害",
+
+    "xel_pca_with_array_battery": "灵能充盈，势不可挡",
+    "xel_pca_with_cybernetics_core": "灵能吞没我们的敌人",
+    "xel_pca_with_resonance_coil": "灵能指引我们的生命",
+    "xel_pca_core_upgrade": "提高实弹武器和非光束能量武器 %s 射程，护盾下线时仅有 %s 效果",
+    "xel_pca_battery_upgrade": "护盾开启时，舰船每秒额外排散的幅能提高至 %s 正常排散速率",
+    "xel_pca_coil_upgrade": "降低 %s 护盾下线时间",
 
     "xel_rc_shield_title": "谐振场护盾调整",
     "xel_rc_phase_title": "谐振场装甲调整",
@@ -86,6 +93,7 @@
     "xel_phase_coil_stress": "时空波动",
     "xel_phase_stress_speed": "%s 最高航速",
 
+    "xel_voidshift_time_flow": "冷寂虚空-阴影化形:时间流速 x",
 
     "xel_test": "test"
   }
