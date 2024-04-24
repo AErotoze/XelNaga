@@ -12,7 +12,7 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 
 --星灵相位舰船使用灵能能力进入虚空，而非使用相位线圈进入 P 空间
 --舰船船拥有 %s 能量值
---进入虚空后每秒消耗 %s 能量值
+--潜入虚空后每秒消耗 %s 能量值
 --退出虚空后每秒恢复 %s 能量值
 --能量值低于 %s 时无法进入虚空",神秘的灵能矩阵，至少星灵们会把这样的能量称为灵能,,graphics/hullmods/xel_PsionicCrystalArray.png
 ,,,,,,,,,,,,,,,,,,,
