@@ -1,0 +1,15 @@
+{
+	"id":"xel_FastCharge",
+	"type":"STAT_MOD",
+	"aiType":"WEAPON_BOOST",
+	
+	"statsScript":"data.scripts.shipsystems.xel_FastCharge",
+	
+	"weaponGlowColor":[255,200,0,155],
+	"weaponTypes":[BALLISTIC,ENERGY],
+
+	"useSound":"system_high_energy_focus_activate",
+	"deactivateSound":"system_high_energy_focus_deactivate",
+	"outOfUsesSound":"gun_out_of_ammo",
+	"loopSound":"system_high_energy_focus_loop",
+}
