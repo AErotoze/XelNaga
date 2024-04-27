@@ -34,12 +34,14 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
     private static final float SHIELD_UPKEEP = 0f;
     private static final float PIERCE_MULT = 50f;
     private static final float SHIELD_CRASH_TIME = 8f;
+    private static final float SOFT_FLUX_CONVERSION = 1f / 4f;
     private static final float FLUX_VENT_RATE = 40f;
     private static final float FLUX_VENT_RATE_WITH_BATTERY = 60f;
-    private static final float WEAPON_RANGE_WITH_CORE = 1000f;
+    private static final float WEAPON_RANGE_WITH_CORE = 100f;
     private static final float TIME_REDUCED_WITH_COIL = 2f;
     private static final float DAMAGE_WITH_COIL = 60f;
     private static final float DAMAGE_RANGE_WITH_COIL = 600f;
+
 
     private static boolean hasBattery(ShipAPI ship) {
         return ship.getVariant().hasHullMod(HullModUtil.XEL_ARRAY_BATTERY);
@@ -62,6 +64,8 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
     public void applyEffectsBeforeShipCreation(ShipAPI.HullSize hullSize, MutableShipStatsAPI stats, String id) {
         stats.getShieldUpkeepMult().modifyMult(id, SHIELD_UPKEEP);
         stats.getDynamic().getMod(Stats.SHIELD_PIERCED_MULT).modifyMult(id, 1f - 0.01f * PIERCE_MULT);
+        stats.getShieldSoftFluxConversion().modifyFlat(id, SOFT_FLUX_CONVERSION);
+
     }
 
     @Override
@@ -73,7 +77,8 @@ public class xel_ProtossEnergyArray extends xel_BaseHullmod {
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         if (index == 0) return (int) SHIELD_CRASH_TIME + "sec";
         else if (index == 1) return (int) PIERCE_MULT + "%";
-        else return index == 2 ? (int) FLUX_VENT_RATE + "%" : super.getDescriptionParam(index, hullSize);
+        else if (index == 2) return String.format("%.1f", SOFT_FLUX_CONVERSION * 100f) + "%";
+        else return index == 3 ? (int) FLUX_VENT_RATE + "%" : super.getDescriptionParam(index, hullSize);
     }
 
     @Override

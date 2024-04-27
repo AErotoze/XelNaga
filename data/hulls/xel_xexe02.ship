@@ -1,0 +1,221 @@
+{
+  "hullName": "xel_xexe02",
+  "hullId": "xel_xexe02",
+  "hullSize": "DESTROYER",
+  "spriteName": "graphics/ships/xel_xexe02.png",
+  "style": "XelNaga",
+  "height": 134,
+  "width": 172,
+  "center": [86, 67],
+  "collisionRadius": 128,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 112.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray",
+    "armoredweapons"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "LARGE",
+      "type": "HYBRID",
+      "mount": "TURRET",
+      "arc": 360,
+      "angle": 0,
+      "locations": [-3, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "SYNERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 45,
+      "locations": [33, 17]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "SYNERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -45,
+      "locations": [33, -17]
+    },
+    {
+      "id": "WS0004",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 65,
+      "locations": [53, 44]
+    },
+    {
+      "id": "WS0005",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -65,
+      "locations": [53, -44]
+    },
+    {
+      "id": "WS0006",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": 150,
+      "locations": [-35, 46]
+    },
+    {
+      "id": "WS0007",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 140,
+      "angle": -150,
+      "locations": [-35, -46]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-62, 25],
+      "length": 53,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 8,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-62, -25],
+      "length": 53,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 8,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-65, 31.5],
+      "length": 56.5,
+      "width": 5,
+      "angle": 180,
+      "contrailSize": 5,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-65, -31.5],
+      "length": 56.5,
+      "width": 5,
+      "angle": -180,
+      "contrailSize": 5,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-65, 35.5],
+      "length": 56,
+      "width": 5,
+      "angle": 180,
+      "contrailSize": 5,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-65, -35.5],
+      "length": 56,
+      "width": 5,
+      "angle": -180,
+      "contrailSize": 5,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [17.5, 80.5],
+      "length": 37.830212,
+      "width": 14.849242,
+      "angle": 135,
+      "contrailSize": 14.849242,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [17.5, -80.5],
+      "length": 37.830212,
+      "width": 14.849242,
+      "angle": -135,
+      "contrailSize": 14.849242,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-55, 46],
+      "length": 31.591349,
+      "width": 7.612267,
+      "angle": 165,
+      "contrailSize": 7.612267,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-55, -46],
+      "length": 31.591349,
+      "width": 7.612267,
+      "angle": -165,
+      "contrailSize": 7.612267,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-51, 53.5],
+      "length": 35.2402,
+      "width": 8.032014,
+      "angle": 165,
+      "contrailSize": 8.032014,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-51, -53.5],
+      "length": 35.2402,
+      "width": 8.032014,
+      "angle": -165,
+      "contrailSize": 8.032014,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    45, -23,
+    64.5, -36.5,
+    66, -51.5,
+    36.5, -83.5,
+    25.5, -84,
+    14.5, -78,
+    14, -49,
+    -17, -44,
+    -30, -58,
+    -49.5, -56,
+    -60.5, -42,
+    -65, -34.5,
+    -58, -0,
+    -65, 34.5,
+    -60.5, 42,
+    -49.5, 56,
+    -30, 58,
+    -17, 44,
+    14, 49,
+    14.5, 78,
+    25.5, 84,
+    36.5, 83.5,
+    66, 51.5,
+    64.5, 36.5,
+    45, 23,
+    41, -0
+  ]
+}

@@ -6,6 +6,7 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --舰船护盾保持开启
 --抑制舰船过载，但发生过载将导致护盾下线 %s
 --降低 %s 护盾被EMP电弧穿透的概率
+--护盾承受的 %s 硬幅能伤害转换为软幅能
 --护盾开启时，舰船以 %s 正常排散速率额外排散辐能",星灵舰船的能源核心,,graphics/hullmods/xel_ProtossEnergyArray.png
 灵能水晶矩阵,xel_PsionicCrystalArray,,,,,,,,TRUE,,0,0,0,0,data.hullmods.xel_PsionicCrystalArray,"英仙座的环境并不足以支持星灵的灵能矩阵大展拳脚。尽管代价高昂，但相位技师们的高超技巧依然能够让矩阵再次散发光辉。
 
