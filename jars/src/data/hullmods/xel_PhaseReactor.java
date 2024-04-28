@@ -323,13 +323,13 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 					effectCooldown = data.maxCooldown;
 					//弹出信息
 					Global.getCombatEngine().addFloatingText(ship.getLocation(), i18n_hullmod.format("xel_pr_effet_on", data.effectName), 25f, Misc.getHighlightColor(), ship, 1f, 0f);
-					RippleDistortion ripple = new RippleDistortion(ship.getLocation(), ship.getVelocity());
+					RippleDistortion ripple = new RippleDistortion(point, ship.getVelocity());
 					float factor = ship.getCollisionRadius() * 2f;
 					ripple.setSize(factor);
 					ripple.setIntensity(factor / 5f);
 					ripple.setFrameRate(180f);
-					ripple.fadeInSize(0.5f);
-					ripple.fadeOutIntensity(0.5f);
+					ripple.fadeInSize(0.3f);
+					ripple.fadeOutIntensity(0.3f);
 					DistortionShader.addDistortion(ripple);
 
 					health -= baseDamage * 0.01f;
