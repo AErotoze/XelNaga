@@ -54,7 +54,7 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		stats.getBallisticRoFMult().modifyMult(id, rofBonus * effectLevel);
 		stats.getEnergyRoFMult().modifyMult(id, rofBonus * effectLevel);
 		stats.getBallisticWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
-		stats.getEnergyWeaponDamageMult().modifyMult(id, fluxReduction * effectLevel);
+		stats.getEnergyWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
 		if (hasPP(ship)) {
 			if (!ship.hasListenerOfClass(WeaponRangeManager.class)) ship.addListener(new WeaponRangeManager());
 			interval.advance(Global.getCombatEngine().getElapsedInLastFrame());
@@ -92,7 +92,7 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		stats.getEnergyRoFMult().unmodify(id);
 		stats.getBallisticRoFMult().unmodify(id);
 		stats.getEnergyWeaponFluxCostMod().unmodify(id);
-		stats.getBallisticRoFMult().unmodify(id);
+		stats.getBallisticWeaponFluxCostMod().unmodify(id);
 		if (ship.hasListenerOfClass(WeaponRangeManager.class)) ship.removeListenerOfClass(WeaponRangeManager.class);
 	}
 

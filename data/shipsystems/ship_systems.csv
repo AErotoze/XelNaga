@@ -2,7 +2,7 @@ name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u 
 冲锋,xel_Rush,,,,,,,,,,0.5,7,0.5,10,,,,,,,,,,TRUE,,,graphics/icons/hullsys/maneuvering_jets.png
 统合力场,xel_UnityField,,,,,,0.5,,,,2,16,2,8,,,,,,,,,,,,,graphics/icons/hullsys/xel_DefensiveMatrix.png
 #反馈,xel_Feedback,,,,,,0.2,,2,0.125,1,,0.25,0,,,,,,,,,,,,,graphics/icons/hullsys/xel_Feedback.png
-#虚空静滞,,,,,,,,,,,,,,,,,,,,,,,,,,,
+虚空静滞,xel_VoidStasis,,,,,,0.3,,,,0.25,,1.75,18,,,,,,,,,,,,,graphics/icons/hullsys/quantum_disruptor.png
 快速充能,xel_FastCharge,1,,,,,,,,,2,7,1,10,,,,,,,,,,,,,graphics/icons/hullsys/xel_FastCharge.png
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,

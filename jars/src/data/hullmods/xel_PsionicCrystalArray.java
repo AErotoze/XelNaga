@@ -127,7 +127,7 @@ public class xel_PsionicCrystalArray extends xel_BaseHullmod {
 				i18n_hullmod.get(flag ? "install" : "uninstall"));
 		text.setBulletedListMode("--");
 		text.addPara(i18n_hullmod.get("xel_pca_core_upgrade1"), pad, flag ? good : g, "x" + String.format("%.1f", PHASE_DISSIPATION_MULT));
-		text.addPara(i18n_hullmod.get("xel_pca_core_upgrade2"), pad, flag ? bad : g, "50%");
+		text.addPara(i18n_hullmod.get("xel_pca_core_upgrade2"), pad, flag ? good : g, "50%");
 		text.setBulletedListMode(null);
 		tooltip.addImageWithText(pad);
 		flag = ship.getVariant().hasHullMod(HullModUtil.XEL_ARRAY_BATTERY);
