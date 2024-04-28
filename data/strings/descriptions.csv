@@ -9,4 +9,5 @@ id,type,text1,text2,text3,text4,notes
 xel_Rush,SHIP_SYSTEM,暂时提供爆发性机动力并提高最大航速，在朝着敌人前进时额外提高最高航速,机动,,,
 xel_UnityField,SHIP_SYSTEM,根据所有甲板上战机的联队规模以及战机类型，为战场上存活的战机提供一次性镀层。,战机,,,
 xel_FastCharge,SHIP_SYSTEM,增加 50% 实弹和能量武器射速，减少 33% 实弹和能量武器开火需要的幅能,进攻,增加 50% 实弹和能量武器射速，减少 33% 实弹和能量武器开火需要的幅能,50% | 33%,
+xel_VoidStasis,SHIP_SYSTEM,使目标陷入静滞状态 8sec，持续时间内目标将完全失能且无法被攻击,进攻,使目标陷入静滞状态 8sec，持续时间内目标将完全失能且无法被攻击,8sec,
 ,,,,,,

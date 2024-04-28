@@ -8,6 +8,8 @@ import data.utils.xel.xel_Misc;
 
 import java.awt.*;
 
+import static data.utils.xel.Constants.i18n_shipSystem;
+
 public class xel_VoidStasis extends xel_BaseShipSystemScript {
 	/*
 	虚空静滞
@@ -17,7 +19,6 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 	持续时间减少至 2秒(-75%)
 	但是目标将每秒增长 10% 最大幅能值的硬幅能
 
-	处于静滞的敌人无法再被系统选中
 	 */
 	private static final float MAX_ACTIVE_TIME = 8f;
 	private static final float PP_MAX_ACTIVE_TIME = 2f;
@@ -25,22 +26,27 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 	private static final Object TARGET_KEY = new Object();
 	private static final float RANGE = 1500f;
 	private static final Color STASIS_COLOR = new Color(171, 241, 255, 191);
+	private static final Color PP_STASIS_COLOR = new Color(241, 72, 253, 191);
+
 
 	private static class TargetData {
 		public ShipAPI source;
 		public ShipAPI target;
 		public AdvanceableListener targetEffectListener;
 		public float activeTime;
+		public float maxTime;
+		public boolean done = false;
 
 		public TargetData(ShipAPI source, ShipAPI target, float maxTime) {
 			this.source = source;
 			this.target = target;
 			activeTime = maxTime;
+			this.maxTime = maxTime;
 		}
 	}
 
 	@Override
-	public void apply(MutableShipStatsAPI stats, String id, State state, final float effectLevel) {
+	public void apply(MutableShipStatsAPI stats, final String id, State state, final float effectLevel) {
 		final ShipAPI ship = getPlayerShip(stats);
 		if (ship == null) return;
 		final CombatEngineAPI engine = Global.getCombatEngine();
@@ -49,13 +55,14 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 
 		TargetData targetDataObj = (TargetData) engine.getCustomData().get(targetDataKey);
 		if (state == State.IN && targetDataObj == null) {
-			ShipAPI target = xel_Misc.findTarget(engine, ship, RANGE);
-			engine.getCustomData().put(targetDataKey, new TargetData(ship, target, MAX_ACTIVE_TIME));
+			ShipAPI target = xel_Misc.findTarget(engine, ship, getMaxRange(ship));
+			engine.getCustomData().put(targetDataKey, new TargetData(ship, target, hasPP(ship) ? PP_MAX_ACTIVE_TIME : MAX_ACTIVE_TIME));
 			if (target != null) {
 				if (target.getFluxTracker().showFloaty() ||
 						ship == Global.getCombatEngine().getPlayerShip() ||
 						target == Global.getCombatEngine().getPlayerShip()) {
-					target.getFluxTracker().showOverloadFloatyIfNeeded("发生什么事了？", Misc.getNegativeHighlightColor(), 4f, true);
+					String text = i18n_shipSystem.get(hasPP(ship) ? "xel_VS_active_floaty_PP" : "xel_VS_active_floaty");
+					target.getFluxTracker().showOverloadFloatyIfNeeded(text, Misc.getNegativeHighlightColor(), 4f, true);
 				}
 			}
 		} else if (state == State.IDLE && targetDataObj != null) {
@@ -71,28 +78,57 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 				targetData.targetEffectListener = new AdvanceableListener() {
 					@Override
 					public void advance(float amount) {
-						if (isPlayerShip(targetData.target)) {
+						ShipAPI source = targetData.source;
+						ShipAPI target = targetData.target;
+						float activeTime = targetData.activeTime;
+						float maxTime = targetData.maxTime;
+						if (isPlayerShip(target)) {
 							engine.maintainStatusForPlayerShip(
-									TARGET_KEY,
-									targetData.source.getSystem().getSpecAPI().getIconSpriteName(),
-									targetData.source.getSystem().getDisplayName(),
-									"没发什么什么事捏^_^",
+									SOURCE_KEY,
+									source.getSystem().getSpecAPI().getIconSpriteName(),
+									source.getSystem().getDisplayName(),
+									i18n_shipSystem.get("xel_VS_status"),
 									true);
 						}
-						if (targetData.activeTime > 0f) {
-							targetData.activeTime -= amount;
-//						if (hasPP(targetData.source)){}
-							targetData.target.setPhased(true);
-//							targetData.target.blockCommandForOneFrame(ShipCommand.FIRE);
-							for (WeaponAPI weapon : targetData.target.getAllWeapons()) {
+						if (activeTime > 0f) {
+							float level = (activeTime > maxTime * 0.75f) ? 1f - (maxTime - activeTime) / (maxTime * 0.25f) : (maxTime * 0.75f - activeTime) / (maxTime * 0.75f);
+							level = Math.max(0.2f, level);
+							activeTime -= amount;
+							target.setPhased(true);
+							target.setAlphaMult(level);
+
+							if (!targetData.done) {
+								targetData.done = true;
+								if (target.getShield() != null && target.getShield().isOn())
+									target.getShield().toggleOff();
+								if (target.getSystem() != null && target.getSystem().isActive())
+									target.getSystem().forceState(ShipSystemAPI.SystemState.OUT, 0f);
+								target.getMutableStats().getMaxTurnRate().modifyMult(id, 0f);
+							}
+							for (WeaponAPI weapon : target.getAllWeapons()) {
 								if (weapon.isDisabled()) continue;
 								weapon.setForceNoFireOneFrame(true);
 							}
-							targetData.target.setJitter(TARGET_KEY, Misc.getHighlightColor(), 1f, 3, 50f);
+							target.getVelocity().scale(0f);
+							target.blockCommandForOneFrame(ShipCommand.USE_SYSTEM);
+							target.blockCommandForOneFrame(ShipCommand.TOGGLE_SHIELD_OR_PHASE_CLOAK);
+							target.blockCommandForOneFrame(ShipCommand.VENT_FLUX);
+
+							target.setJitterShields(false);
+							if (hasPP(source))
+								target.setJitter(TARGET_KEY, PP_STASIS_COLOR, level, 3, ship.getCollisionRadius() / 2f * level);
+							else
+								target.setJitter(TARGET_KEY, STASIS_COLOR, level, 3, ship.getCollisionRadius() / 2f * level);
+
+							if (hasPP(source)) {
+								target.getFluxTracker().increaseFlux(target.getMaxFlux() * 0.1f * amount, true);
+							}
 						} else {
-							targetData.target.setPhased(false);
-							targetData.target.removeListener(targetData.targetEffectListener);
+							target.getMutableStats().getMaxTurnRate().unmodify(id);
+							target.setPhased(false);
+							target.removeListener(targetData.targetEffectListener);
 						}
+						targetData.activeTime = activeTime;
 					}
 				};
 				targetData.target.addListener(targetData.targetEffectListener);
@@ -110,18 +146,30 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 		return super.getStatusData(index, state, effectLevel);
 	}
 
+	public static float getMaxRange(ShipAPI ship) {
+		return ship.getMutableStats().getSystemRangeBonus().computeEffective(RANGE);
+	}
+
 	@Override
 	public String getInfoText(ShipSystemAPI system, ShipAPI ship) {
 		if (system.isOutOfAmmo()) return null;
 		if (system.getState() != ShipSystemAPI.SystemState.IDLE) return null;
-		ShipAPI target = xel_Misc.findTarget(Global.getCombatEngine(), ship, RANGE);
-		if (target != null && target != ship) {
+		ShipAPI target = xel_Misc.findTarget(Global.getCombatEngine(), ship, getMaxRange(ship));
+		if (target != null) {
+			if (target.isPhased()) {
+				return "UNAVAILABLE TARGET";
+			}
 			return "READY";
 		}
-		if (target == null && ship.getShipTarget() != null) {
+		if (ship.getShipTarget() != null) {
 			return "OUT OF RANGE";
 		}
 		return "NO TARGET";
+	}
 
+	@Override
+	public boolean isUsable(ShipSystemAPI system, ShipAPI ship) {
+		ShipAPI target = xel_Misc.findTarget(Global.getCombatEngine(), ship, RANGE);
+		return target != null && !target.isPhased();
 	}
 }

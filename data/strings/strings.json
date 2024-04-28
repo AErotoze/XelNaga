@@ -55,6 +55,9 @@
     "xel_pp_FC_change1": "提高 %s 实弹和能量武器的射速",
     "xel_pp_FC_change2": "降低 %s 实弹和能量武器的开火幅能",
     "xel_pp_FC_change3": "增加 %s 实弹和能量非PD武器射程，最低提高 %s",
+    "xel_pp_VS_change_name": "凋零虹吸",
+    "xel_pp_VS_change1": "处于静滞状态的目标在持续时间内每秒增加 %s 最大幅能值的硬幅能",
+    "xel_pp_VS_change2": "静滞状态的持续时间减少至 %s",
 
     "xel_pp_no_change": "该系统无可进行的实验性改造",
 
@@ -103,6 +106,10 @@
     "xel_phase_stable_speed": "100% 最高航速",
     "xel_phase_coil_stress": "时空波动",
     "xel_phase_stress_speed": "%s 最高航速",
+
+    "xel_VS_active_floaty": "---///虚空静滞///---",
+    "xel_VS_active_floaty_PP":"---///凋零虹吸///---",
+    "xel_VS_status": "舰船强制锁定",
 
     "xel_voidshift_time_flow": "冷寂虚空-阴影化形:时间流速 x",
 

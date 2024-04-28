@@ -5,8 +5,6 @@ import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.combat.BaseShipSystemScript;
 import com.fs.starfarer.api.util.Misc;
 import data.utils.xel.HullModUtil;
-import org.dark.shaders.distortion.DistortionShader;
-import org.dark.shaders.distortion.RippleDistortion;
 import org.magiclib.util.MagicUI;
 
 import java.awt.*;
@@ -29,7 +27,6 @@ public class xel_VoidShiftStats extends BaseShipSystemScript {
 	private static final float CORE_BUFF = 50f;
 
 	private static final Object STATUS1 = new Object();
-	private static final Object STATUS2 = new Object();
 
 	private boolean isUnapplied = false;
 	private boolean isStarted = false;
@@ -139,14 +136,14 @@ public class xel_VoidShiftStats extends BaseShipSystemScript {
 				isUnapplied = false;
 
 				// 第一帧特效
-				RippleDistortion ripple = new RippleDistortion(ship.getLocation(), ship.getVelocity());
-				ripple.flip(false);//波纹翻转
-				ripple.setSize(ship.getCollisionRadius() * 2f);// 波纹范围
-				ripple.setFrameRate(60f / 0.4f);
-				ripple.setIntensity(10f);// 波纹强度
-				ripple.fadeOutSize(1f);// 波纹消逝时间
-				ripple.fadeInIntensity(0.6f);// 波纹消逝强度？
-				DistortionShader.addDistortion(ripple);//生成特效
+//				RippleDistortion ripple = new RippleDistortion(ship.getLocation(), ship.getVelocity());
+//				ripple.flip(false);//波纹翻转
+//				ripple.setSize(ship.getCollisionRadius() * 2f);// 波纹范围
+//				ripple.setFrameRate(60f / 0.4f);
+//				ripple.setIntensity(ship.getCollisionRadius() / 2f);// 波纹强度
+//				ripple.fadeOutSize(1f);// 波纹消逝时间
+//				ripple.fadeInIntensity(0.5f);// 波纹消逝强度？
+//				DistortionShader.addDistortion(ripple);//生成特效
 			}
 			ship.setPhased(true);
 		} else if (state == State.OUT) {
