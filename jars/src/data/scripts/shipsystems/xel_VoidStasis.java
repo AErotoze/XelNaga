@@ -104,6 +104,7 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 								if (target.getSystem() != null && target.getSystem().isActive())
 									target.getSystem().forceState(ShipSystemAPI.SystemState.OUT, 0f);
 								target.getMutableStats().getMaxTurnRate().modifyMult(id, 0f);
+								target.getMutableStats().getFluxDissipation().modifyMult(id,0f);
 							}
 							for (WeaponAPI weapon : target.getAllWeapons()) {
 								if (weapon.isDisabled()) continue;
@@ -125,6 +126,7 @@ public class xel_VoidStasis extends xel_BaseShipSystemScript {
 							}
 						} else {
 							target.getMutableStats().getMaxTurnRate().unmodify(id);
+							target.getMutableStats().getFluxDissipation().unmodify(id);
 							target.setPhased(false);
 							target.removeListener(targetData.targetEffectListener);
 						}
