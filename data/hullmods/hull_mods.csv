@@ -37,11 +37,11 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 萨尔纳伽虚空阵列,xel_VoidArray,,,星灵科技-响应,req_spaceport,"需要船坞,矩阵响应模组",,,,,5,8,15,25,data.hullmods.xel_VoidArray,"来自萨尔纳伽-古代星灵的遗产，以极其高效的方式构造上行数据链路，为战机、航母提供可靠的战斗支援。
 
 
---降低 %s 战备下降速率和战备恢复速率
---根据辐能点数额外提供 %s (最高 %s ) 上诉两项增益
+--降低 %s 战备下降速率并提高 %s 战备恢复速率
+--根据幅能点数额外提供 %s (最高 %s ) 上诉两项增益
 --降低 %s 舰载机的人员损失
 --舰载机远离母舰 %s 后，逐渐降低舰载机最大航速和火力，至多降低 %s 最大航速和 %s 火力",来自古代星灵的遗产，为航母提供高效支援,,graphics/hullmods/xel_VoidArray.png
-净化者协议,xel_PurifiersProtocol,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PurifiersProtocol,"改造舰船的控制系统以适配净化者网络，令舰船可以由净化者们远程操控。由于不再需要考虑船员的生命需求，舰船将可以完全无视安全协议进行危险改装并搭载某些实验性组件。
+净化者协议,xel_PurifiersProtocol,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PurifiersProtocol,"改造控制系统以适配净化者网络，令舰船可以由净化者们远程操控。由于不再需要考虑船员的生命需求，舰船将可以完全无视安全协议进行改装并搭载某些危险的实验性组件。
 
 
 --舰船无最低船员需求，并降低 %s 可搭载最大船员数量
@@ -50,9 +50,8 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 血水晶共鸣,xel_BloodShard,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_BloodShard,"也许把经由塔达林改造的高能水晶阵列搬上舰船是一个错误的决定，但在带来的提升面前，这些代价已经不值一提。
 
 
---根据舰船级别，战斗视野范围提高 %s
---提高 %s 实弹和能量武器的射程
---对舰船的锁定目标，自身额外造成 %s 伤害
+--根据舰船级别，战斗视野范围提高 %s，并提高 %s 实弹和能量武器射程
+--自身对锁定目标额外造成 %s 伤害
 --提高 %s 的每月维护所需补给
 --降低 %s 峰值时间",增强舰载战斗雷达，提高维护需求且降低峰值时间,,graphics/hullmods/xel_BloodShard.png
 重力加速器,xel_GraviticBoosters,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_GraviticBoosters,"原本是应用于侦测器的推进器，通过制造重力场以产生推力。经过一番改造后，此类推进器也能安装在战斗舰船上了。
@@ -60,15 +59,15 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 
 --提高舰船 %s 机动性
 --根据舰船级别，提高舰船 %s 最大航速",提高舰船的机动性的最高航速,,graphics/hullmods/xel_GraviticBoosters.png
-相位反应堆,xel_PhaseReactor,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PhaseReactor,"通过灵能提炼工艺，星灵得以将各类信息存贮于高级晶格分子之中，他们也因此迈入了操控物质和能量的新时代。相位反应堆则基于此项技术诞生。
+相位反应堆,xel_PhaseReactor,,,星灵科技-响应,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PhaseReactor,"相位反应堆是基于时空理论制作的巅峰作品。它能够调控物质和能量，协助星灵们抵御即将到来的危险。
 
 
---相位反应堆将在舰船周围扭曲空间，抵御到来的攻击
 --根据舰船等级，提供 %s 伤害吸收额度
---每秒恢复最大吸收额度的 %s
---根据当前吸收额度无视部分伤害，当前吸收额度越高则无视伤害比率越高，最高可无视 %s 伤害
---若吸收额度耗尽，则需要 %s 重启相位反应堆
---若 %s 已安装，则在相位反应堆吸收伤害超过 %s 的攻击时激活，且本次攻击仅消耗 %s 吸收额度",为舰船提供强大的保护，并根据协调模组获得独特能力,,graphics/hullmods/xel_PhaseReactor.png
+--每秒恢复 %s 额度
+--独特的伤害处理算法，降低额度消耗
+--若额度完全消耗，则需要 %s 重启相位反应堆
+--对护盾的攻击只有 %s 吸收效率
+--若 %s 已安装，则在相位反应堆吸收伤害超过 %s 的攻击后激活，且本次攻击仅消耗 %s 伤害吸收额度",为舰船提供强大的保护，并根据协调模组获得独特能力,,graphics/hullmods/xel_PhaseReactor.png
 ,,,,,,,,,,,,,,,,,,,
 #刚毅护盾,,,,,,,,,,,,,,,,,,,
 #复仇协议,,,,,,,,,,,,,,,,,,,

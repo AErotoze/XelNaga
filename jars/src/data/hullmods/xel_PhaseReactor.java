@@ -45,6 +45,7 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 	private static final float RECOVER_PERCENT_PER_SEC = 100f / 15f;
 	private static final float MAX_RESTART_TIME = 25f;
 	private static final float TIME_MULT = 100f;
+	private static final float SHIELD_EFFECT = 25f;
 
 	private static final Map<ShipAPI.HullSize, Float> HEALTH_MAP = new HashMap<>();
 	private static final Map<String, effectData> EFFECT_DATA = new HashMap<>();
@@ -83,9 +84,9 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 	@Override
 	public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
 		if (index == 0) return xel_Misc.getHullSizeFlatString(HEALTH_MAP);
-		else if (index == 1) return "6.67%";
-		else if (index == 2) return "50%";
-		else if (index == 3) return (int) MAX_RESTART_TIME + "sec";
+		else if (index == 1) return String.format("%.2f", RECOVER_PERCENT_PER_SEC);
+		else if (index == 2) return (int) MAX_RESTART_TIME + "sec";
+		else if (index == 3) return (int) SHIELD_EFFECT + "%";
 		else if (index == 4) return i18n_hullmod.get("xel_pr_title");
 		else if (index == 5) return (int) DAMAGE_THRESHOLD + "";
 		else return index == 6 ? "1%" : null;
@@ -297,9 +298,17 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 		public String modifyDamageTaken(Object param, CombatEntityAPI target, DamageAPI damage, Vector2f point, boolean shieldHit) {
 			if (health > 0f) {
 				float baseDamage = damage.getBaseDamage();
-				if (damage.isDps()) {
-					baseDamage *= damage.getDpsDuration();
+				if (damage.isDps()) baseDamage *= damage.getDpsDuration();
+				if (shieldHit) {
+					baseDamage *= 0.25f * damage.getType().getShieldMult();
+				} else {
+					baseDamage *= damage.getType().getArmorMult();
+					baseDamage *= damage.getType().getHullMult();
 				}
+				float level = Math.max(health / MAX_HEALTH, 0.36f);
+				float damageDecreased = shieldHit ? 1 - SHIELD_EFFECT : 0f;
+				baseDamage *= 1f - Math.max((0.6f * (float) Math.log10(level - 0.35f) + 1.0123f), 0f);
+				baseDamage *= (1f - damageDecreased);
 
 				CombatEntityAPI source = target;
 				if (damage.getStats() != null) {
@@ -308,14 +317,6 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 						source = target;
 					}
 				}
-
-				if (shieldHit) {
-					baseDamage *= damage.getType().getShieldMult();
-				} else {
-					baseDamage *= damage.getType().getArmorMult();
-					baseDamage *= damage.getType().getHullMult();
-				}
-				baseDamage *= MAX_HEALTH / (health + MAX_HEALTH);
 
 				//若冷却完毕 若受到大于的threshold伤害 若效果未激活 重置效果时间和冷却时间
 				if (effectCooldown == 0f && baseDamage > DAMAGE_THRESHOLD && effectTime == 0f) {
@@ -348,12 +349,12 @@ public class xel_PhaseReactor extends xel_BaseHullmod {
 				// 额度是否大于等于吸收伤害
 				if (health >= baseDamage) {
 					health -= baseDamage;
-					damage.getModifier().modifyMult(ID, 0f);
+					damage.getModifier().modifyMult(ID, damageDecreased);
 					Global.getCombatEngine().addFloatingDamageText(point, baseDamage, new Color(255, 255, 255), target, source);
 				} else {
 					float reduction = baseDamage - health;
 					health = 0f;
-					damage.getModifier().modifyMult(ID, 1f - reduction / baseDamage);
+					damage.getModifier().modifyMult(ID, shieldHit ? (1f - reduction / baseDamage) * 0.25f + 0.75f : 1f - reduction / baseDamage);
 					Global.getCombatEngine().addFloatingText(ship.getLocation(), i18n_hullmod.get("xel_pr_health_out"), 25f, Misc.getNegativeHighlightColor(), ship, 1f, 0f);
 				}
 				return ID;

@@ -106,7 +106,7 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		@Override
 		public float getWeaponRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
 			if (weapon.hasAIHint(WeaponAPI.AIHints.PD) || weapon.hasAIHint(WeaponAPI.AIHints.PD_ONLY)) return 0f;
-			if (weapon.getSpec().getMaxRange() > 500f) return PP_WEAPON_RANGE_BONUS;
+			if (weapon.getSpec().getMaxRange() > 500f) return PP_WEAPON_RANGE_BONUS * 0.01f;
 			else return 0f;
 		}
 
