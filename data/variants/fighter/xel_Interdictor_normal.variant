@@ -1,0 +1,23 @@
+{
+  "variantId": "xel_Interdictor_normal",
+  "hullId": "xel_Interdictor",
+  "displayName": "normal",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 0.5,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "xel_InterdictorBeam",
+        "WS0002": "xel_InterdictorBeam"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

@@ -1,0 +1,67 @@
+{
+  "hullName": "xel_Interictor",
+  "hullId": "xel_Interdictor",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/xel_fighter/xel_Interdictor.png",
+  "style": "XelNaga",
+  "height": 26,
+  "width": 44,
+  "center": [22, 13],
+  "collisionRadius": 30,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 26.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray",
+    "no_weapon_flux"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": 0,
+      "locations": [11.5, 11]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "ENERGY",
+      "mount": "TURRET",
+      "arc": 0,
+      "angle": -0,
+      "locations": [11.5, -11]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-10, 11],
+      "length": 16,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-10, -11],
+      "length": 16,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 0,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    10.5, -14.5,
+    -3.5, -20.5,
+    -11.5, -11,
+    -1, -0,
+    -11.5, 11,
+    -3.5, 20.5,
+    10.5, 14.5
+  ]
+}

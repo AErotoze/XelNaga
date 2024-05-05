@@ -1,6 +1,7 @@
 name,id,designation,tech/manufacturer,system id,fleet pts,hitpoints,armor rating,max flux,8/6/5/4%,flux dissipation,ordnance points,fighter bays,max speed,acceleration,deceleration,max turn rate,turn acceleration,mass,shield type,defense id,shield arc,shield upkeep,shield efficiency,phase cost,phase upkeep,min crew,max crew,cargo,fuel,fuel/ly,range,max burn,base value,cr %/day,CR to deploy,peak CR sec,CR loss/sec,supplies/rec,supplies/mo,c/s,c/f,f/s,f/f,crew/s,crew/f,hints,tags,rarity,breakProb,minPieces,maxPieces,travel drive,number
 #战机,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-拦截机,xel_Interceptor,,达拉姆,,,280,40,300,,100,0,,255,500,450,130,260,30,FRONT,,360,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,205.001
+拦截机,xel_Interceptor,,达拉姆,,,200,25,230,,80,0,,220,500,450,130,260,30,FRONT,,360,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,205.001
+强击机,xel_Interdictor,,净化者,,,280,50,300,,100,0,,255,400,350,100,200,30,FRONT,,360,0,1,,,2,2,,,,,,,,,,,,,,,,,,,,,,0,,,,205.002
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 狂热者,xel_Zealot,星灵护卫舰,达拉姆,xel_Rush,10,1500,450,5000,5000,350,40,,150,180,150,90,270,200,FRONT,,360,0,1,,,5,10,20,20,1,20,11,36000,10,20,180,0.25,10,10,,,,,,,,,,0.5,2,2,,200.001
 圣堂武士,xel_Templar,相位护卫舰,达拉姆,xel_VoidStasis,11,1500,400,3000,5000,400,55,,165,120,100,60,120,200,PHASE,xel_VoidShift,90,,,0,0.01,5,10,25,50,1,50,10,50000,10,30,180,0.25,10,10,,,,,,,PHASE,,,0.5,2,2,,200.002

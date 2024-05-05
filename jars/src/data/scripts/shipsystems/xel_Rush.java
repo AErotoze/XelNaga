@@ -12,6 +12,7 @@ import data.utils.xel.xel_Misc;
 import org.lazywizard.lazylib.FastTrig;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
+import org.lazywizard.lazylib.combat.AIUtils;
 import org.lwjgl.util.vector.Vector2f;
 import org.magiclib.util.MagicRender;
 
@@ -67,8 +68,7 @@ public class xel_Rush extends xel_BaseShipSystemScript {
 			boolean isTakenEffect = false;
 			String spriteName = Global.getSettings().getShipSystemSpec(ShipSystemUtil.XEL_RUSH).getIconSpriteName();
 			String title = hasPP(ship) ? i18n_hullmod.get("xel_pp_rush_change_name") : xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_RUSH);
-			;
-
+			AIUtils.getNearestEnemy(ship);
 			if (hasPP(ship)) {
 				float amount = engine.getElapsedInLastFrame();
 				ship.setJitter(id, new Color(254, 138, 14, 40), effectLevel, 3, 10f);
