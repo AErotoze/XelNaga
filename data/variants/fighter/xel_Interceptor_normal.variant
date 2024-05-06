@@ -1,11 +1,11 @@
 {
-  "quality": 0.5,
   "variantId": "xel_Interceptor_normal",
   "hullId": "xel_Interceptor",
-  "displayName": "星灵拦截机",
+  "displayName": "星灵战机",
   "goalVariant": false,
   "fluxCapacitors": 0,
   "fluxVents": 0,
+  "quality": 0.5,
   "permaMods": [],
   "hullMods": [],
   "weaponGroups": [
@@ -13,7 +13,8 @@
       "autofire": false,
       "mode": "LINKED",
       "weapons": {
-        "WS0001": "xel_InterceptorBeam"
+        "WS0001": "xel_InterceptorBeam",
+        "WS0002": "xel_InterceptorBeam"
       }
     }
   ],
