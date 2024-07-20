@@ -8,6 +8,7 @@ import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.impl.campaign.ids.HullMods;
 import com.fs.starfarer.api.loading.HullModSpecAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
+import data.utils.xel.HullModUtil;
 import data.utils.xel.xel_Misc;
 import org.lazywizard.lazylib.FastTrig;
 import org.lwjgl.util.vector.Vector2f;
@@ -65,6 +66,7 @@ public class xel_BloodShard extends xel_BaseHullmod {
 		stats.getBallisticWeaponRangeBonus().modifyPercent(id, rangeMap.get(hullSize));
 		stats.getSuppliesPerMonth().modifyMult(id, SUPPLY_MULT);
 		stats.getPeakCRDuration().modifyMult(id, 1f - 0.01f * PEAK_DECEASE);
+		stats.getSuppliesToRecover().modifyMult(id,SUPPLY_MULT);
 	}
 
 	@Override
@@ -150,8 +152,8 @@ public class xel_BloodShard extends xel_BaseHullmod {
 					}
 					engine.maintainStatusForPlayerShip("xel_bs_key1",
 							"graphics/icons/hullsys/entropy_amplifier.png",
-							i18n_hullmod.get("xel_ps_name"),
-							hasTarget ? i18n_hullmod.get("xel_ps_target_locked") : i18n_hullmod.get("xel_ps_target_out"),
+							Global.getSettings().getHullModSpec(HullModUtil.XEL_BLOOD_SHARD).getDisplayName(),
+							hasTarget ? i18n_hullmod.get("xel_bs_target_locked") : i18n_hullmod.get("xel_bs_target_out"),
 							!hasTarget);
 				}
 			}

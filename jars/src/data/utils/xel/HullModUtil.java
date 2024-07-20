@@ -11,4 +11,5 @@ public class HullModUtil {
     public static final String XEL_PURIFIERS_PROTOCOL = "xel_PurifiersProtocol";
     public static final String XEL_PHASE_REACTOR = "xel_PhaseReactor";
     public static final String XEL_GRAVITIC_BOOSTER = "xel_GraviticBoosters";
+    public static final String XEL_BLOOD_SHARD = "xel_BloodShard";
 }

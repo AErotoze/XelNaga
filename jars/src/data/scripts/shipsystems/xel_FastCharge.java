@@ -4,8 +4,6 @@ import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.CombatEngineAPI;
 import com.fs.starfarer.api.combat.MutableShipStatsAPI;
 import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.combat.WeaponAPI;
-import com.fs.starfarer.api.combat.listeners.WeaponRangeModifier;
 import com.fs.starfarer.api.util.IntervalUtil;
 import data.utils.xel.ShipSystemUtil;
 import data.utils.xel.xel_Misc;
@@ -32,8 +30,8 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 	private static final float PP_WEAPON_ROF_BONUS = 100f;
 	private static final float FLUX_REDUCTION = 1f / 3f;
 	private static final float PP_FLUX_REDUCTION = 2f / 3f;
-	private static final float PP_WEAPON_RANGE_BONUS = 20f;
-	private static final float PP_MIN_WEAPON_RANGE_BONUS = 100f;
+//	private static final float PP_WEAPON_RANGE_BONUS = 20f;
+//	private static final float PP_MIN_WEAPON_RANGE_BONUS = 100f;
 	private static final IntervalUtil interval = new IntervalUtil(0.25f, 0.25f);
 	private static final Object STATUS1 = new Object();
 	private static final Object STATUS2 = new Object();
@@ -56,7 +54,7 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		stats.getBallisticWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
 		stats.getEnergyWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
 		if (hasPP(ship)) {
-			if (!ship.hasListenerOfClass(WeaponRangeManager.class)) ship.addListener(new WeaponRangeManager());
+//			if (!ship.hasListenerOfClass(WeaponRangeManager.class)) ship.addListener(new WeaponRangeManager());
 			interval.advance(Global.getCombatEngine().getElapsedInLastFrame());
 			if (interval.intervalElapsed()) {
 				ship.addAfterimage(
@@ -78,9 +76,9 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		if (isPlayerShip(ship)) {
 			engine.maintainStatusForPlayerShip(STATUS1, spriteName, title, i18n_shipSystem.format("xel_FC_active1", (int) ((rofBonus - 1f) * 100f) + "%"), false);
 			engine.maintainStatusForPlayerShip(STATUS2, spriteName, title, i18n_shipSystem.format("xel_FC_active2", String.format("%.1f", (1f - fluxReduction) * 100f)) + "%", false);
-			if (hasPP(ship)) {
-				engine.maintainStatusForPlayerShip(STATUS3, spriteName, title, i18n_shipSystem.get("xel_FC_active3"), false);
-			}
+//			if (hasPP(ship)) {
+//				engine.maintainStatusForPlayerShip(STATUS3, spriteName, title, i18n_shipSystem.get("xel_FC_active3"), false);
+//			}
 		}
 	}
 
@@ -93,7 +91,7 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		stats.getBallisticRoFMult().unmodify(id);
 		stats.getEnergyWeaponFluxCostMod().unmodify(id);
 		stats.getBallisticWeaponFluxCostMod().unmodify(id);
-		if (ship.hasListenerOfClass(WeaponRangeManager.class)) ship.removeListenerOfClass(WeaponRangeManager.class);
+//		if (ship.hasListenerOfClass(WeaponRangeManager.class)) ship.removeListenerOfClass(WeaponRangeManager.class);
 	}
 
 	@Override
@@ -101,25 +99,25 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		return super.getStatusData(index, state, effectLevel);
 	}
 
-	private static class WeaponRangeManager implements WeaponRangeModifier {
-
-		@Override
-		public float getWeaponRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
-			if (weapon.hasAIHint(WeaponAPI.AIHints.PD) || weapon.hasAIHint(WeaponAPI.AIHints.PD_ONLY)) return 0f;
-			if (weapon.getSpec().getMaxRange() > 500f) return PP_WEAPON_RANGE_BONUS * 0.01f;
-			else return 0f;
-		}
-
-		@Override
-		public float getWeaponRangeMultMod(ShipAPI ship, WeaponAPI weapon) {
-			return 1f;
-		}
-
-		@Override
-		public float getWeaponRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
-			if (weapon.hasAIHint(WeaponAPI.AIHints.PD) || weapon.hasAIHint(WeaponAPI.AIHints.PD_ONLY)) return 0f;
-			if (weapon.getSpec().getMaxRange() <= 500f) return PP_MIN_WEAPON_RANGE_BONUS;
-			else return 0f;
-		}
-	}
+//	private static class WeaponRangeManager implements WeaponRangeModifier {
+//
+//		@Override
+//		public float getWeaponRangePercentMod(ShipAPI ship, WeaponAPI weapon) {
+//			if (weapon.hasAIHint(WeaponAPI.AIHints.PD) || weapon.hasAIHint(WeaponAPI.AIHints.PD_ONLY)) return 0f;
+//			if (weapon.getSpec().getMaxRange() > 500f) return PP_WEAPON_RANGE_BONUS * 0.01f;
+//			else return 0f;
+//		}
+//
+//		@Override
+//		public float getWeaponRangeMultMod(ShipAPI ship, WeaponAPI weapon) {
+//			return 1f;
+//		}
+//
+//		@Override
+//		public float getWeaponRangeFlatMod(ShipAPI ship, WeaponAPI weapon) {
+//			if (weapon.hasAIHint(WeaponAPI.AIHints.PD) || weapon.hasAIHint(WeaponAPI.AIHints.PD_ONLY)) return 0f;
+//			if (weapon.getSpec().getMaxRange() <= 500f) return PP_MIN_WEAPON_RANGE_BONUS;
+//			else return 0f;
+//		}
+//	}
 }

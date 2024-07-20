@@ -21,7 +21,7 @@ public class xel_UnityField extends xel_BaseShipSystemScript {
 	/*
 	 * 统合力场
 	 * 根据母舰的战机总存活数量，提供一个暂时性的镀层
-	 * +镀层生命值/战机 拦截机+5 战斗机+8 轰炸机+10
+	 * +镀层生命值/战机 拦截机+15 战斗机+20 轰炸机+30
 	 * 净化者协议： Unity Array Overload
 	 * 暂时给战机的护盾 +15% 抵抗力
 	 * 没有护盾的战机对装甲和结构 +25% 抵抗力

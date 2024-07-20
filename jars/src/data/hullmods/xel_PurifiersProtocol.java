@@ -67,6 +67,7 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
 
 		tooltip.addSectionHeading(i18n_hullmod.get("xel_pp_title"), new Color(255, 140, 20, 255), new Color(0, 255, 255, 128), Alignment.TMID, pad);
 		TooltipMakerAPI text;
+		// 冲锋
 		if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_RUSH)) {
 			text = tooltip.beginImageWithText("graphics/icons/hullsys/maneuvering_jets.png", 64f);
 			text.addPara(i18n_hullmod.get("xel_pp_change"), pad * 2f, h, xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_RUSH));
@@ -77,7 +78,9 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
 //            myText.addPara("%s", pad, h, "新增炫酷特效")；
 			text.setBulletedListMode(null);
 			tooltip.addImageWithText(pad);
-		} else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_UNITY_FIELD)) {
+		}
+		// 统合力场
+		else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_UNITY_FIELD)) {
 			text = tooltip.beginImageWithText("graphics/icons/hullsys/xel_DefensiveMatrix.png", 64f);
 			text.addPara(i18n_hullmod.get("xel_pp_change"), pad * 2f, h, xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_UNITY_FIELD));
 			text.addPara("[%s]", pad, h, i18n_hullmod.get("xel_pp_UF_change_name"));
@@ -86,17 +89,21 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
 			text.addPara(i18n_hullmod.get("xel_pp_UF_change2"), pad, good, "15%", "25%");
 			text.setBulletedListMode(null);
 			tooltip.addImageWithText(pad);
-		} else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_FAST_CHARGE)) {
+		}
+		// 快速充能
+		else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_FAST_CHARGE)) {
 			text = tooltip.beginImageWithText(Global.getSettings().getShipSystemSpec(ShipSystemUtil.XEL_FAST_CHARGE).getIconSpriteName(), 64f);
 			text.addPara(i18n_hullmod.get("xel_pp_change"), pad * 2f, h, xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_FAST_CHARGE));
 			text.addPara("[%s]", pad, h, i18n_hullmod.get("xel_pp_FC_change_name"));
 			text.setBulletedListMode("--");
 			text.addPara(i18n_hullmod.get("xel_pp_FC_change1"), pad, good, "100%");
 			text.addPara(i18n_hullmod.get("xel_pp_FC_change2"), pad, good, "66%");
-			text.addPara(i18n_hullmod.get("xel_pp_FC_change3"), pad, good, "20%", "100su");
+//			text.addPara(i18n_hullmod.get("xel_pp_FC_change3"), pad, good, "20%", "100su");
 			text.setBulletedListMode(null);
 			tooltip.addImageWithText(pad);
-		} else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_VOID_STASIS)) {
+		}
+		// 虚空静滞
+		else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_VOID_STASIS)) {
 			text = tooltip.beginImageWithText(Global.getSettings().getShipSystemSpec(ShipSystemUtil.XEL_VOID_STASIS).getIconSpriteName(), 64f);
 			text.addPara(i18n_hullmod.get("xel_pp_change"), pad * 2f, h, xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_VOID_STASIS));
 			text.addPara("[%s]", pad, h, i18n_hullmod.get("xel_pp_VS_change_name"));
@@ -105,7 +112,9 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
 			text.addPara(i18n_hullmod.get("xel_pp_VS_change2"), pad, bad, "2sec");
 			text.setBulletedListMode(null);
 			tooltip.addImageWithText(pad);
-		} else {
+		}
+		// 无
+		else {
 			tooltip.addPara(i18n_hullmod.get("xel_pp_no_change"), pad * 2f);
 		}
 	}
