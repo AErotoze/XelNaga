@@ -6,5 +6,6 @@ package data.utils.xel;
 public class Constants {
     public static final I18n i18n_hullmod = new I18n("xel_hullmod");
     public static final I18n i18n_shipSystem = new I18n("xel_shipSystem");
+    public static final I18n i18n_weapon = new I18n("xel_weapon");
 }
 

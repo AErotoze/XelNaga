@@ -19,8 +19,8 @@ public class xel_VoidArray extends xel_BaseHullmod {
 	 * 需要 星灵能量矩阵
 	 * 不兼容 改装机库
 	 */
-	private static final float REPLACEMENT_RATE_BONUS = 5f;
-	private static final float MAX_REPLACEMENT_RATE_BONUS = 25f;
+	private static final float REPLACEMENT_RATE_BONUS = 10f;
+	private static final float MAX_ADDITIONAL_BONUS = 20f;
 	private static final float CREW_LOST_MULT = 0f;
 	private static final float MAX_RANGE = 2000f;
 	private static final float FIGHTER_SPEED_DECREASE = 20f;
@@ -35,7 +35,7 @@ public class xel_VoidArray extends xel_BaseHullmod {
 
 	@Override
 	public void applyEffectsAfterShipCreation(ShipAPI ship, String id) {
-		float bonus = Math.min(REPLACEMENT_RATE_BONUS + ship.getVariant().getNumFluxCapacitors() + ship.getVariant().getNumFluxVents(), MAX_REPLACEMENT_RATE_BONUS);
+		float bonus = REPLACEMENT_RATE_BONUS + Math.min(ship.getVariant().getNumFluxCapacitors() + ship.getVariant().getNumFluxVents(), MAX_ADDITIONAL_BONUS);
 		ship.getMutableStats().getDynamic().getStat(Stats.REPLACEMENT_RATE_DECREASE_MULT).modifyMult(id, 1f - bonus * 0.01f);
 		ship.getMutableStats().getDynamic().getStat(Stats.REPLACEMENT_RATE_INCREASE_MULT).modifyPercent(id, bonus);
 	}
@@ -47,11 +47,11 @@ public class xel_VoidArray extends xel_BaseHullmod {
 
 	@Override
 	public String getDescriptionParam(int index, ShipAPI.HullSize hullSize, ShipAPI ship) {
-		int fluxNum = Math.min(20, ship.getVariant().getNumFluxCapacitors() + ship.getVariant().getNumFluxVents());
+		int fluxNum = Math.min((int) MAX_ADDITIONAL_BONUS, ship.getVariant().getNumFluxCapacitors() + ship.getVariant().getNumFluxVents());
 		if (index == 0) return (int) REPLACEMENT_RATE_BONUS + "%";
 		else if (index == 1) return (int) REPLACEMENT_RATE_BONUS + "%";
 		else if (index == 2) return fluxNum + "%";
-		else if (index == 3) return (int) MAX_REPLACEMENT_RATE_BONUS + "%";
+		else if (index == 3) return (int) MAX_ADDITIONAL_BONUS + "%";
 		else if (index == 4) return "100%";
 		else if (index == 5) return "1000su";
 		else if (index == 6) return (int) FIGHTER_SPEED_DECREASE + "%";

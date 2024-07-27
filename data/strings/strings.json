@@ -100,5 +100,11 @@
     "xel_voidshift_time_flow": "冷寂虚空-阴影化形:时间流速 x",
 
     "xel_test": "test"
+  },
+  "xel_weapon": {
+    "xel_disruptor": "在 %ss 内，部分软幅能发生转化",
+    "xel_disperser": "在 %ss 内，装甲防御效率降低",
+
+    "xel_test": "test"
   }
 }
