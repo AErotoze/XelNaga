@@ -61,7 +61,7 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --当前最大速度提高 %s
 --当前机动性提高 %s
 --提高 %s 零幅能加速",,提高舰船的机动性的最高航速,,graphics/hullmods/xel_GraviticBoosters.png
-相位反应堆,xel_PhaseReactor,,,星灵科技,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PhaseReactor,"相位反应堆可以安全地链接至虚空，吸收并储存虚空中的能量。虚空能量将重构舰船装甲，抵御更具威胁的攻击。在舰体受损的情况下，反应堆也能紧急调用虚空能量修复舰体，但这会令其效率大打折扣。
+相位反应堆,xel_PhaseReactor,,,星灵科技,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_PhaseReactor,"相位反应堆可以安全地储存虚空中的能量，这些能量将保护舰船装甲，抵御更具威胁的攻击。在舰体受损的情况下，反应堆也能紧急调用虚空能量修复舰体，但这会令其效率大打折扣。
 
 
 --提供 %s 舰船默认面板装甲值的装甲计算值
@@ -69,7 +69,22 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --每秒恢复 %s 最大结构值或 %s 结构值，取二者中较低值
 --恢复的总结构值达到 %s 最大结构值后，降低 %s 恢复效果和 %s 提供的装甲计算值",,,,graphics/hullmods/xel_PhaseReactor.png
 ,,,,,,,,,,,,,,,,,,,,
-#刚毅护盾,,,,,,,,,,,,,,,,,,,,
+熔流旋叶,xel_FluxVanes,,,星灵科技,,,,,,,0,0,0,0,data.hullmods.xel_FluxVanes,"辉光-级巡洋舰的推进器利用了英仙座的工艺进行改造，在降低制造成本的同时，又维持住了原本的效率。
+
+--零幅能加速激活时，提高 %s 最大速度
+--零幅能加速失效时，提高 %s 机动性
+--%s",,,,graphics/hullmods/xel_FluxVanes.png
+刚毅护盾,xel_HardenedShield,,,星灵科技,,,,,,,0,0,0,0,data.hullmods.xel_HardenedShield,"""我的决心无可动摇。""
+
+--护盾受到的最高伤害不超过 %s 最大幅能容量",,,,graphics/hullmods/xel_HardenedShield.png
+赛托斯氧化物,xel_SythosOxide,,,星灵科技,,,,,,,0,0,0,0,data.hullmods.xel_SythosOxide,"赛托斯氧化物似乎可以模糊维度间的界限，其神秘的性质一度将英仙座的科学家们笼罩在阴影中。
+
+
+--零幅能加速能够在 %s 幅能水平下生效
+--降低 %s 受到的除 EMP 伤害外的所有类型的伤害
+--%s",,,,graphics/hullmods/xel_SythosOxide.png
+,,,,,,,,,,,,,,,,,,,,
 #复仇协议,,,,,,,,,,,,,,,,,,,,
 #永恒屏障,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,
+debug插件,xel_DebugHullmod,,,debug,,,,,,,0,0,0,0,data.hullmods.xel_DebugHullmod,测试测试,,,,

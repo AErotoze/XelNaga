@@ -58,7 +58,6 @@ public class xel_GraviticBoosters extends xel_BaseHullmod {
 		stats.getMaxTurnRate().modifyMult(id, 1f + 0.01f * accelerationBonus);
 		stats.getAcceleration().modifyMult(id, 1f + 3f * 0.01f * accelerationBonus);
 		stats.getDeceleration().modifyMult(id, 1f + 2f * 0.01f * accelerationBonus);
-		stats.getMaxTurnRate().modifyMult(id, 1f + 0.01f * accelerationBonus);
 		stats.getTurnAcceleration().modifyMult(id, 1f + 3f * 0.01f * accelerationBonus);
 	}
 

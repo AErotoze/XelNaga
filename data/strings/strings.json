@@ -72,6 +72,9 @@
     "xel_pr_level_low": "低",
     "xel_pr_level_very_low": "极低",
 
+    "xel_fv_effect1": "提高最大速度",
+    "xel_fv_effect2": "提高机动性",
+
     "xel_test": "test"
   },
   "xel_shipSystem": {

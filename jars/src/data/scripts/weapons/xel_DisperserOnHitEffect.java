@@ -19,6 +19,7 @@ public class xel_DisperserOnHitEffect implements OnHitEffectPlugin {
 	private static final String DATA_KEY = "xel_DisperserOnHitEffect_data_key";
 	private static final float DURATION = 2f;
 	private static final float EFFECTIVE_ARMOR_DECREASE = 30f;
+	private static final Color EFFECT_COLOR = new Color(255, 66, 66, 128);
 
 	@Override
 	public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
@@ -63,7 +64,7 @@ public class xel_DisperserOnHitEffect implements OnHitEffectPlugin {
 
 				// 意义不明的特效
 				if (interval.intervalElapsed()) {
-					ship.setJitter(ship, Color.pink, time / DURATION, 4, ship.getCollisionRadius() * 0.05f);
+					ship.setJitter(ship, EFFECT_COLOR, time / DURATION, 2, ship.getCollisionRadius() * 0.05f);
 				}
 
 				if (ship == Global.getCombatEngine().getPlayerShip()) {

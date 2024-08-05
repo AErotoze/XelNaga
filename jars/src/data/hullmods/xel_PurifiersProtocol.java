@@ -21,8 +21,9 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
 	 * <p>
 	 * 若系统无可改造的版本[待商榷]
 	 * 提供一些增益吧
-	 * 提高5%CR
-	 * 奖励一部内置LPC
+	 * 提高5%CR（实现不了）
+	 * 奖励一部内置LPC（这个可以有……吧；更正：有不了一点）
+	 * 甲板+1，此甲板上的lpc获得buff，+船体结构，-装配点，整备速率不下降或下降满，整备恢复速率大幅提高？
 	 */
 
 	@Override

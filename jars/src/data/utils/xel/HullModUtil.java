@@ -12,4 +12,7 @@ public class HullModUtil {
     public static final String XEL_PHASE_REACTOR = "xel_PhaseReactor";
     public static final String XEL_GRAVITIC_BOOSTER = "xel_GraviticBoosters";
     public static final String XEL_BLOOD_SHARD = "xel_BloodShard";
+    public static final String XEL_FLUX_VANES = "xel_FluxVanes";
+    public static final String XEL_HARDENED_SHIELD = "xel_HardenedShield";
+    public static final String XEL_SYTHOS_OXIDE = "xel_SythosOxide";
 }
