@@ -7,13 +7,50 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="Graphics96" level="application" />
-    <orderEntry type="library" exported="" name="LazyLib96" level="application" />
-    <orderEntry type="library" exported="" name="MagicLib96" level="application" />
-    <orderEntry type="library" exported="" name="ss96" level="application" />
+    <orderEntry type="library" name="Graphics96" level="application" />
+    <orderEntry type="library" name="LazyLib96" level="application" />
+    <orderEntry type="library" name="MagicLib96" level="application" />
+    <orderEntry type="library" name="ss96" level="application" />
     <orderEntry type="library" name="MagicLib-Kotlin" level="application" />
     <orderEntry type="library" name="Graphics" level="application" />
     <orderEntry type="library" name="ss096" level="application" />
     <orderEntry type="library" name="LazyLib-Console" level="application" />
+    <orderEntry type="library" exported="" name="97core" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../GraphicsLib/jars" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../GraphicsLib/jars" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../LazyLib/jars" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../LazyLib/jars" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../LazyLib/jars" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../LazyLib/jars" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../MagicLib/jars" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../MagicLib/jars" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/../MagicLib/jars" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../MagicLib/jars" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -47,10 +47,10 @@ public class xel_FastCharge extends xel_BaseShipSystemScript {
 		String spriteName = Global.getSettings().getShipSystemSpec(ShipSystemUtil.XEL_FAST_CHARGE).getIconSpriteName();
 		String title = hasPP(ship) ? i18n_hullmod.get("xel_pp_FC_change_name") : xel_Misc.getShipSystemSpecName(ShipSystemUtil.XEL_FAST_CHARGE);
 
-		float rofBonus = 1f + 0.01f * (hasPP(ship) ? PP_WEAPON_ROF_BONUS : WEAPON_ROF_BONUS);
+		float rofBonus = 0.01f * (hasPP(ship) ? PP_WEAPON_ROF_BONUS : WEAPON_ROF_BONUS);
 		float fluxReduction = 1f - (hasPP(ship) ? PP_FLUX_REDUCTION : FLUX_REDUCTION);
-		stats.getBallisticRoFMult().modifyMult(id, rofBonus * effectLevel);
-		stats.getEnergyRoFMult().modifyMult(id, rofBonus * effectLevel);
+		stats.getBallisticRoFMult().modifyMult(id, 1f + rofBonus * effectLevel);
+		stats.getEnergyRoFMult().modifyMult(id, 1f + rofBonus * effectLevel);
 		stats.getBallisticWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
 		stats.getEnergyWeaponFluxCostMod().modifyMult(id, fluxReduction * effectLevel);
 		if (hasPP(ship)) {

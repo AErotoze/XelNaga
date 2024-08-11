@@ -43,9 +43,10 @@
     "xel_rc_flux_recovering": "幅能容量恢复中：%ss",
     "xel_rc_flux_recovered": "幅能容量恢复完毕",
 
-    "xel_pp_system": "战术系统",
-    "xel_pp_title": "实验系统信息",
-    "xel_pp_change": "[%s] 系统改造完成",
+    "xel_pp_title1": "实验性战术系统",
+    "xel_pp_change": "已加载 [%s] 战术系统",
+    "xel_pp_unchanged": "--无可搭载的实验性战术系统",
+
     "xel_pp_rush_change_name": "拥抱战斗的荣耀",
     "xel_pp_rush_change1": "暂时提供爆发性机动力并提高 %s 最大航速，在朝着敌人前进时额外提高 %s 最高航速",
     "xel_pp_rush_change2": "被动提高 %s 最高航速",
@@ -55,12 +56,15 @@
     "xel_pp_FC_change_name": "奇点超载",
     "xel_pp_FC_change1": "提高 %s 实弹和能量武器的射速",
     "xel_pp_FC_change2": "降低 %s 实弹和能量武器的开火幅能",
-    "xel_pp_FC_change3": "增加 %s 实弹和能量非PD武器射程，最低提高 %s", #old
     "xel_pp_VS_change_name": "凋零虹吸",
     "xel_pp_VS_change1": "处于静滞状态的目标在持续时间内每秒增加 %s 最大幅能值的硬幅能",
     "xel_pp_VS_change2": "静滞状态的持续时间减少至 %s",
 
-    "xel_pp_no_change": "该系统无可进行的实验性改造",
+    "xel_pp_title2": "战术数据网",
+    "xel_pp_TDW_effect1": "根据舰船级别提供 %s 数据点，总共最多有 %s 数据点",
+    "xel_pp_TDW_effect2": "搭载了 %s 的舰船仅提供 %s 数据点，且仅享受 %s 战术数据网效果",
+    "xel_pp_TDW_effect3": "每点数据点提高 %s 非导弹武器的射速，降低 %s 非导弹武器的后坐力，提高 %s 非导弹武器的射程",
+    "xel_pp_TDW_effect4": "当前已激活 %s 数据点",
 
     "xel_bs_target_locked": "已锁定目标",
     "xel_bs_target_out": "侦测距离内无目标",
@@ -88,7 +92,6 @@
 
     "xel_FC_active1": "实弹 & 能量 武器射速 +%s",
     "xel_FC_active2": "实弹 & 能量 武器开火幅能 -%s",
-    "xel_FC_active3": "实弹 & 能量 武器射程增加", #old
 
     "xel_phase_time_flow": "时空提速",
     "xel_phase_coil_stable": "时空稳定",
@@ -101,6 +104,9 @@
     "xel_VS_status": "舰船强制锁定",
 
     "xel_voidshift_time_flow": "冷寂虚空-阴影化形:时间流速 x",
+
+    "xel_PA_active1": "能量武器伤害提升：%s",
+    "xel_PA_active2": "能量武器射程提升：%s",
 
     "xel_test": "test"
   },

@@ -29,7 +29,8 @@ public class xel_HardenedShield extends xel_BaseHullmod {
 
 	@Override
 	public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-		return index == 0 ? String.format("%.1f", MAX_DAMAGE_TAKEN) + "%" : super.getDescriptionParam(index, hullSize);
+		if (index == 0) return String.format("%.1f", MAX_DAMAGE_TAKEN) + "%";
+		return index == 1 ? getNotCompatibleReason() : super.getDescriptionParam(index, hullSize);
 	}
 
 	@Override
@@ -64,10 +65,12 @@ public class xel_HardenedShield extends xel_BaseHullmod {
 					if (damage.getType() == DamageType.FRAGMENTATION) damageThreshold *= 4f;
 					damage.setDamage(damageThreshold);
 
-//					damage.getModifier().modifyMult(DATA_KEY + "_damageTakenBuff_key" + ship.getId(), 0f);
-//					Global.getCombatEngine().addFloatingDamageText(point, damageThreshold, Misc.getNegativeHighlightColor(), ship, damage.getStats().getEntity());
-//					ship.getFluxTracker().increaseFlux(damageThreshold, true);
-					return DATA_KEY + "_damageTakenBuff_key" + ship.getId();
+/*
+					damage.getModifier().modifyMult(DATA_KEY + "_damageTakenBuff_key" + ship.getId(), 0f);
+					Global.getCombatEngine().addFloatingDamageText(point, damageThreshold, Misc.getNegativeHighlightColor(), ship, damage.getStats().getEntity());
+					ship.getFluxTracker().increaseFlux(damageThreshold, true);
+*/
+                    return DATA_KEY + "_damageTakenBuff_key" + ship.getId();
 				}
 			}
 			return null;
