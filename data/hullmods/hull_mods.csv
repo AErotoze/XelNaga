@@ -46,10 +46,10 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 
 --舰船无最低船员需求，并降低 %s 可搭载最大船员数量
 --峰值时间耗尽后，提高 %s 战备值 (CR) 的衰减速率",,"改造舰船控制系统，使其变得更加""危险""",,graphics/hullmods/xel_PurifiersProtocol.png
-血水晶共鸣,xel_BloodShard,,,星灵科技,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_BloodShard,"也许把经由塔达林改造的高能水晶阵列搬上舰船是一个错误的决定，但在带来的提升面前，这些代价已经不值一提。
+血水晶共鸣底座,xel_BloodShard,,,星灵科技,,矩阵响应模组,,,,,5,8,15,25,data.hullmods.xel_BloodShard,"也许把经由塔达林改造的高能水晶阵列搬上舰船是一个错误的决定，但在带来的提升面前，这些代价已经不值一提。
 
 
---根据舰船级别，战斗视野范围提高 %s，并提高 %s 实弹和能量武器射程
+--根据舰船级别，提高 %s 战斗视野范围，并提高 %s 实弹和能量武器射程
 --自身对锁定目标额外造成 %s 伤害
 --提高 %s 的每月维护所需补给
 --降低 %s 峰值时间",,增强舰载战斗雷达，提高维护需求且降低峰值时间,,graphics/hullmods/xel_BloodShard.png

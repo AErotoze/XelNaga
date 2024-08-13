@@ -23,7 +23,7 @@ public class xel_DisruptorOnHitEffect implements OnHitEffectPlugin {
 	private static final float MIN_FLUX_TURNED_RATE = 0.05f;
 	private static final float SHIELD_EFFICIENCY_IN_MIN_TURNED_RATE = 1f;
 	private static final float SHIELD_EFFICIENCY_IN_MAX_TURNED_RATE = 0.5f;
-	private static final Color TARGET_COLOR = new Color(140, 38, 145);
+//	private static final Color TARGET_COLOR = new Color(140, 38, 145);
 
 	@Override
 	public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
@@ -60,7 +60,7 @@ public class xel_DisruptorOnHitEffect implements OnHitEffectPlugin {
 		public void advance(float amount) {
 			if (!ship.isAlive()) return;
 
-			if (time >= 0f) {
+			if (time > 0f) {
 				time -= amount;
 
 				String softFluxKey = DATA_KEY + ship.getId() + "_soft_flux";
@@ -83,8 +83,6 @@ public class xel_DisruptorOnHitEffect implements OnHitEffectPlugin {
 				}
 				ship.setCustomData(softFluxKey, currSoftFlux);
 
-				easyRender(amount);
-
 				if (ship == Global.getCombatEngine().getPlayerShip()) {
 					Global.getCombatEngine().maintainStatusForPlayerShip(
 							DATA_KEY + "_1",
@@ -98,24 +96,24 @@ public class xel_DisruptorOnHitEffect implements OnHitEffectPlugin {
 			}
 		}
 
-		private void easyRender(float amount) {
-			ShieldAPI shield = ship.getShield();
-			Color innerColor = ship.getHullSpec().getShieldSpec().getInnerColor();
-			int r = innerColor.getRed();
-			int g = innerColor.getGreen();
-			int b = innerColor.getBlue();
-			float fraction;
-			if (time >= (DURATION / 2f)) {
-				fraction = 1f - ((time - DURATION / 2f) / DURATION * 2f);
-			} else {
-				fraction = time / DURATION * 2f;
-			}
-			shield.setInnerColor(new Color(
-					MathUtils.clamp(Math.round((TARGET_COLOR.getRed() - r) * fraction) + r, 0, 255),
-					MathUtils.clamp(Math.round((TARGET_COLOR.getGreen() - g) * fraction) + g, 0, 255),
-					MathUtils.clamp(Math.round((TARGET_COLOR.getBlue() - b) * fraction) + b, 0, 255),
-					innerColor.getAlpha()
-			));
-		}
+//		private void easyRender(float amount) {
+//			ShieldAPI shield = ship.getShield();
+//			Color innerColor = ship.getHullSpec().getShieldSpec().getInnerColor();
+//			int r = innerColor.getRed();
+//			int g = innerColor.getGreen();
+//			int b = innerColor.getBlue();
+//			float fraction;
+//			if (time >= (DURATION / 2f)) {
+//				fraction = 1f - ((time - DURATION / 2f) / DURATION * 2f);
+//			} else {
+//				fraction = time / DURATION * 2f;
+//			}
+//			shield.setInnerColor(new Color(
+//					MathUtils.clamp(Math.round((TARGET_COLOR.getRed() - r) * fraction) + r, 0, 255),
+//					MathUtils.clamp(Math.round((TARGET_COLOR.getGreen() - g) * fraction) + g, 0, 255),
+//					MathUtils.clamp(Math.round((TARGET_COLOR.getBlue() - b) * fraction) + b, 0, 255),
+//					innerColor.getAlpha()
+//			));
+//		}
 	}
 }

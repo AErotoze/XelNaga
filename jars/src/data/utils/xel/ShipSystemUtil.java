@@ -11,6 +11,8 @@ public class ShipSystemUtil {
     public static final String XEL_FAST_CHARGE = "xel_FastCharge";
     public static final String XEL_VOID_STASIS = "xel_VoidStasis";
     public static final String XEL_PRISMATIC_ALIGNMENT = "xel_PrismaticAlignment";
+    public static final String XEL_VOID_ACCELERATOR = "xel_VoidAccelerator";
+    public static final String XEL_PROTECTIVE_FIELD = "xel_ProtectiveField";
 
-    public static final String[] XEL_UPGRADABLE_SYSTEMS = {XEL_RUSH, XEL_FAST_CHARGE, XEL_UNITY_FIELD, XEL_VOID_STASIS};
+    public static final String[] XEL_UPGRADABLE_SYSTEMS = {XEL_RUSH, XEL_UNITY_FIELD, XEL_VOID_STASIS, XEL_FAST_CHARGE};
 }

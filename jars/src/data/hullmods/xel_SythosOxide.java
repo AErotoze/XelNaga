@@ -19,7 +19,7 @@ public class xel_SythosOxide extends xel_BaseHullmod {
 	private static final String DATA_KEY = "xel_SythosOxide_data_key";
 	private static final float ZERO_FLUX_BOOST_LEVEL = 50f;
 	private static final float DAMAGE_REDUCTION = 25f;
-	private static final IntervalUtil interval = new IntervalUtil(0.5f, 0.5f);
+	private static final IntervalUtil interval = new IntervalUtil(1.5f, 1.5f);
 
 	@Override
 	public void init(HullModSpecAPI spec) {
@@ -44,7 +44,7 @@ public class xel_SythosOxide extends xel_BaseHullmod {
 	public void advanceInCombat(ShipAPI ship, float amount) {
 		if (!ship.isAlive()) return;
 
-		interval.advance(Global.getCombatEngine().getElapsedInLastFrame());
+		interval.advance(amount / ship.getMutableStats().getTimeMult().modified);
 		if (interval.intervalElapsed()) {
 			SpriteAPI sprite = ship.getSpriteAPI();
 			float offsetX = sprite.getWidth() / 2f - sprite.getCenterX();
@@ -63,7 +63,7 @@ public class xel_SythosOxide extends xel_BaseHullmod {
 					0f,
 					new Color(255, 255, 255, 204),
 					true,
-					0f, 0f, 0f, 0f, 0f, 0f, 0f, 1.5f,
+					0f, 0f, 0f, 0f, 0f, 0f, 0f, 4f,
 					CombatEngineLayers.BELOW_SHIPS_LAYER
 			);
 		}

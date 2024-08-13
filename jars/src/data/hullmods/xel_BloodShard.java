@@ -79,11 +79,11 @@ public class xel_BloodShard extends xel_BaseHullmod {
 
 	@Override
 	public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
-		if (index == 0) return xel_Misc.getHullSizeFlatString(visionMap);
+		if (index == 0) return xel_Misc.getHullSizeFlatString(visionMap) + "su";
 		else if (index == 1) return xel_Misc.getHullSizePercentString(rangeMap);
-		else if (index == 2) return "" + (int) DAMAGE_BONUS + "%";
+		else if (index == 2) return (int) DAMAGE_BONUS + "%";
 		else if (index == 3) return "100%";
-		else return index == 4 ? "" + (int) PEAK_DECEASE + "%" : super.getDescriptionParam(index, hullSize);
+		else return index == 4 ? (int) PEAK_DECEASE + "%" : super.getDescriptionParam(index, hullSize);
 	}
 
 	@Override

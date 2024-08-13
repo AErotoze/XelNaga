@@ -108,6 +108,10 @@
     "xel_PA_active1": "能量武器伤害提升：%s",
     "xel_PA_active2": "能量武器射程提升：%s",
 
+    "xel_VA_active": "武器射速 & 弹药恢复速率 加快",
+    "xel_VA_idle": "幅能耗散 加快",
+
+
     "xel_test": "test"
   },
   "xel_weapon": {

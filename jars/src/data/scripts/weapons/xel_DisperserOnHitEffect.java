@@ -14,12 +14,13 @@ import static data.utils.xel.Constants.i18n_weapon;
 public class xel_DisperserOnHitEffect implements OnHitEffectPlugin {
 	/*
 		命中目标后，目标的装甲计算值降低30%并在2s内逐渐恢复
+		优化？：学习烧蚀装甲的先进（？）经验，被打到装甲在3s内变成烧蚀装甲
 	 */
 
 	private static final String DATA_KEY = "xel_DisperserOnHitEffect_data_key";
 	private static final float DURATION = 2f;
 	private static final float EFFECTIVE_ARMOR_DECREASE = 30f;
-	private static final Color EFFECT_COLOR = new Color(255, 66, 66, 128);
+	private static final Color EFFECT_COLOR = new Color(150, 20, 20, 64);
 
 	@Override
 	public void onHit(DamagingProjectileAPI projectile, CombatEntityAPI target, Vector2f point, boolean shieldHit, ApplyDamageResultAPI damageResult, CombatEngineAPI engine) {
