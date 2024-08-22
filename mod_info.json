@@ -1,9 +1,9 @@
 {
   "id": "XelNaga",
-  "name": "萨尔纳伽",
+  "name": "萨尔纳伽的碎片",
   "version": "1.0Beta",
   "author": "AErotoze",
-  "description": "萨尔纳伽，为寻找纯粹的形体和纯粹的精华而来",
+  "description": "总有船长能在星区的边缘找到一些神秘的玩意，而这次遇到的东西可厉害了。\n",
   "gameVersion": "0.97a-RC11",
   "jars": [
     "jars/XelNaga.jar"

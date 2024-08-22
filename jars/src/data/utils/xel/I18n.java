@@ -6,7 +6,7 @@ import com.fs.starfarer.api.Global;
  * 有助于将文本外部化到 strings.json 以便进行翻译。
  */
 public class I18n {
-    private String categoty;
+    private final String categoty;
 
     public I18n(String category) {
         this.categoty = category;

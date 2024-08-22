@@ -1,16 +1,10 @@
 package data.hullmods;
 
-import com.fs.graphics.G;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.combat.MutableShipStatsAPI;
-import com.fs.starfarer.api.combat.MutableStat;
-import com.fs.starfarer.api.combat.ShipAPI;
-import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.util.IntervalUtil;
-import data.utils.xel.HullModUtil;
-import data.utils.xel.ShipSystemUtil;
+import data.scripts.shipsystems.xel_VoidShiftStats;
 
-import java.lang.reflect.Field;
 
 public class xel_DebugHullmod extends xel_BaseHullmod {
     private static final String DATA_KEY = "xel_DebugHullmod_data_key";
@@ -37,18 +31,12 @@ public class xel_DebugHullmod extends xel_BaseHullmod {
 
             if (!done) {
                 ship.setCustomData(doneKey, true);
-                for (String str : ShipSystemUtil.XEL_UPGRADABLE_SYSTEMS) {
-//                    getInfo("upgradable ship system: " + str);
-                    if (ship.getSystem() != null){
-                        getInfo("ship system ID: "+ ship.getSystem().getId());
-                        getInfo("ship system SpecID: "+ ship.getSystem().getSpecAPI().getId());
-                    }
-                }
+
             }
 
             interval.advance(amount);
             if (interval.intervalElapsed()) {
-
+                Global.getCombatEngine().spawnProjectile(ship, (WeaponAPI) null, "xel_Soul", ship.getLocation(), (float) (Math.random() * 360f), ship.getVelocity());
             }
 
         }

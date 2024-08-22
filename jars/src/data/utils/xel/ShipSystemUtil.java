@@ -1,6 +1,7 @@
 package data.utils.xel;
 
 import com.fs.starfarer.api.combat.ShipAPI;
+import com.fs.starfarer.api.combat.StatBonus;
 
 import java.util.Objects;
 
@@ -13,6 +14,8 @@ public class ShipSystemUtil {
     public static final String XEL_PRISMATIC_ALIGNMENT = "xel_PrismaticAlignment";
     public static final String XEL_VOID_ACCELERATOR = "xel_VoidAccelerator";
     public static final String XEL_PROTECTIVE_FIELD = "xel_ProtectiveField";
+    public static final String XEL_SOUL_ABSORPTION = "xel_SoulAbsorption";
 
     public static final String[] XEL_UPGRADABLE_SYSTEMS = {XEL_RUSH, XEL_UNITY_FIELD, XEL_VOID_STASIS, XEL_FAST_CHARGE};
+
 }

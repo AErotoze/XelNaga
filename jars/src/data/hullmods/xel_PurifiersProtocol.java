@@ -160,16 +160,24 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
             text.addPara(i18n_hullmod.get("xel_pp_VS_change2"), pad, bad, "2sec");
             text.setBulletedListMode(null);
             tooltip.addImageWithText(pad);
+        } else if (Objects.equals(ship.getSystem().getSpecAPI().getId(), ShipSystemUtil.XEL_SOUL_ABSORPTION)) {
+            text = tooltip.beginImageWithText(Global.getSettings().getShipSystemSpec(ShipSystemUtil.XEL_SOUL_ABSORPTION).getIconSpriteName(), 64f);
+            text.addPara(i18n_hullmod.get("xel_pp_change"), pad * 2f, h, i18n_hullmod.get("xel_pp_SA_change_name"));
+            text.setBulletedListMode("--");
+            text.addPara(i18n_hullmod.get("xel_pp_SA_change1"), pad, good, "0.1%");
+            text.addPara(i18n_hullmod.get("xel_pp_SA_change2"), pad, bad, "x2");
+            text.setBulletedListMode(null);
+            tooltip.addImageWithText(pad);
         } else {
             tooltip.addPara(i18n_hullmod.get("xel_pp_unchanged"), pad * 2f);
         }
 
         tooltip.addSectionHeading(i18n_hullmod.get("xel_pp_title2"), h, Misc.getDarkPlayerColor(), Alignment.TMID, pad);
         tooltip.setBulletedListMode("--");
-        tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect1"), pad*2f, h, xel_Misc.getHullSizeFlatString(dataPointMap), (int) MAX_DATA_POINT + "");
+        tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect1"), pad * 2f, h, xel_Misc.getHullSizeFlatString(dataPointMap), (int) MAX_DATA_POINT + "");
         tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect2"), pad, new Color[]{h, bad, bad}, i18n_hullmod.get("xel_pp_title1"), String.format("x%.1f", DATA_POINT_MULT), (int) (DATA_WEB_EFFECT_MULT * 100f) + "%");
         tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect3"), pad, good, String.format("%.2f%%", ROF_BUFF_PER_POINT), String.format("%.2f%%", RECOIL_BUFF_PER_POINT), (int) WEAPON_RANGE_BUFF_PER_POINT + "su");
-        tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect4"), pad * 4f, h, String.format("%.1f",getAllDataPoint(ship)));
+        tooltip.addPara(i18n_hullmod.get("xel_pp_TDW_effect4"), pad * 4f, h, String.format("%.1f", getAllDataPoint(ship)));
         tooltip.setBulletedListMode(null);
     }
 
@@ -191,7 +199,7 @@ public class xel_PurifiersProtocol extends xel_BaseHullmod {
         float result = 0f;
         for (FleetMemberAPI member : ship.getFleetMember().getFleetData().getMembersListCopy()) {
             if (member.getStats().getVariant().hasHullMod(HullModUtil.XEL_PURIFIERS_PROTOCOL)
-                && !member.isMothballed()) {
+                    && !member.isMothballed()) {
                 result += dataPointMap.get(member.getHullSpec().getHullSize()) * (isUpgradableSystem(member) ? DATA_POINT_MULT : 1f);
             }
         }

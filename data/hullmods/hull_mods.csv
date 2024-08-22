@@ -83,6 +83,16 @@ name,id,tier,rarity,tech/manufacturer,tags,uiTags,base value,unlocked,hidden,hid
 --零幅能加速能够在 %s 幅能水平下生效
 --降低 %s 受到的除 EMP 伤害外的所有类型的伤害
 --%s",,,,graphics/hullmods/xel_SythosOxide.png
+灵魂巧匠,xel_SoulAbsorption_text,,,星灵科技,,,,,,,0,0,0,0,data.hullmods.xel_SoulAbsorption_text,"""Krisal thok aran!""
+
+
+--灵魂吸食激活时，%s 内的所有舰船在被摧毁后掉落灵魂
+--根据舰船等级（包括 LPC ），被摧毁的舰船掉落 %s 灵魂
+--每吸食 1 点灵魂，提高 %s 伤害抵抗和 %s 幅能容量
+--单场战斗最多吸食 %s 点灵魂
+
+--这艘战舰为了能够快速且安全地进入虚空，尽可能压缩了体积，因此没有额外的空间再进行扩展
+--%s",,,,
 ,,,,,,,,,,,,,,,,,,,,
 #复仇协议,,,,,,,,,,,,,,,,,,,,
 #永恒屏障,,,,,,,,,,,,,,,,,,,,

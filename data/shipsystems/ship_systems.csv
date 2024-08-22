@@ -5,7 +5,8 @@ name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u 
 虚空静滞,xel_VoidStasis,,,,,,0.3,,,,0.25,,1.75,18,,,,,,,,,,,,,graphics/icons/hullsys/quantum_disruptor.png
 快速充能,xel_FastCharge,1,,,,,,,2,0.05,1,4.5,0.5,0,,,,,,,,,,,,,graphics/icons/hullsys/xel_FastCharge.png
 防护场,xel_ProtectiveField,,,,,,0.2,,,,1,10,1,12,,,,,,,,,,,,,graphics/icons/hullsys/fortress_shield.png
-,,,,,,,,,,,,,,,,,,,,,,,,,,,
+灵魂吸食,xel_SoulAbsorption,1,,,,,,,,,0.5,,0.5,1,TRUE,,,,,,,,,,,,graphics/icons/hullsys/flare_launcher.png
+势不可挡,xel_PowerOverwhelming,,,,,,0.05,,5,0.083,0.554,,0.2,1,,,,,,,,,,,,,graphics/icons/hullsys/emp_emitter.png
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,
 萨尔纳伽相位,xel_XelNagaPhase,,,,,,,,,,0.5,,0.5,2,TRUE,,TRUE,TRUE,TRUE,,,,TRUE,,TRUE,,graphics/icons/hullsys/phase_cloak.png
 虚空移相,xel_VoidShift,,,,,,,,,,0.5,,0.5,1,TRUE,,,,TRUE,,,,TRUE,,TRUE,,graphics/icons/hullsys/phase_cloak.png

@@ -1,0 +1,20 @@
+{
+	"id":"xel_Soul",
+	"specClass":"projectile",
+	"type":"MISSILE",
+	"size":"MEDIUM",
+	"turretSprite":"",
+	"hardpointSprite":"",
+	# glow sprites?
+	#"glowColor":[235,255,215,255],
+	"hardpointOffsets":[0,0],
+	"turretOffsets":[0,0],
+	"hardpointAngleOffsets":[0],
+	"turretAngleOffsets":[0],
+	"renderHints":[RENDER_LOADED_MISSILES],
+	"barrelMode":"ALTERNATING",
+	"animationType":"NONE",
+	"interruptibleBurst":false,
+	"projectileSpecId":"xel_Soul_core",
+	"fireSoundTwo":"resonator_fire",
+}

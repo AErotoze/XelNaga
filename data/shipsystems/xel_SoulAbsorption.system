@@ -1,0 +1,30 @@
+{
+	"id":"xel_SoulAbsorption",
+	"type":"STAT_MOD",
+	"aiType":"CUSTOM",
+
+	"aiScript":"data.scripts.shipsystems.ai.xel_SoulAbsorptionAI",
+	"statsScript":"data.scripts.shipsystems.xel_SoulAbsorption",
+
+	"engineGlowColor":[43,0,52,255],
+	"engineGlowContrailColor":[43,0,52,25],
+	"engineGlowLengthMult":1.1,
+	"engineGlowWidthMult":1.2,
+	"engineGlowGlowMult":1.0,
+
+	#"useSound":"AL_hundun_system_switchYing",
+	#"loopSound":"beam_heavy_loop",
+	#"deactivateSound":"AL_hundun_system_switchYang",
+	#"outOfUsesSound":"gun_out_of_ammo",
+
+	"useSound":"shield_raise",
+	"deactivateSound":"shield_lower",
+	# Stian disabled these two because the timing of activate/deactivate did not work together with the loop sound.
+	# Enable them to test the issue. The deactivateSound plays late, after the loopsound has already stopped,
+	# creating a stuttering effect.
+	#"loopSound":"AL_geneagle_system_loop",
+	"outOfUsesSound":"gun_out_of_ammo",
+
+	"aiHints":{
+	}
+}

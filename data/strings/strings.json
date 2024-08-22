@@ -59,6 +59,10 @@
     "xel_pp_VS_change_name": "凋零虹吸",
     "xel_pp_VS_change1": "处于静滞状态的目标在持续时间内每秒增加 %s 最大幅能值的硬幅能",
     "xel_pp_VS_change2": "静滞状态的持续时间减少至 %s",
+    "xel_pp_SA_change_name": "灵魂之匣",
+    "xel_pp_SA_change1": "每点灵魂额外提高 %s 武器伤害",
+    "xel_pp_SA_change2": "从友方单位掉落的灵魂 %s",
+
 
     "xel_pp_title2": "战术数据网",
     "xel_pp_TDW_effect1": "根据舰船级别提供 %s 数据点，总共最多有 %s 数据点",
@@ -110,6 +114,8 @@
 
     "xel_VA_active": "武器射速 & 弹药恢复速率 加快",
     "xel_VA_idle": "幅能耗散 加快",
+
+    "xel_PF_active": "减弱敌对射弹的杀伤力",
 
 
     "xel_test": "test"

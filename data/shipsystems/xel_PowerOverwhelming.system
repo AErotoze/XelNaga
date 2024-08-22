@@ -1,0 +1,22 @@
+{
+	"id":"xel_PowerOverwhelming",
+	"type":"STAT_MOD",
+	"aiType":"MINE_STRIKE",
+
+	"statsScript":"data.scripts.shipsystems.xel_PowerOverwhelming",
+
+	"fadeActivationSoundOnChargedown":true,
+	"useSound":"system_interdictor",
+	"outOfUsesSound":"gun_out_of_ammo",
+
+	"aiHints":{
+		"threatRange":1200f,
+		"threatAmount":10,
+		"threatAngle":0,
+		"threatArc":360,
+	}
+}
+
+
+
+

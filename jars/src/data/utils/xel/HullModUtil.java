@@ -15,4 +15,5 @@ public class HullModUtil {
     public static final String XEL_FLUX_VANES = "xel_FluxVanes";
     public static final String XEL_HARDENED_SHIELD = "xel_HardenedShield";
     public static final String XEL_SYTHOS_OXIDE = "xel_SythosOxide";
+    public static final String XEL_SOUL_ABSORPTION_TEXT = "xel_SoulAbsorption_text";
 }
