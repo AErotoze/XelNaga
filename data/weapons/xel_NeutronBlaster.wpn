@@ -1,0 +1,27 @@
+{
+	"id":"xel_NeutronBlaster",  # this id must match what's in the spreadsheet
+	"specClass":"projectile",
+	"type":"ENERGY",
+	"size":"SMALL",
+	"turretSprite":"graphics/weapons/xel_NeutronBlaster_turret.png",
+	"turretGlowSprite":"graphics/weapons/xel_NeutronBlaster_turret_glow.png",
+	"hardpointSprite":"graphics/weapons/xel_NeutronBlaster_hardpoint.png",
+	"hardpointGlowSprite":"graphics/weapons/xel_NeutronBlaster_hardpoint_glow.png",
+	"glowColor":[100,200,255,255],
+	"turretOffsets":[10, 0],
+	"turretAngleOffsets":[0],
+	"hardpointOffsets":[13, 0],
+	"hardpointAngleOffsets":[0],
+	"barrelMode":"ALTERNATING", # or LINKED.  whether barrels fire at the same time or alternate.
+	"animationType":"GLOW_AND_FLASH",
+	"muzzleFlashSpec":{"length":23.0,   # only used if animationType = MUZZLE_FLASH
+					   "spread":5.0,
+					   "particleSizeMin":10.0,
+					   "particleSizeRange":12.0,
+					   "particleDuration":0.12,
+					   "particleCount":12,
+					   "particleColor":[100,200,255,255]},
+	"autocharge":true,  # whether the weapon will continue charging and fire if the LMB is tapped instead of held
+	"projectileSpecId":"xel_Blaster_s_shot",  # projectile that will be fired
+	"fireSoundTwo":"ir_pulse_laser_fire",
+}

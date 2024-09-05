@@ -22,6 +22,6 @@
 					   "particleCount":17,
 					   "particleColor":[100,200,255,255]},
 	"autocharge":true,  # whether the weapon will continue charging and fire if the LMB is tapped instead of held
-	"projectileSpecId":"xel_AnionPulse_shot",  # projectile that will be fired
+	"projectileSpecId":"xel_Pulse_s_shot",  # projectile that will be fired
 	"fireSoundTwo":"ion_cannon_fire",
 }

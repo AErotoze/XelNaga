@@ -1,13 +1,10 @@
-package data.scripts.weapons;
+package data.scripts.weapons.proj;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.combat.listeners.AdvanceableListener;
 import com.fs.starfarer.api.combat.listeners.ApplyDamageResultAPI;
-import org.lazywizard.lazylib.MathUtils;
 import org.lwjgl.util.vector.Vector2f;
-
-import java.awt.*;
 
 import static data.utils.xel.Constants.i18n_weapon;
 

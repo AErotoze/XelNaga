@@ -3,6 +3,7 @@ package data.scripts.shipsystems;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
 import com.fs.starfarer.api.impl.campaign.ids.Stats;
+import com.fs.starfarer.api.util.Misc;
 import data.utils.xel.xel_Misc;
 import org.lazywizard.lazylib.MathUtils;
 import org.lazywizard.lazylib.VectorUtils;
@@ -13,7 +14,7 @@ import java.awt.*;
 public class xel_PowerOverwhelming extends xel_BaseShipSystemScript {
     /*
         势不可挡[无升级]
-        生成1道2000能量伤害2000emp伤害的根据目标硬幅能的概率穿盾电弧，击中目标前会分成3道电弧（总伤 / 3）
+        3道500能量伤害500emp伤害电弧
         充能次数5 使用间隔1.754s 充能时间 12s
      */
 
@@ -34,65 +35,59 @@ public class xel_PowerOverwhelming extends xel_BaseShipSystemScript {
 
             if (target == null) return;//应该不需要，有isUsable
 
-            float thickness = Math.max(target.getCollisionRadius() * 0.2f, 40f);
+            float thickness = Math.max(target.getCollisionRadius() * 0.2f, 20f);
+            float dist = Misc.getDistance(ship.getLocation(), target.getLocation());
+
+//            boolean hitShield = target.getShield() != null && target.getShield().isWithinArc(Vector2f.sub(target.getLocation(), ship.getLocation(), null));
             float pierceChance = target.getHardFluxLevel() - 0.1f;
             pierceChance *= ship.getMutableStats().getDynamic().getValue(Stats.SHIELD_PIERCED_MULT);
 
-            float shieldAngle = target.getShield() != null ? 45f : Math.max(180f, target.getShield().getActiveArc()) / 2f;
-            float angle = VectorUtils.getAngle(target.getLocation(), ship.getLocation());
-            float minAngle = angle - shieldAngle;
-            float maxAngle = angle + shieldAngle;
-
-            //point由地图原点出发指向中心为target的规定圆锥内的某处
-            Vector2f point = MathUtils.getRandomPointInCone(
-                    target.getLocation(),
-                    target.getCollisionRadius(),
-                    minAngle, maxAngle);
-            //将point规定在距离taget一定距离内
-            Vector2f.add(
-                    target.getLocation(),
-                    VectorUtils.clampLength(
-                            Vector2f.sub(point, target.getLocation(), null),
-                            target.getCollisionRadius() * 1.25f, target.getCollisionRadius() * 1.35f),
-                    point);
-
-            engine.spawnEmpArcVisual(
-                    MathUtils.getRandomPointInCircle(ship.getLocation(), ship.getCollisionRadius() * 1.1f),
-                    ship,
-                    point,
-                    null,
-                    thickness, empColor, empColor);
-
             for (int i = 0; i < 3; i++) {
+                float angle1 = Misc.getAngleInDegrees(ship.getLocation(), target.getLocation());
+                float angle2 = Misc.getAngleInDegrees(target.getLocation(), ship.getLocation());
+                float rad1 = ship.getShield() == null ? dist * 0.33f : Math.max(dist * 0.33f, ship.getShield().getRadius());
+                float rad2 = target.getShield() == null ? dist * 0.33f : Math.max(dist * 0.33f, target.getShield().getRadius());
+                Vector2f point1 = MathUtils.getRandomPointInCone(ship.getLocation(), rad1, angle1 - 10f, angle1 + 10f);
+                Vector2f point2 = MathUtils.getRandomPointInCone(target.getLocation(), rad2, angle2 - 5f, angle2 + 5f);
+
+                engine.spawnEmpArcVisual(
+                        MathUtils.getRandomPointInCone(ship.getLocation(), ship.getCollisionRadius() * 1.2f, angle1 - 30f, angle1 + 30f),
+                        ship,
+                        point1,
+                        null,
+                        thickness,
+                        empColor, empColor);
+                engine.spawnEmpArcVisual(point1, null, point2, null, thickness, empColor, empColor);
+
                 if (pierceChance > Math.random()) {
                     engine.spawnEmpArcPierceShields(
                             ship,
-                            point,
-                            null,
+                            point2,
+                            target,
                             target,
                             DamageType.ENERGY,
-                            DAMAGE / 3f,
-                            EMP / 3f,
-                            100000f,
+                            500f,
+                            500f,
+                            10000f,
                             "tachyon_lance_emp_impact",
-                            thickness / 3f,
-                            empColor, empColor);
+                            thickness, empColor, empColor
+                    );
                 } else {
                     engine.spawnEmpArc(
                             ship,
-                            point,
-                            null,
+                            point2,
+                            target,
                             target,
                             DamageType.ENERGY,
-                            DAMAGE / 3f,
-                            EMP / 3f,
-                            100000f,
+                            500f,
+                            500f,
+                            10000f,
                             "tachyon_lance_emp_impact",
-                            thickness / 3f,
-                            empColor, empColor
+                            thickness, empColor, empColor
                     );
                 }
             }
+
         }
     }
 

@@ -1,0 +1,42 @@
+{
+	"id":"xel_AntiMatterMissile",
+	"specClass":"missile",
+	"missileType":"MISSILE",
+	"onHitEffect":"data.scripts.weapons.proj.xel_AntiMatterMissileOnHitEffect",
+	"sprite":"graphics/missiles/xel_AntiMatterMissile.png",
+	"size":[6,12],
+	"center":[3,6],
+	"collisionRadius":10,
+	"collisionClass":"MISSILE_NO_FF",
+	"explosionColor":[255,155,155,255],  # purely visual, will get a white additively blended core on top of this color
+	"explosionRadius":40, # purely visual
+	"flameoutTime":0.5, # fadeout duration
+	"noEngineGlowTime":0.5, # time spent without the engine glow being rendered
+	"fadeTime":0.5, # fadeout duration
+	#"alwaysAccelerate":true,
+  	"engineSpec":{"turnAcc":2000,
+				  "turnRate":300,
+				  "acc":2500,
+				  "dec":800},
+	"engineSlots":[{"id":"ES1",
+					"loc":[-5, 0],
+				    "style":"CUSTOM",
+					"styleSpec":{
+						"mode":"QUAD_STRIP", # PARTICLES or QUAD_STRIP, determines which params are used
+						"engineColor":[45,210,215,255],
+						"glowSizeMult":1,
+						"contrailDuration":0.5,
+						"contrailWidthMult":1,
+						"contrailWidthAddedFractionAtEnd":2.5,  # can be negative. makes trail spread out/narrow at the end
+						"contrailMinSeg":5, # min segment length, in pixels
+						"contrailMaxSpeedMult":0.5f,
+						"contrailAngularVelocityMult":0.5f,
+						#"contrailSpawnDistMult":0f, # how far away from engine it starts
+						"contrailColor":[75,75,75,150],
+						"type":"SMOKE" # GLOW or SMOKE; additive or regular blend mode
+					},
+				    "width":4.0,
+				    "length":10.0,
+				    "angle":180.0},
+				    ]
+}

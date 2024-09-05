@@ -1,5 +1,5 @@
 {
-	"id":"xel_AnionPulse_shot",
+	"id":"xel_Pulse_s_shot",
 	"specClass":"projectile",
 	"onHitEffect":"com.fs.starfarer.api.impl.combat.IonCannonOnHitEffect",
 	"spawnType":"BALLISTIC_AS_BEAM",
