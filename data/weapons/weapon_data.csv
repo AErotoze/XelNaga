@@ -4,7 +4,9 @@ name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn r
 阴离子脉冲,xel_AnionPulse,2,0.6,1000,450,,50,500,0,60,7,10,1.6667,5,ENERGY,50,,0.05,0.05,,,,,,,,1000,,,,,,,"energy9,ind",,达拉姆,,瘫痪,,,,,当命中船体或装甲时，有 %s 的概率产生打击武器与引擎的电弧，造成该武器命中目标时等值的额外伤害。,25%,,,,1.003
 反物质导弹发射器,xel_AntiMatterMissileLauncher,1,,5000,1200,,500,,15,50,6,6,,,ENERGY,0,,0,4.5,2,0.5,0,0,0,0,,400,150,5,100,,,"DO_NOT_AIM, DO_NOT_CONSERVE",missile9,,达拉姆,,反重型目标,快,优秀,,,命中装甲或结构时，额外引发 %s 高爆伤害的爆炸。若目标质量大于 %s ，则提高 %s 爆炸伤害，此后每多出 %s 质量就额外提高 %s 爆炸伤害，最多提高 %s,500|500|50%|100|10%|300%,,,TRUE,1.004
 中子冲击炮,xel_NeutronBlaster,1,,1000,600,,100,,0,50,6,,,,ENERGY,100,,0,0.5,,,,,,,,1000,,,,,,,energy8,,达拉姆,,通用,,,,,,,,,,1.005
-#IR Pulse Laser,irpulse,1,,250,500,,50,,0,50,5,,,,ENERGY,40,,0.333333,0,,,,,,,,1000,,,,,,,"energy8, hightech_bp, merc, ind",,,,General,,,,,,,,,,19.25
+卫戍激光 PD,xel_GarrisonLaser,2,,1800,450,,40,,1,150,6,,,,FRAGMENTATION,5,,0,0.1,,,0,5,1,5,,1600,,,,,,"PD,ANTI_FTR","pd9,SR",,达拉姆,,点防御,,,,,,,,,,1.006
+#Vulcan Cannon,vulcan,1,,200,250,,25,,1,75,4,,,,FRAGMENTATION,1,,0,0.05,1,,0,15,1,15,,800,,,10,,,PD,"pd7, SR, lowtech_bp, merc, ind",,,,Point Defense,,,,,,,,,,1
+#Burst PD Laser,pdburst,2,,600,500,350,,,0,100,6,4,0.5,,ENERGY,,200,0.1,0.1,0.3,0.1,,,,,10000,,,,,,,"PD,ANTI_FTR","pd9, beam6, rare_bp, merc, ind",,,,Point Defense,,,,,,,,,,19.6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 灵魂,xel_Soul,,,,3000,,200,,30,,,,,,FRAGMENTATION,,,,,,,,,,,,800,600,10,200,SYSTEM,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

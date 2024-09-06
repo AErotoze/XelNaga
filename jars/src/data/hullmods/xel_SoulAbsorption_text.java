@@ -23,10 +23,11 @@ public class xel_SoulAbsorption_text extends xel_BaseHullmod {
     public String getDescriptionParam(int index, ShipAPI.HullSize hullSize) {
         if (index == 0) return "1600su";
         else if (index == 1) return "1/2/4/6/10";
-        else if (index == 2) return "0.15%";
-        else if (index == 3) return "0.2%";
-        else if (index == 4) return "100";
-        else return index == 5 ? getNotCompatibleReason() : null;
+        else if (index == 2) return "1";
+        else if (index == 3) return "0.15%";
+        else if (index == 4) return "1";
+        else if (index == 5) return "100";
+        else return index == 6 ? getNotCompatibleReason() : null;
     }
 
     @Override
