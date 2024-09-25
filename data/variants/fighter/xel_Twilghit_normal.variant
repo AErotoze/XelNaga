@@ -1,0 +1,22 @@
+{
+  "variantId": "xel_Twilight_normal",
+  "hullId": "xel_Twilight",
+  "displayName": "星灵战机",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": false,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "xel_AntiMatterMissileLauncher"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

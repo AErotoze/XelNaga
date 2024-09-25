@@ -34,7 +34,6 @@ public class xel_AntiMatterMissileOnHitEffect implements OnHitEffectPlugin {
             if (shieldHit) return;
             if (projectile.getSource() == null) return;
 
-
             float floor = (float) Math.floor((target.getMass() - MASS_THRESHOLD) / MASS_DEGREE_FLOOR);// 向下取整，质量超过500的100间隔有多少
             float damageFraction = 1f + Math.max(DAMAGE_INCREASE_BASE + floor * DAMAGE_INCREASE_PER_FLOOR, MAX_DAMAGE_INCREASE) * 0.01f;// 每个100间隔提高伤害
 

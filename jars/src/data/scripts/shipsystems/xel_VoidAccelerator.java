@@ -50,7 +50,6 @@ public class xel_VoidAccelerator extends xel_BaseShipSystemScript {
                     Constants.i18n_shipSystem.get("xel_VA_idle"),
                     false);
         }
-
     }
 
     @Override

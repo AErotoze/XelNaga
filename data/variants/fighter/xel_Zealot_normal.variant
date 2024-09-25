@@ -1,0 +1,23 @@
+{
+  "variantId": "xel_Zealot_normal",
+  "hullId": "xel_Zealot",
+  "displayName": "星灵战机",
+  "goalVariant": false,
+  "fluxCapacitors": 0,
+  "fluxVents": 0,
+  "quality": 1,
+  "permaMods": [],
+  "hullMods": [],
+  "weaponGroups": [
+    {
+      "autofire": true,
+      "mode": "LINKED",
+      "weapons": {
+        "WS0001": "xel_PsiBlade",
+        "WS0002": "xel_PsiBlade"
+      }
+    }
+  ],
+  "modules": [],
+  "wings": []
+}

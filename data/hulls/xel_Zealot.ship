@@ -1,96 +1,59 @@
 {
   "hullName": "xel_Zealot",
   "hullId": "xel_Zealot",
-  "hullSize": "FRIGATE",
-  "spriteName": "graphics/ships/xel_Zealot.png",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/xel_fighter/xel_Zealot.png",
   "style": "XelNaga",
-  "height": 136,
-  "width": 90,
-  "center": [45, 68],
-  "collisionRadius": 98,
-  "shieldCenter": [0, 0],
-  "shieldRadius": 84,
+  "height": 44,
+  "width": 38,
+  "center": [18, 22],
+  "collisionRadius": 31.5,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 26,
   "viewOffset": 0,
   "builtInMods": [
-    "xel_ProtossEnergyArray"
+    "xel_ProtossEnergyArray",
+    "no_weapon_flux"
   ],
-  "builtInWeapons": {
-    "WS0003": "xel_SolariteReaper"
-  },
   "weaponSlots": [
     {
       "id": "WS0001",
       "size": "SMALL",
-      "type": "BALLISTIC",
+      "type": "ENERGY",
       "mount": "TURRET",
-      "arc": 210,
-      "angle": 90,
-      "locations": [-23, 23]
+      "arc": 0,
+      "angle": -9,
+      "locations": [8.5, 10.5]
     },
     {
       "id": "WS0002",
       "size": "SMALL",
-      "type": "BALLISTIC",
-      "mount": "TURRET",
-      "arc": 210,
-      "angle": -90,
-      "locations": [-23, -23]
-    },
-    {
-      "id": "WS0003",
-      "size": "LARGE",
-      "type": "BUILT_IN",
-      "mount": "HARDPOINT",
-      "arc": 5,
-      "angle": 0,
-      "locations": [44, -0]
-    },
-    {
-      "id": "WS0004",
-      "size": "SMALL",
-      "type": "DECORATIVE",
+      "type": "ENERGY",
       "mount": "TURRET",
       "arc": 0,
-      "angle": 0,
-      "locations": [-18.5, -0]
+      "angle": 9,
+      "locations": [8.5, -10.5]
     }
   ],
   "engineSlots": [
     {
-      "location": [-65, 16],
-      "length": 70,
-      "width": 10,
-      "angle": -180,
-      "contrailSize": 10,
-      "style": "CUSTOM",
-      "styleId": "XelNaga"
-    },
-    {
-      "location": [-65, -16],
-      "length": 70,
-      "width": 10,
+      "location": [-13, -0],
+      "length": 15,
+      "width": 4,
       "angle": 180,
-      "contrailSize": 10,
+      "contrailSize": 20,
       "style": "CUSTOM",
       "styleId": "XelNaga"
     }
   ],
   "bounds": [
-    13, -10,
-    47, -6,
-    67, -3,
-    48, -17,
-    21, -28,
-    -32, -43,
-    -66, -16,
-    -58, -0,
-    -66, 16,
-    -32, 43,
-    21, 28,
-    48, 17,
-    67, 3,
-    47, 6,
-    13, 10,
-    20, -0
+    -19, -10.5,
+    -3, -17,
+    21, -8.5,
+    0, -0,
+    21, 8.5,
+    -3, 17,
+    -19, 10.5,
+    -21, -0
   ]
 }

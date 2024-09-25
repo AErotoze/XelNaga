@@ -1,12 +1,13 @@
 name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn rate,OPs,ammo,ammo/sec,reload size,type,energy/shot,energy/second,chargeup,chargedown,burst size,burst delay,min spread,max spread,spread/shot,spread decay/sec,beam speed,proj speed,launch speed,flight time,proj hitpoints,autofireAccBonus,extraArcForAI,hints,tags,groupTag,tech/manufacturer,for weapon tooltip>>,primaryRoleStr,speedStr,trackingStr,turnRateStr,accuracyStr,customPrimary,customPrimaryHL,customAncillary,customAncillaryHL,noDPSInTooltip,number
 太阳能战斧,xel_SolariteReaper,0,,100000,400,2200,,,0,0,,,,,ENERGY,,2000,0.1,0.1,0.15,0.85,,,,,10000,,,,,,,"SYSTEM,SHOW_IN_CODEX",,EP_SolariteReaper_Only,达拉姆,,通用,,,,,[%s]:在舰船的系统激活时间内，攻击目标额外造成 %s 次爆炸，每次爆炸根据自身辐能水平对附近目标造成 %s 至 %s 的能量伤害，在 %s 辐能水平下造成最大伤害。,旋风斩|2|50|350|50%,,,,1.001
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 清洁射线枪,xel_SanitizationLance,1,,300,1000,200,,,0,20,4,,,,FRAGMENTATION,,40,0.1,0.1,,,,,,,3600,,,,,,,,beam9,,达拉姆,,通用,,,,,,,,,,1.002
 阴离子脉冲,xel_AnionPulse,2,0.6,1000,450,,50,500,0,60,7,10,1.6667,5,ENERGY,50,,0.05,0.05,,,,,,,,1000,,,,,,,"energy9,ind",,达拉姆,,瘫痪,,,,,当命中船体或装甲时，有 %s 的概率产生打击武器与引擎的电弧，造成该武器命中目标时等值的额外伤害。,25%,,,,1.003
-反物质导弹发射器,xel_AntiMatterMissileLauncher,1,,5000,1200,,500,,15,50,6,6,,,ENERGY,0,,0,4.5,2,0.5,0,0,0,0,,400,150,5,100,,,"DO_NOT_AIM, DO_NOT_CONSERVE",missile9,,达拉姆,,反重型目标,快,优秀,,,命中装甲或结构时，额外引发 %s 高爆伤害的爆炸。若目标质量大于 %s ，则提高 %s 爆炸伤害，此后每多出 %s 质量就额外提高 %s 爆炸伤害，最多提高 %s,500|500|50%|100|10%|300%,,,TRUE,1.004
+反物质导弹发射器,xel_AntiMatterMissileLauncher,1,,5000,1200,,500,,15,50,6,4,,,ENERGY,0,,0,1.5,2,0.5,0,0,0,0,,480,200,5,100,,,"DO_NOT_AIM, DO_NOT_CONSERVE",missile9,,达拉姆,,反重型目标,快,优秀,,,命中装甲或结构时，额外引发 %s 高爆伤害的爆炸。若目标质量大于 %s ，则提高 %s 爆炸伤害，此后每多出 %s 质量就额外提高 %s 爆炸伤害，最多提高 %s,500|500|50%|100|10%|300%,,,TRUE,1.004
 中子冲击炮,xel_NeutronBlaster,1,,1000,600,,100,,0,50,6,,,,ENERGY,100,,0,0.5,,,,,,,,1000,,,,,,,energy8,,达拉姆,,通用,,,,,,,,,,1.005
-卫戍激光 PD,xel_GarrisonLaser,2,,1800,450,,40,,1,150,6,,,,FRAGMENTATION,5,,0,0.1,,,0,5,1,5,,1600,,,,,,"PD,ANTI_FTR","pd9,SR",,达拉姆,,点防御,,,,,,,,,,1.006
+卫戍激光 PD,xel_GarrisonLaser,2,,1800,400,250,,,1,100,6,,,,ENERGY,,100,0,0.1,0.25,,,,,,10000,,,,,,,"PD,ANTI_FTR","pd9,SR",,达拉姆,,点防御,,,,,,,,,,1.006
 #Vulcan Cannon,vulcan,1,,200,250,,25,,1,75,4,,,,FRAGMENTATION,1,,0,0.05,1,,0,15,1,15,,800,,,10,,,PD,"pd7, SR, lowtech_bp, merc, ind",,,,Point Defense,,,,,,,,,,1
-#Burst PD Laser,pdburst,2,,600,500,350,,,0,100,6,4,0.5,,ENERGY,,200,0.1,0.1,0.3,0.1,,,,,10000,,,,,,,"PD,ANTI_FTR","pd9, beam6, rare_bp, merc, ind",,,,Point Defense,,,,,,,,,,19.6
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 灵魂,xel_Soul,,,,3000,,200,,30,,,,,,FRAGMENTATION,,,,,,,,,,,,800,600,10,200,SYSTEM,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -14,8 +15,12 @@ name,id,tier,rarity,base value,range,damage/second,damage/shot,emp,impact,turn r
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #战机,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-拦截机射线,xel_InterceptorBeam,1,,0,500,,50,,0,0,0,,,,ENERGY,40,,0,1,,,,,,,,1000,,,,,,SYSTEM,,,,,打击,,,,,,,,,,2.001
-强击机射线,xel_InterdictorBeam,1,,0,500,,200,,0,0,0,,,,ENERGY,160,,0,3,,,,,,,,1000,,,,,,SYSTEM,,,,,轰炸,,,,,,,,,,
+拦截机射线,xel_InterceptorBeam,1,,0,500,,50,,0,0,0,,,,ENERGY,40,,0,1,,,,,,,,1000,,,,,,SYSTEM,,,,,拦截,,,,,,,,,,2.001
+强击机射线,xel_InterdictorBeam,1,,0,500,,200,,0,0,0,,,,ENERGY,160,,0,3,,,,,,,,1000,,,,,,SYSTEM,,,,,强击,,,,,,,,,,2.002
+灵能利刃,xel_PsiBlade,2,,600,150,400,,,0,0,0,,,,ENERGY,,400,0.2,0.2,0.6,0.2,,,,,10000,,,,,,,SYSTEM,,,,,近战/反装甲,,,,,,,,,,2.003
+#Burst PD Laser (High Delay),pdburst_fighter,2,,600,500,110,,,0,100,6,4,0.5,,ENERGY,,100,0.1,0.1,0.8,0.1,,,,,10000,,,,,,,"PD,ANTI_FTR,SYSTEM","pd9, beam6",,,,Point Defense,,,,,,,,,,19.7
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 #装饰类,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 警戒者光桥,xel_Sentinel_Bridge,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,SYSTEM,,,,,,,,,,,,,,,10.001

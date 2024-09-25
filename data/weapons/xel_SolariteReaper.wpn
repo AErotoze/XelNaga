@@ -9,8 +9,8 @@
   "collisionClass": "RAY",
   "collisionClassByFighter": "RAY_FIGHTER",
   "turretSprite": "graphics/weapons/xel_SolariteReaper_turret.png",
-	"turretGlowSprite":"",
-	"hardpointSprite":"",
+  "turretGlowSprite":"",
+  "hardpointSprite":"",
   "hardpointGlowSprite": "graphics/weapons/xel_SolariteReaper_glow.png",
 
   "glowColor": [50,220,220,255],

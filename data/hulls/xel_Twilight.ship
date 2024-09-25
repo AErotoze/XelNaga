@@ -1,0 +1,56 @@
+{
+  "hullName": "xel_Twilight",
+  "hullId": "xel_Twilight",
+  "hullSize": "FIGHTER",
+  "spriteName": "graphics/ships/xel_fighter/xel_Twilight.png",
+  "style": "XelNaga",
+  "height": 40,
+  "width": 36,
+  "center": [18, 20],
+  "collisionRadius": 31.5,
+  "shieldCenter": [0, 0],
+  "shieldRadius": 23.5,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "SMALL",
+      "type": "MISSILE",
+      "mount": "HIDDEN",
+      "arc": 0,
+      "angle": 0,
+      "locations": [8.5, -0]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-11, 4],
+      "length": 12,
+      "width": 4,
+      "angle": 175,
+      "contrailSize": 8,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-11, -4],
+      "length": 12,
+      "width": 4,
+      "angle": -175,
+      "contrailSize": 8,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    -6.5, -17,
+    -5, -8,
+    -19, -0,
+    -5, 8,
+    -6.5, 17,
+    19, -0
+  ]
+}

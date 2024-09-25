@@ -6,9 +6,9 @@ import com.fs.starfarer.api.util.TimeoutTracker;
 
 import java.util.List;
 
-public class xel_WeaknessAnalysisBeamEffect implements BeamEffectPlugin {
+public class xel_AnalysisBeamEffect implements BeamEffectPlugin {
     /*
-    被单束光束照射的目标受到的伤害增加6%，两束及两束以上增加10%
+    被单束光束照射的目标受到的伤害增加7%，两束增加12%，三束及三束以上增加15%
      */
     private static final String DATA_KEY = "xel_WeaknessAnalysisBeamEffect_data_key";
     private static final float EFFECT_DUR = 1f;

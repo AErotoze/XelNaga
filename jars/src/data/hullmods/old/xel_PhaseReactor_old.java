@@ -1,4 +1,4 @@
-package data.hullmods;
+package data.hullmods.old;
 
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.combat.*;
@@ -11,6 +11,7 @@ import com.fs.starfarer.api.ui.Alignment;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
 import com.fs.starfarer.api.util.IntervalUtil;
 import com.fs.starfarer.api.util.Misc;
+import data.hullmods.xel_BaseHullmod;
 import data.utils.xel.HullModUtil;
 import data.utils.xel.xel_Misc;
 import org.dark.shaders.distortion.DistortionShader;

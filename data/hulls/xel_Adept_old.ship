@@ -1,0 +1,99 @@
+{
+  "hullName": "使徒",
+  "hullId": "xel_Adept_old",
+  "hullSize": "FRIGATE",
+  "spriteName": "graphics/ships/xel_Adept_old.png",
+  "style": "XelNaga",
+  "height": 74,
+  "width": 72,
+  "center": [36, 35],
+  "collisionRadius": 48,
+  "shieldCenter": [0, -0],
+  "shieldRadius": 45,
+  "viewOffset": 0,
+  "builtInMods": [
+    "xel_ProtossEnergyArray"
+  ],
+  "weaponSlots": [
+    {
+      "id": "WS0001",
+      "size": "MEDIUM",
+      "type": "UNIVERSAL",
+      "mount": "HARDPOINT",
+      "arc": 5,
+      "angle": 0,
+      "locations": [5.5, -0]
+    },
+    {
+      "id": "WS0002",
+      "size": "SMALL",
+      "type": "SYNERGY",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": 45,
+      "locations": [-10, 14]
+    },
+    {
+      "id": "WS0003",
+      "size": "SMALL",
+      "type": "SYNERGY",
+      "mount": "TURRET",
+      "arc": 110,
+      "angle": -45,
+      "locations": [-10, -14]
+    }
+  ],
+  "engineSlots": [
+    {
+      "location": [-34, 4.5],
+      "length": 45,
+      "width": 8,
+      "angle": 180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-34, -4.5],
+      "length": 45,
+      "width": 8,
+      "angle": -180,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-29, 17],
+      "length": 15,
+      "width": 8,
+      "angle": 140,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    },
+    {
+      "location": [-29, -17],
+      "length": 15,
+      "width": 8,
+      "angle": -140,
+      "contrailSize": 30,
+      "style": "CUSTOM",
+      "styleId": "XelNaga"
+    }
+  ],
+  "bounds": [
+    3, -8,
+    38, -7,
+    36, -20,
+    8, -29,
+    -23, -35,
+    -31, -16,
+    -34, -0,
+    -31, 16,
+    -23, 35,
+    8, 29,
+    36, 20,
+    38, 7,
+    3, 8
+  ]
+}

@@ -1,5 +1,10 @@
 name,id,flux/second,f/s (base rate),f/s (base cap),flux/use,f/u (base rate),f/u (base cap),cr/u,max uses,regen,charge up,active,down,cooldown,toggle,noDissipation,noHardDissipation,hardFlux,noFiring,noTurning,noStrafing,noAccel,noShield,noVent,isPhaseCloak,tags,icon
 冲锋,xel_Rush,,,,,,,,,,0.5,7,0.5,10,,,,,,,,,,TRUE,,,graphics/icons/hullsys/maneuvering_jets.png
+冲锋,xel_Rush_fighter,,,,,,,,,,0.1,3.3,0.1,8,,,,,,,,,,TRUE,,,graphics/icons/hullsys/maneuvering_jets.png
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
+灵能投射,xel_PsiProjection,,,,,,,,,,2,0,0,10,,,,TRUE,,,,,,,,,graphics/icons/hullsys/displacer.png
+#Phase Teleporter,phaseteleporter,,,,,,,,,,0.5,0,0.5,15,,,,TRUE,,,,,,,,,graphics/icons/hullsys/displacer.png
+,,,,,,,,,,,,,,,,,,,,,,,,,,,
 统合力场,xel_UnityField,,,,,,0.5,,,,2,16,2,8,,,,,,,,,,,,,graphics/icons/hullsys/xel_DefensiveMatrix.png
 #反馈,xel_Feedback,,,,,,0.2,,2,0.125,1,,0.25,0,,,,,,,,,,,,,graphics/icons/hullsys/xel_Feedback.png
 虚空静滞,xel_VoidStasis,,,,,,0.3,,,,0.25,,1.75,18,,,,,,,,,,,,,graphics/icons/hullsys/quantum_disruptor.png
